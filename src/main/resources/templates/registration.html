@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+    <head>
+        <title>Spring Security Example </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <!--<div th:if="${param.error}">-->
+            <!--Invalid username and password.-->
+        <!--</div>-->
+        <!--<div th:if="${param.logout}">-->
+            <!--You have been logged out.-->
+        <!--</div>-->
+        <form  th:action="@{/saveUser}" method="Post">
+            <div><label> User Name : <input type="text"  name="username"/> </label></div>
+            <div><label> Password: <input type="password" name="password" autocomplete="off"/></label></div>
+            <div><label> Email: <input type="text" name="email"/> </label></div>
+            <div><label> Phone: <input type="text" name="phone"/> </label></div>
+            <!--<div><label> Password1: <input type="password" name="password"/> </label></div>-->
+            <div><label> Status: <select name="role">
+                <option value="ROLE_STUDENT">Студент</option>
+                <option value="ROLE_ADMIN">Адміністратор</option>
+                <option value="ROLE_TEACHER">Вчитель</option>
+                <option value="ROLE_PARENT">Батько</option>
+                <option value="ROLE_CLASSTHEACHER">Класний керівник</option>
+                <option value="ROLE_DEPUTI">Зауч</option>
+            </select> </label>
+            </div>
+
+            <div><input id="btn" type="submit" value="Sign In"/></div>
+        </form>
+    <!--<script>-->
+    <!--$("#btn").click(function (e) {-->
+        <!--// e.preventDefault();-->
+        <!--let username = $("input[name='username']").val();-->
+        <!--let password = $("input[name='password']").val();-->
+        <!--let email = $("input[name='email']").val();-->
+        <!--let phone = $("input[name='phone']").val();-->
+        <!--let role = $("select[name='role']").val();-->
+        <!--console.log(username);-->
+        <!--console.log(password);-->
+        <!--console.log(email);-->
+        <!--console.log(phone);-->
+        <!--console.log(role);-->
+
+    <!--})-->
+
+
+    <!--&lt;!&ndash;</script>&ndash;&gt;-->
+
+    </body>
+</html>
