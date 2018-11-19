@@ -48,7 +48,7 @@ public class MainController {
 
     @GetMapping("/saveNewUser")
     public String saveNewUser(Model model){
-        Map<String, Role> mapRoles= new HashMap<>();
+        Map<String, Role> mapRoles = new HashMap<>();
         mapRoles.put("Студент", Role.ROLE_STUDENT);
         mapRoles.put("Адміністратор", Role.ROLE_ADMIN);
         mapRoles.put("Вчитель", Role.ROLE_TEACHER);
