@@ -31,6 +31,21 @@ public class MainController {
         return "succesed";
     }
 
+    @PostMapping("/lessonURL")
+    public String lessonURL(){
+        return "lesson";
+
+
+    }    @PostMapping("/marksURL")
+    public String marksURL(){
+        return "marks";
+
+
+    }    @PostMapping("/newsURL")
+    public String newsURL(){
+        return "news";
+    }
+
 
     @PostMapping("/saveUser")
     public String saveUser(User user){
