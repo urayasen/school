@@ -60,4 +60,28 @@ public class MainController {
         return "registration";
     }
 
+    @GetMapping ("/account")
+    public String account(){
+//        System.out.println("You succes login");
+        return "account";
+    }
+
+    @GetMapping("/chat")
+    public String chat(){
+//        System.out.println("You succes login");
+        return "chat";
+    }
+
+    @GetMapping("/homework")
+    public String homework(){
+//        System.out.println("You succes login");
+        return "homework";
+    }
+
+    @GetMapping("/news")
+    public String news(){
+//        System.out.println("You succes login");
+        return "news";
+    }
+
 }
