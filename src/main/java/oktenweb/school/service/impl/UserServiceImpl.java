@@ -2,6 +2,7 @@ package oktenweb.school.service.impl;
 
 
 import oktenweb.school.dao.UserDAO;
+import oktenweb.school.models.Role;
 import oktenweb.school.models.User;
 import oktenweb.school.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
+
     @Autowired
     UserDAO userDAO;
 

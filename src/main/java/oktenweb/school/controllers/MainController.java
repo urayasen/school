@@ -4,12 +4,18 @@ package oktenweb.school.controllers;
 import oktenweb.school.dao.UserDAO;
 import oktenweb.school.models.Role;
 import oktenweb.school.models.User;
+import oktenweb.school.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,21 +42,6 @@ public class MainController {
         return "succesed";
     }
 
-    @PostMapping("/lessonURL")
-    public String lessonURL(){
-        return "lesson";
-
-
-    }    @PostMapping("/marksURL")
-    public String marksURL(){
-        return "marks";
-
-
-    }    @PostMapping("/newsURL")
-    public String newsURL(){
-        return "news";
-    }
-
 
     @PostMapping("/saveUser")
     public String saveUser(User user){
@@ -75,28 +66,8 @@ public class MainController {
         return "registration";
     }
 
-    @GetMapping ("/account")
-    public String account(){
-//        System.out.println("You succes login");
-        return "account";
-    }
-
-    @GetMapping("/chat")
-    public String chat(){
-//        System.out.println("You succes login");
-        return "chat";
-    }
-
-    @GetMapping("/homework")
-    public String homework(){
-//        System.out.println("You succes login");
-        return "homework";
-    }
-
     @GetMapping("/news")
     public String news(){
-//        System.out.println("You succes login");
         return "news";
     }
-
 }
