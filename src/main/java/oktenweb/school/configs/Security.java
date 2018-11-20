@@ -10,6 +10,7 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configurers.provisioning.InMemoryUserDetailsManagerConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -49,7 +50,10 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/", "/home","/saveUser", "/saveNewUser").permitAll()
                 .anyRequest().authenticated()
-                .antMatchers("/admin/**").hasRole("ADMIN")
+//                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/saveNewUser").hasRole("ADMIN")
+                .antMatchers("/admin/**").access("hasRole('STUDENT')")
+                .antMatchers("/news").hasAuthority("STUDENT")
 //                .antMatchers("/saveNewUser").hasAuthority("ADMIN")
 //                .antMatchers("/saveNewUser").hasRole("ADMIN")
                 .and()
@@ -83,5 +87,11 @@ public class Security extends WebSecurityConfigurerAdapter {
 
          }
 
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web
+                .ignoring()
+                .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
+    }
 
 }
