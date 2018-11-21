@@ -6,12 +6,19 @@ import oktenweb.school.models.Role;
 import oktenweb.school.models.User;
 import oktenweb.school.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UserDetailsRepositoryReactiveAuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+
+
 @Service
 public class UserServiceImpl implements UserService {
+
+
+    private UserDAO userRepository;
+
 
     @Autowired
     UserDAO userDAO;
@@ -25,5 +32,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         return userDAO.findByUsername(s);
+    }
+
+    public User findUserByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 }

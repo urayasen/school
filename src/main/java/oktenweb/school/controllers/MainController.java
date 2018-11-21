@@ -4,17 +4,13 @@ package oktenweb.school.controllers;
 import oktenweb.school.dao.UserDAO;
 import oktenweb.school.models.Role;
 import oktenweb.school.models.User;
-import oktenweb.school.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
@@ -31,29 +27,34 @@ public class MainController {
     private PasswordEncoder passwordEncoder;
 
     @GetMapping("/")
-    public String index(){
+    public String index() {
         return "login";
     }
 
 
     @PostMapping("/successURL")
-    public String successURL(){
+    public String successURL() {
         System.out.println("You succes login");
         return "succesed";
     }
 
 
-    @PostMapping("/saveUser")
-    public String saveUser(User user){
+    @GetMapping("/saveUser")
+    public String saveUser(User user) {
         System.out.println("user");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-//        user.setRole();
+//        user.setRole(Role.ROLE_TEACHER);
+//        user.setRole(Role.ROLE_ADMIN);
+//        user.setRole(Role.ROLE_CLASSTHEACHER);
+//        user.setRole(Role.ROLE_DEPUTI);
+//        user.setRole(Role.ROLE_PARENT);
+//        user.setRole(Role.ROLE_STUDENT);
         userDAO.save(user);
         return "redirect:/";
     }
 
     @GetMapping("/saveNewUser")
-    public String saveNewUser(Model model){
+    public String saveNewUser(Model model) {
         Map<String, Role> mapRoles = new HashMap<>();
         mapRoles.put("Студент", Role.ROLE_STUDENT);
         mapRoles.put("Адміністратор", Role.ROLE_ADMIN);
@@ -62,12 +63,16 @@ public class MainController {
         mapRoles.put("Класний керівник", Role.ROLE_CLASSTHEACHER);
         mapRoles.put("Зауч", Role.ROLE_DEPUTI);
 
-        model.addAttribute("mapRoles",mapRoles);
+        model.addAttribute("mapRoles", mapRoles);
         return "registration";
     }
 
-    @GetMapping("/news")
-    public String news(){
+    @GetMapping("/admin/news")
+    private String news(){
         return "news";
+    }
+    @GetMapping("/marks")
+    private String marks(){
+        return "marks";
     }
 }
