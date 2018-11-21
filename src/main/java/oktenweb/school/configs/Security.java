@@ -56,6 +56,7 @@ public class Security extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/admin/**").access("hasRole('STUDENT')")
                 .antMatchers("/admin/**").access("hasRole('TEACHER')")
                 .antMatchers("/admin/**").access("hasRole('ADMIN')")
+                .antMatchers("/marks").access("hasRole('STUDENT')")
 //                .antMatchers("/news").hasRole("STUDENT")
 //                .antMatchers("/saveNewUser").hasAuthority("ADMIN")
 //                .antMatchers("/saveNewUser").hasRole("ADMIN")

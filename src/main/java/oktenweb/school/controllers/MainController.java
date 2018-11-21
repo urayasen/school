@@ -71,4 +71,8 @@ public class MainController {
     private String news(){
         return "news";
     }
+    @GetMapping("/marks")
+    private String marks(){
+        return "marks";
+    }
 }
