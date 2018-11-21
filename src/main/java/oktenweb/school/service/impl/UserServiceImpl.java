@@ -17,9 +17,6 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
 
-    private UserDAO userRepository;
-
-
     @Autowired
     UserDAO userDAO;
 
@@ -34,7 +31,4 @@ public class UserServiceImpl implements UserService {
         return userDAO.findByUsername(s);
     }
 
-    public User findUserByUsername(String username) {
-        return userRepository.findByUsername(username);
-    }
 }

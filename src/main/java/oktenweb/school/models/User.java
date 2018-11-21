@@ -22,12 +22,6 @@ public class User implements UserDetails {
    @Column(unique = true)
     private String username;
     private String password;
-    private String email;
-    private String phone;
-
-
-
-
 
     @Override
     public String getPassword() {
@@ -120,21 +114,6 @@ public class User implements UserDetails {
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 
 
     public Role getRole() {
@@ -151,8 +130,6 @@ public class User implements UserDetails {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
                 ", enabled=" + enabled +
                 ", credentialsNonExpired=" + credentialsNonExpired +
                 ", accountNonExpired=" + accountNonExpired +
@@ -160,5 +137,4 @@ public class User implements UserDetails {
                 ", role=" + role +
                 '}';
     }
-
 }
