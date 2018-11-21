@@ -57,6 +57,8 @@ public class MainController {
         System.out.println("user");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 //        user.setRole();
+
+        System.out.println(user.getRole());
         userDAO.save(user);
         return "redirect:/";
     }
@@ -71,7 +73,19 @@ public class MainController {
         mapRoles.put("Класний керівник", Role.ROLE_CLASSTHEACHER);
         mapRoles.put("Зауч", Role.ROLE_DEPUTI);
 
+//        Map<String, Role> mapRoles = new HashMap<>();
+//        mapRoles.put("Студент", Role.STUDENT);
+//        mapRoles.put("Адміністратор", Role.ADMIN);
+//        mapRoles.put("Вчитель", Role.TEACHER);
+//        mapRoles.put("Батько", Role.PARENT);
+//        mapRoles.put("Класний керівник", Role.CLASSTHEACHER);
+//        mapRoles.put("Зауч", Role.DEPUTI);
+
+
+        System.out.println();
         model.addAttribute("mapRoles",mapRoles);
+
+
         return "registration";
     }
 
@@ -93,7 +107,7 @@ public class MainController {
         return "homework";
     }
 
-    @GetMapping("/news")
+    @GetMapping("/admin/news")
     public String news(){
 //        System.out.println("You succes login");
         return "news";

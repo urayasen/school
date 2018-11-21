@@ -49,16 +49,16 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/", "/home","/saveUser", "/saveNewUser").permitAll()
                 .anyRequest().authenticated()
-                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/admin/**").access("hasRole('ADMIN')")
 //                .antMatchers("/saveNewUser").hasAuthority("ADMIN")
 //                .antMatchers("/saveNewUser").hasRole("ADMIN")
+//                .antMatchers("/news").hasRole("ADMIN")
                 .and()
                 .formLogin()
                 .loginPage("/login")
 //                .loginProcessingUrl("/admin")
                 .successForwardUrl("/successURL")//handle with post mapping in controller
                 .failureUrl("/login?error").permitAll()
-                .permitAll()
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).
