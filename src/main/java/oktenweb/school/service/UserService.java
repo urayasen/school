@@ -8,4 +8,7 @@ public interface UserService extends UserDetailsService {
 
     void save(User user);
 
+    static User findUserByUsername(String name) {
+        return null;
+    }
 }
