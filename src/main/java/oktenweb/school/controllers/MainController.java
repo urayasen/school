@@ -35,7 +35,7 @@ public class MainController {
     @PostMapping("/successURL")
     public String successURL() {
         System.out.println("You succes login");
-        return "succesed";
+        return "redirect:/allhref";
     }
 
 
@@ -68,6 +68,11 @@ public class MainController {
     }
 
     @GetMapping("/admin/news")
+    private String News()
+    {
+        return "news";
+    }
+    @GetMapping("/news")
     private String news()
     {
         return "news";
