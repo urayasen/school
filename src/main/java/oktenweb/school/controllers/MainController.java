@@ -39,7 +39,7 @@ public class MainController {
     }
 
 
-    @GetMapping("/saveUser")
+    @PostMapping("/saveUser")
     public String saveUser(User user) {
         System.out.println("user");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -104,6 +104,12 @@ public class MainController {
     private String visited()
     {
         return "visited";
+    }
+
+    @GetMapping("/allhref")
+    private String allhref()
+    {
+        return "hhh";
     }
 
 
