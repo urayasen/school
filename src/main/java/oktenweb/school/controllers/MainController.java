@@ -58,7 +58,6 @@ public class MainController {
         mapRoles.put("Батько", Role.ROLE_PARENT);
         mapRoles.put("Класний керівник", Role.ROLE_CLASSTHEACHER);
         mapRoles.put("Зауч", Role.ROLE_DEPUTI);
-
         model.addAttribute("mapRoles", mapRoles);
         return "registration";
     }
@@ -70,7 +69,8 @@ public class MainController {
     }
 
     @GetMapping("/marks")
-    private String marks(){
+    private String marks()
+    {
         return "marks";
     }
 }
