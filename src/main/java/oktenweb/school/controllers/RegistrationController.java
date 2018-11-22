@@ -62,9 +62,10 @@ public class RegistrationController {
     }
 
 
-    @PostMapping("/student/registrationStudents")
-    public String registrationStudents(){
-        return "registrationStudents";
+    @GetMapping("/saveStudent")
+    public String registrationStudents(Students students){
+        studentsService.save(students);
+        return "redirect:/";
     }
 
 

@@ -44,7 +44,7 @@ public class MainController {
         System.out.println("user");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDAO.save(user);
-        return "redirect:/";
+        return "registrationStudents";
     }
 
 
