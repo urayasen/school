@@ -18,6 +18,8 @@ public class Students extends User {
     private String Email;
     private String Phone;
     private String Adress;
+    private String gender;
+
 
     @Override
     public int getId() {
@@ -68,6 +70,14 @@ public class Students extends User {
 
     public void setSurname(String surname) {
         Surname = surname;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     /*--------------------------------------------------------------------------------------------------*/
