@@ -29,7 +29,7 @@ public class RegistrationController {
     public String saveStudent(Students students) {
 //        System.out.println("user");
         studentsService.save(students);
-        return "registration-student";
+        return "registration/registration-students";
     }
 
     @GetMapping("/saveDeputy")
