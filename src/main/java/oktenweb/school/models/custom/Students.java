@@ -13,20 +13,13 @@ public class Students extends User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
-    private String surname;
-    private String email;
-    private String phone;
-    private String adress;
-    private String sex;
+    private String Name;
+    private String Surname;
+    private String Email;
+    private String Phone;
+    private String Adress;
+    private String gender;
 
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
 
     @Override
     public int getId() {
@@ -39,43 +32,52 @@ public class Students extends User {
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
     public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
+        Name = name;
     }
 
     public String getEmail() {
-        return email;
+        return Email;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        Email = email;
     }
 
     public String getPhone() {
-        return phone;
+        return Phone;
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        Phone = phone;
     }
 
     public String getAdress() {
-        return adress;
+        return Adress;
     }
 
     public void setAdress(String adress) {
-        this.adress = adress;
+        Adress = adress;
+    }
+
+    public String getSurname() {
+
+        return Surname;
+    }
+
+    public void setSurname(String surname) {
+        Surname = surname;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     /*--------------------------------------------------------------------------------------------------*/
@@ -84,11 +86,11 @@ public class Students extends User {
     public String toString() {
         return "Students{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", adress='" + adress + '\'' +
+                ", Name='" + Name + '\'' +
+                ", Surname='" + Surname + '\'' +
+                ", Email='" + Email + '\'' +
+                ", Phone='" + Phone + '\'' +
+                ", Adress='" + Adress + '\'' +
                 '}';
     }
 }
