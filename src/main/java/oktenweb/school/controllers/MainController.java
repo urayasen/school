@@ -35,11 +35,11 @@ public class MainController {
     @PostMapping("/successURL")
     public String successURL() {
         System.out.println("You succes login");
-        return "succesed";
+        return "redirect:/allhref";
     }
 
 
-    @GetMapping("/saveUser")
+    @PostMapping("/saveUser")
     public String saveUser(User user) {
         System.out.println("user");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -68,11 +68,54 @@ public class MainController {
     }
 
     @GetMapping("/admin/news")
-    private String news(){
+    private String News()
+    {
         return "news";
     }
+    @GetMapping("/news")
+    private String news()
+    {
+        return "news";
+    }
+
+
     @GetMapping("/marks")
-    private String marks(){
+    private String marks()
+    {
         return "marks";
     }
+    @GetMapping("/account")
+    private String account()
+    {
+        return "account";
+    }
+    @GetMapping("/chat")
+    private String chat()
+    {
+        return "chat";
+    }
+    @GetMapping("/homework")
+    private String homework()
+    {
+        return "homework";
+    }
+    @GetMapping("/lesson")
+    private String lesson()
+    {
+        return "lesson";
+    }
+
+    @GetMapping("/visited")
+    private String visited()
+    {
+        return "visited";
+    }
+
+    @GetMapping("/allhref")
+    private String allhref()
+    {
+        return "hhh";
+    }
+
+
 }
