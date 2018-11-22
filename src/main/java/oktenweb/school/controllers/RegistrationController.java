@@ -74,6 +74,12 @@ public class RegistrationController {
         @GetMapping("/saveStudents")
         public String registrationStudents(Students students){
 
+    @PostMapping("/student/registrationStudents")
+    public String registrationStudents(){
+        return "registrationStudents";
+    }
+
+
 
 //            User user = userService.byId(new User().getId());
             studentsService.save(students);
