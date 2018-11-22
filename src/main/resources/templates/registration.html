@@ -13,7 +13,7 @@
         <!--<div th:if="${param.logout}">-->
             <!--You have been logged out.-->
         <!--</div>-->
-        <form  th:action="@{/saveUser}" method="Post">
+        <form  th:action="@{/saveUser}" method="Get">
             <div><label> User Name : <input type="text"  name="username"/> </label></div>
             <div><label> Password: <input type="password" name="password" autocomplete="off"/></label></div>
             <!--<div><label> Email: <input type="text" name="email"/> </label></div>-->
