@@ -1,5 +1,7 @@
 package oktenweb.school.models;
 
+import oktenweb.school.models.custom.Students;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,6 +23,16 @@ public class User implements UserDetails {
    @Column(unique = true)
     private String username;
     private String password;
+
+    @Autowired
+    @OneToOne(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy = "user"
+    )
+
+    private Students students;
+
 
     @Override
     public String getPassword() {

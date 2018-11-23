@@ -1,12 +1,13 @@
 package oktenweb.school.models.custom;
 
 import oktenweb.school.models.User;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 
 
 @Entity
-public class Students extends User {
+public class Students {
 
 
     /*--------------------------------------------------------------------------------------------------*/
@@ -21,12 +22,21 @@ public class Students extends User {
     private String gender;
 
 
-    @Override
+    @Autowired
+    @OneToOne(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL
+
+    )
+    @JoinColumn(name = "user_id")
+    private User user;
+
+
     public int getId() {
         return id;
     }
 
-    @Override
+
     public void setId(int id) {
         this.id = id;
     }

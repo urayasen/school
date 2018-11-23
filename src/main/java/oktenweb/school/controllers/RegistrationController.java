@@ -64,6 +64,7 @@ public class RegistrationController {
 
     @GetMapping("/saveStudent")
     public String registrationStudents(Students students){
+
         studentsService.save(students);
         return "redirect:/";
     }
