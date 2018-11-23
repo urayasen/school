@@ -5,6 +5,7 @@ import oktenweb.school.service.customService.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class RegistrationController {
@@ -29,7 +30,7 @@ public class RegistrationController {
     public String saveStudent(Students students) {
 //        System.out.println("user");
         studentsService.save(students);
-        return "redirect:/";
+        return "registration/registration-students";
     }
 
     @GetMapping("/saveDeputy")
@@ -57,6 +58,14 @@ public class RegistrationController {
     public String saveClassteachers(Classteachers classteachers) {
 //        System.out.println("user");
         classteachersService.save(classteachers);
+        return "redirect:/";
+    }
+
+
+    @GetMapping("/saveStudent")
+    public String registrationStudents(Students students){
+
+        studentsService.save(students);
         return "redirect:/";
     }
 
