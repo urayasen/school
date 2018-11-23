@@ -1,6 +1,6 @@
 package oktenweb.school.dao;
 
-import com.sun.org.apache.xpath.internal.operations.String;
+import java.lang.String;
 import oktenweb.school.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
