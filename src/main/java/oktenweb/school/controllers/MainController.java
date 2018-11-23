@@ -50,7 +50,7 @@ public class MainController {
 //        user.setRole(Role.ROLE_PARENT);
 //        user.setRole(Role.ROLE_STUDENT);
         userDAO.save(user);
-        return "redirect:/";
+        return "registrationStudents";
     }
 
     @GetMapping("/saveNewUser")
