@@ -35,23 +35,19 @@ public class MainController {
     @PostMapping("/successURL")
     public String successURL() {
         System.out.println("You succes login");
-        return "redirect:/allhref";
+        return "succesed";
     }
 
 
-    @PostMapping("/saveUser")
+    @GetMapping("/saveUser")
     public String saveUser(User user) {
         System.out.println("user");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-//        user.setRole(Role.ROLE_TEACHER);
-//        user.setRole(Role.ROLE_ADMIN);
-//        user.setRole(Role.ROLE_CLASSTHEACHER);
-//        user.setRole(Role.ROLE_DEPUTI);
-//        user.setRole(Role.ROLE_PARENT);
-//        user.setRole(Role.ROLE_STUDENT);
         userDAO.save(user);
         return "redirect:/";
     }
+
+
 
     @GetMapping("/saveNewUser")
     public String saveNewUser(Model model) {
@@ -62,60 +58,19 @@ public class MainController {
         mapRoles.put("Батько", Role.ROLE_PARENT);
         mapRoles.put("Класний керівник", Role.ROLE_CLASSTHEACHER);
         mapRoles.put("Зауч", Role.ROLE_DEPUTI);
-
         model.addAttribute("mapRoles", mapRoles);
         return "registration";
     }
 
     @GetMapping("/admin/news")
-    private String News()
-    {
-        return "news";
-    }
-    @GetMapping("/news")
     private String news()
     {
         return "news";
     }
-
 
     @GetMapping("/marks")
     private String marks()
     {
         return "marks";
     }
-    @GetMapping("/account")
-    private String account()
-    {
-        return "account";
-    }
-    @GetMapping("/chat")
-    private String chat()
-    {
-        return "chat";
-    }
-    @GetMapping("/homework")
-    private String homework()
-    {
-        return "homework";
-    }
-    @GetMapping("/lesson")
-    private String lesson()
-    {
-        return "lesson";
-    }
-
-    @GetMapping("/visited")
-    private String visited()
-    {
-        return "visited";
-    }
-
-    @GetMapping("/allhref")
-    private String allhref()
-    {
-        return "hhh";
-    }
-
-
 }
