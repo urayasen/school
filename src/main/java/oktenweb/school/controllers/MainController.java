@@ -28,7 +28,7 @@ public class MainController {
 
     @GetMapping("/")
     public String index() {
-        return "login";
+        return "home";
     }
 
 
@@ -74,5 +74,10 @@ public class MainController {
     @GetMapping("/marks")
     private String marks(){
         return "marks";
+    }
+
+    @GetMapping("/home")
+    private String home(){
+        return "home";
     }
 }

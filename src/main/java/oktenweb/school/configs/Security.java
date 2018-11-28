@@ -19,6 +19,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 
+import java.security.AllPermission;
+
 @Configuration
 @EnableWebSecurity
 public class Security extends WebSecurityConfigurerAdapter {
@@ -48,7 +50,7 @@ public class Security extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/home","/saveUser","/saveNewUser").permitAll()
+                .antMatchers("/home","/saveUser","/saveNewUser").permitAll()
 //                .anyRequest().authenticated()
 //                .antMatchers("/admin/**").hasRole("ADMIN")
 //                .antMatchers().access("hasRole('ADMIN')")
@@ -59,6 +61,13 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .antMatchers("/marks").access("hasRole('STUDENT')")
                 .antMatchers("/saveStudents").access("hasRole('ADMIN')")
 //                .antMatchers("/news").hasRole("STUDENT")
+                .antMatchers("/marks").access("hasAnyRole('DEPUTI','PARENT', 'ADMIN', 'TEACHER','CLASSTHEACHER','ADMIN')")
+                .antMatchers("/account").access("hasAnyRole('DEPUTI','STUDENT','PARENT','TEACHER','CLASSTHEACHER','ADMIN')")
+                .antMatchers("/news").access("hasAnyRole('DEPUTI','STUDENT','PARENT','TEACHER','CLASSTHEACHER','ADMIN')")
+                .antMatchers("/chat").access("hasAnyRole('CLASSTHEACHER','PARENT','ADMIN')")
+                .antMatchers("/homework").access("hasAnyRole('DEPUTI','STUDENT','PARENT','TEACHER','CLASSTHEACHER','ADMIN')")
+                .antMatchers("/lesson").access("hasAnyRole('DEPUTI','STUDENT','PARENT','TEACHER','CLASSTHEACHER','ADMIN')")
+                .antMatchers("/visited").access("hasAnyRole('DEPUTI','STUDENT','PARENT','TEACHER','CLASSTHEACHER','ADMIN')")
 //                .antMatchers("/saveNewUser").hasAuthority("ADMIN")
 //                .antMatchers("/saveNewUser").hasRole("ADMIN")
                 .and()
@@ -96,7 +105,7 @@ public class Security extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
-                .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
+                .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/img/**");
     }
 
 
