@@ -32,7 +32,6 @@ public class RegistrationController {
     UserService userService;
 
 
-
     @GetMapping("/saveStudents")
     public String saveStudent(Students students) {
 //        System.out.println("user");
@@ -63,30 +62,19 @@ public class RegistrationController {
         return "redirect:/";
     }
 
-        @GetMapping("/saveClassteachers" )
-        public String saveClassteachers(Classteachers classteachers){
+    @GetMapping("/saveClassteachers")
+    public String saveClassteachers(Classteachers classteachers) {
 //        System.out.println("user");
-            classteachersService.save(classteachers);
-            return "redirect:/";
-        }
-
-
-        @GetMapping("/saveStudents")
-        public String registrationStudents(Students students){
-
-    @GetMapping("/saveStudent")
-    public String registrationStudents(Students students){
-
-        studentsService.save(students);
+        classteachersService.save(classteachers);
         return "redirect:/";
     }
 
 
-
-//            User user = userService.byId(new User().getId());
-            studentsService.save(students);
-            return "redirect:/";
-        }
-
-
+    @GetMapping("/saveStudent")
+    public String registrationStudents(Students students) {
+        studentsService.save(students);
+        return "redirect:/";
     }
+}
+
+
