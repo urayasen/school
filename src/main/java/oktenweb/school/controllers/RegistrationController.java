@@ -1,6 +1,8 @@
 package oktenweb.school.controllers;
 
+import oktenweb.school.models.User;
 import oktenweb.school.models.custom.*;
+import oktenweb.school.service.UserService;
 import oktenweb.school.service.customService.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,12 +28,19 @@ public class RegistrationController {
     @Autowired
     TeachersService teachersService;
 
-    @GetMapping("/saveStudents")
-    public String saveStudent(Students students) {
-//        System.out.println("user");
-        studentsService.save(students);
-        return "registration/registration-students";
-    }
+    @Autowired
+    UserService userService;
+
+
+//
+//    @GetMapping("/saveStudents")
+//    public String saveStudent(Students students) {
+////        System.out.println("user");
+////        userService.loadUserByUsername()
+////        userService.byId()
+//        studentsService.save(students);
+//        return "registration/registration-students";
+//    }
 
     @GetMapping("/saveDeputy")
     public String saveDeputy(Deputy deputy) {
@@ -54,22 +63,23 @@ public class RegistrationController {
         return "redirect:/";
     }
 
-    @GetMapping("/saveClassteachers")
-    public String saveClassteachers(Classteachers classteachers) {
+        @GetMapping("/saveClassteachers" )
+        public String saveClassteachers(Classteachers classteachers){
 //        System.out.println("user");
-        classteachersService.save(classteachers);
-        return "redirect:/";
+            classteachersService.save(classteachers);
+            return "redirect:/";
+        }
+
+
+        @GetMapping("/saveStudents")
+        public String registrationStudents(Students students, int id){
+
+            System.out.println("saveStudents ---------   " + id);
+            User user = userService.byId(id);
+            students.setUser(user);
+            studentsService.save(students);
+            return "redirect:/";
+        }
+
+
     }
-
-
-    @GetMapping("/saveStudent")
-    public String registrationStudents(Students students){
-
-        studentsService.save(students);
-        return "redirect:/";
-    }
-
-
-
-
-}
