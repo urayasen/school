@@ -28,7 +28,7 @@ public class MainController {
 
     @GetMapping("/")
     public String index() {
-        return "login";
+        return "home";
     }
 
 
@@ -43,11 +43,15 @@ public class MainController {
     public String saveUser(User user) {
         System.out.println("user");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+//        user.setRole(Role.ROLE_TEACHER);
+//        user.setRole(Role.ROLE_ADMIN);
+//        user.setRole(Role.ROLE_CLASSTHEACHER);
+//        user.setRole(Role.ROLE_DEPUTI);
+//        user.setRole(Role.ROLE_PARENT);
+//        user.setRole(Role.ROLE_STUDENT);
         userDAO.save(user);
         return "registrationStudents";
     }
-
-
 
     @GetMapping("/saveNewUser")
     public String saveNewUser(Model model) {
@@ -58,19 +62,22 @@ public class MainController {
         mapRoles.put("Батько", Role.ROLE_PARENT);
         mapRoles.put("Класний керівник", Role.ROLE_CLASSTHEACHER);
         mapRoles.put("Зауч", Role.ROLE_DEPUTI);
+
         model.addAttribute("mapRoles", mapRoles);
         return "registration";
     }
 
     @GetMapping("/admin/news")
-    private String news()
-    {
+    private String news(){
         return "news";
     }
-
     @GetMapping("/marks")
-    private String marks()
-    {
+    private String marks(){
         return "marks";
+    }
+
+    @GetMapping("/home")
+    private String home(){
+        return "home";
     }
 }
