@@ -523,7 +523,7 @@ a:focus, a:hover {
 	z-index: 1;
 }
 .inner-img {
-	background: url(02.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/2.jpg*/;
+	background: url(2.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/2.jpg*/;
 	background-size: cover;
 }
 .welcome-area__inner {
@@ -1085,9 +1085,11 @@ a:focus, a:hover {
 }
 
 #statement {
-	/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/02.jpg*/;
+	background-image: url(02.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/02.jpg*/;
 	background-size: cover;
-	background: url(02.jpg) no-repeat fixed center center;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 }
 
 #statement:before {
