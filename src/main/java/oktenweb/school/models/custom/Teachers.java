@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.persistence.*;
 
 @Entity
-public class Teachers extends User {
+public class Teachers  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +19,7 @@ public class Teachers extends User {
 
 
 
-    @@Autowired
+    @Autowired
     @OneToOne(
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
@@ -37,12 +37,12 @@ public class Teachers extends User {
     }
 
 
-    @Override
+
     public int getId() {
         return id;
     }
 
-    @Override
+
     public void setId(int id) {
         this.id = id;
     }

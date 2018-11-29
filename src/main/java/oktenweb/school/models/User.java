@@ -1,7 +1,6 @@
 package oktenweb.school.models;
 
-import oktenweb.school.models.custom.Students;
-import oktenweb.school.models.custom.Teachers;
+import oktenweb.school.models.custom.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -28,7 +27,8 @@ public class User implements UserDetails {
     @Autowired
     @OneToOne(
             fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL
+            cascade = CascadeType.ALL,
+            mappedBy = "user"
     )
     private Students students;
 
@@ -39,6 +39,33 @@ public class User implements UserDetails {
             mappedBy = "user"
     )
     private Teachers teachers;
+
+
+
+    @Autowired
+    @OneToOne(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy = "user"
+    )
+    private Parents parents;
+
+    @Autowired
+    @OneToOne(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy = "user"
+    )
+    private Deputy deputy;
+
+    @Autowired
+    @OneToOne(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy = "user"
+    )
+    private Classteachers classteachers;
+
 
 
     @Override
