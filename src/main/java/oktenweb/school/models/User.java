@@ -16,7 +16,7 @@ import java.util.List;
 
 @Entity
 public class User implements UserDetails {
-
+//xgxgxghgh
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private int id;
@@ -27,10 +27,8 @@ public class User implements UserDetails {
     @Autowired
     @OneToOne(
             fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL,
-            mappedBy = "user"
+            cascade = CascadeType.ALL
     )
-
     private Students students;
 
 
@@ -141,6 +139,7 @@ public class User implements UserDetails {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", students=" + students +
                 ", enabled=" + enabled +
                 ", credentialsNonExpired=" + credentialsNonExpired +
                 ", accountNonExpired=" + accountNonExpired +

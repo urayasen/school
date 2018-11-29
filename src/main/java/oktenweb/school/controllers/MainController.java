@@ -4,6 +4,7 @@ package oktenweb.school.controllers;
 import oktenweb.school.dao.UserDAO;
 import oktenweb.school.models.Role;
 import oktenweb.school.models.User;
+import oktenweb.school.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,14 +22,14 @@ public class MainController {
 
 
     @Autowired
-    UserDAO userDAO;
+    UserService userService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @GetMapping("/")
     public String index() {
-        return "home";
+        return "login";
     }
 
 
@@ -38,20 +39,50 @@ public class MainController {
         return "succesed";
     }
 
+    @PostMapping("/lessonURL")
+    public String lessonURL() {
+        return "lesson";
+
+
+    }
+
+    @PostMapping("/marksURL")
+    public String marksURL() {
+        return "marks";
+
+
+    }
+
+    @PostMapping("/newsURL")
+    public String newsURL() {
+        return "news";
+    }
+
 
     @GetMapping("/saveUser")
-    public String saveUser(User user) {
+    public String saveUser(User user, Model model) {
         System.out.println("user");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-//        user.setRole(Role.ROLE_TEACHER);
-//        user.setRole(Role.ROLE_ADMIN);
-//        user.setRole(Role.ROLE_CLASSTHEACHER);
-//        user.setRole(Role.ROLE_DEPUTI);
-//        user.setRole(Role.ROLE_PARENT);
-//        user.setRole(Role.ROLE_STUDENT);
-        userDAO.save(user);
-        return "registrationStudents";
+//        int id = user.getId();
+        userService.save(user);
+        User user1 = userService.byId(user.getId());
+        int id = user1.getId();
+        System.out.println("saveUser ---------   " + id);
+        model.addAttribute("user1", user1);
+        if (user1.getRole() == Role.ROLE_STUDENT) {
+            return "registrationStudents";
+        } else if (user1.getRole() == Role.ROLE_CLASSTHEACHER) {
+            return "registrationClassteacher";
+        } else if (user1.getRole() == Role.ROLE_DEPUTI) {
+            return "registrationDeputi";
+        } else if (user1.getRole() == Role.ROLE_PARENT) {
+            return "registrationParents";
+        } else if (user1.getRole() == Role.ROLE_TEACHER) {
+            return "registrationTeacher";
+        }
+        return null;
     }
+
 
     @GetMapping("/saveNewUser")
     public String saveNewUser(Model model) {
@@ -62,22 +93,23 @@ public class MainController {
         mapRoles.put("Батько", Role.ROLE_PARENT);
         mapRoles.put("Класний керівник", Role.ROLE_CLASSTHEACHER);
         mapRoles.put("Зауч", Role.ROLE_DEPUTI);
-
         model.addAttribute("mapRoles", mapRoles);
         return "registration";
     }
 
     @GetMapping("/admin/news")
-    private String news(){
+    private String news() {
         return "news";
     }
+
     @GetMapping("/marks")
-    private String marks(){
+    private String marks() {
         return "marks";
     }
 
     @GetMapping("/home")
-    private String home(){
+    private String home() {
         return "home";
     }
 }
+
