@@ -51,7 +51,17 @@ public class MainController {
         int id = user1.getId();
         System.out.println("saveUser ---------   " + id);
         model.addAttribute("user1", user1);
-        return "registrationStudents";
+        if(user1.getRole()==Role.ROLE_STUDENT){
+            return "registrationStudents";
+        }else if(user1.getRole()==Role.ROLE_CLASSTHEACHER){
+            return "registrationClassteacher";
+        }else if(user1.getRole()==Role.ROLE_DEPUTI){
+            return "registrationDeputi";
+        }else if(user1.getRole()==Role.ROLE_PARENT){
+            return "registrationParents";
+        }else if(user1.getRole()==Role.){
+            return "registrationTeacher";
+        }
     }
 
 

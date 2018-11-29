@@ -50,8 +50,10 @@ public class RegistrationController {
     }
 
     @GetMapping("/saveTeachers")
-    public String saveTeachers(Teachers teachers) {
-//        System.out.println("user");
+    public String saveTeachers(Teachers teachers, int id) {
+        System.out.println("saveTeacher ---------   " + id);
+        User user = userService.byId(id);
+        teachers.setUser(user);
         teachersService.save(teachers);
         return "redirect:/";
     }

@@ -1,11 +1,9 @@
 package oktenweb.school.models.custom;
 
 import oktenweb.school.models.User;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Teachers extends User {
@@ -18,6 +16,26 @@ public class Teachers extends User {
     private String Email;
     private String Phone;
     private String Adress;
+
+
+
+    @@Autowired
+    @OneToOne(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL
+
+    )
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 
     @Override
     public int getId() {
