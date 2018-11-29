@@ -330,7 +330,7 @@
 	width: 34px;
 	height: 30px;
 	border: 1px solid #ffffff;
-	background: url(submenu-icon.png)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/icon/submenu-icon.png*/ center center no-repeat;
+	background: url(../images/submenu-icon.png)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/icon/submenu-icon.png*/ center center no-repeat;
 	background-size: 20px;
 	cursor: pointer;
 	display: block;
@@ -921,7 +921,7 @@
 	font-size: 16px;
 	font-weight: 600;
 	text-transform: uppercase;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'FontAwesome', sans-serif;
 	position: relative;
 	transition: all 0.5s ease 0s;
 	cursor: pointer;

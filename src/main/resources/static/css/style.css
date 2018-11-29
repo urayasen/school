@@ -518,12 +518,12 @@ a:focus, a:hover {
 .welcome-image-area {
 	position: relative;
 	height: 100%;
-	background: url(slider1.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/banner/slider1.jpg*/;
+	background: url(../images/slider1.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/banner/slider1.jpg*/;
 	background-size: cover;
 	z-index: 1;
 }
 .inner-img {
-	background: url(02.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/2.jpg*/;
+	background: url(../images/02.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/2.jpg*/;
 	background-size: cover;
 }
 .welcome-area__inner {
@@ -550,7 +550,7 @@ a:focus, a:hover {
 .particle-bg {
 	position: relative;
 	height: 100%;
-	background: url(slider.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/slider.jpg*/;
+	background: url(../images/slider.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/slider.jpg*/;
 	background-size: cover;
 	z-index: 1;
 }
@@ -1087,7 +1087,7 @@ a:focus, a:hover {
 #statement {
 	/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/02.jpg*/;
 	background-size: cover;
-	background: url(02.jpg) no-repeat fixed center center;
+	background: url(../images/02.jpg) no-repeat fixed center center;
 }
 
 #statement:before {
@@ -1144,7 +1144,7 @@ a:focus, a:hover {
 	z-index: -1;
 }
 .parallax {
-	background: url(parallax2.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/parallax2.jpg*/ no-repeat;
+	background: url(../images/parallax2.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/parallax2.jpg*/ no-repeat;
 }
 .light-color {
 	color: #fff;
@@ -1655,7 +1655,7 @@ a:focus, a:hover {
 	text-transform: uppercase;
 }
 .btn-appstore, .btn-appstore:focus, .btn-appstore:active {
-	background: url(app-store.png)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/app-store.png*/ no-repeat;
+	background: url(../images/app-store.png)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/app-store.png*/ no-repeat;
 	width: 131px;
 	height: 41px;
 	border-radius: 0px;
@@ -1665,7 +1665,7 @@ a:focus, a:hover {
 	display: inline-block;
 }
 .btn-googleplay {
-	background: url(google-play.png)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/google-play.png*/ no-repeat;
+	background: url(../images/google-play.png)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/google-play.png*/ no-repeat;
 }
 .btn-appstore, .btn-appstore:focus, .btn-appstore:active {
 	width: 131px;
@@ -2883,11 +2883,11 @@ form label.error {
 }
 
 /*  Page Intro   ||-----------*/
-.bg-img {
-	background: url(hosting-slide3.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/hosting-slide3.jpg*/ 0 0 no-repeat;
-	-webkit-background-size: cover;
-	background-size: cover;
-}
+/*.bg-img {*/
+	/*background: url(hosting-slide3.jpg)!*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/hosting-slide3.jpg*! 0 0 no-repeat;*/
+	/*-webkit-background-size: cover;*/
+	/*background-size: cover;*/
+/*}*/
 
 @media (max-width: 767px) {
 	.inner-intro {
@@ -2900,7 +2900,7 @@ form label.error {
 		transform: rotate(0);
 		-webkit-transform: rotate(0);
 		transform-origin: 100% 0;
-		-webkit- transform-origin: 100% 0;
+		-webkit-transform-origin: 100% 0;
 		opacity: 0.9;
 	}
 }
@@ -4456,19 +4456,19 @@ form label.error {
 	overflow: hidden;
 }
 .block_bg1:after {
-	background-image: url(finance-bg1.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/finance-bg1.jpg*/;
+	background-image: url(../images/finance-bg1.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/finance-bg1.jpg*/;
 	background-size: cover;
 }
 .block_bg2:after {
-	background-image: url(finance-bg2.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/finance-bg2.jpg*/;
+	background-image: url(finance-bg2.jpg);
 	background-size: cover;
 }
 .block_bg3:after {
-	background-image: url(finance-bg3.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/finance-bg3.jpg*/;
+	background-image: url(../images/finance-bg3.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/finance-bg3.jpg*/;
 	background-size: cover;
 }
 .block_bg4:after {
-	background-image: url(finance-bg4.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/finance-bg4.jpg*/;
+	background-image: url(../images/finance-bg4.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/finance-bg4.jpg*/;
 	background-size: cover;
 }
 
@@ -4500,7 +4500,7 @@ form label.error {
 	background-size: cover;
 }
 .block_bg6:after {
-	background-image: url(finance-bg3.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/finance-bg3.jpg*/;
+	background-image: url(../images/finance-bg3.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/finance-bg3.jpg*/;
 	background-size: cover;
 }
 .single_plan__block:after, .single_plan__block-img:after {
@@ -5865,12 +5865,12 @@ form .error {
 	max-width: none;
 }
 .bg-img-1 {
-	background: url(new_slider02.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/new_slider02.jpg*/ 0 0 no-repeat;
+	background: url(../images/new_slider02.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/new_slider02.jpg*/ 0 0 no-repeat;
 	background-size: cover
 }
 
 .bg-img-2 {
-	background: url(slider-home-construction-02.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/slider-home-construction-02.jpg*/ 0 0 no-repeat;
+	background: url(../images/slider-home-construction-02.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/slider-home-construction-02.jpg*/ 0 0 no-repeat;
 	background-size: cover
 }
 /*Gallery*/
@@ -6704,7 +6704,7 @@ form .error {
 	font-weight: 300;
 }
 .img-bg {
-	background: url(white-texture.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/white-texture.jpg*/ 0 0 no-repeat;
+	background: url(../images/white-texture.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/white-texture.jpg*/ 0 0 no-repeat;
 	-webkit-background-size: cover;
 	background-size: cover;
 }
@@ -6713,10 +6713,10 @@ form .error {
 	color: #fff;
 }
 .parallax, .bg_img1 {
-	background: url(parallax2.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/parallax2.jpg*/ no-repeat;
+	background: url(../images/parallax2.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/parallax2.jpg*/ no-repeat;
 }
 #overlay_block, .bg_img {
-	background: url(parallax1.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/parallax1.jpg*/ no-repeat;
+	background: url(../images/parallax1.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/parallax1.jpg*/ no-repeat;
 }
 .parallax, #overlay_bloc {
 	background-size: cover;
@@ -6821,7 +6821,7 @@ form .error {
 	bottom: 0;
 	width: 100%;
 	height: 100%;
-	background: url(corve.png)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/corve.png*/ center 45px no-repeat;
+	background: url(../images/corve.png)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/corve.png*/ center 45px no-repeat;
 	background-size: 100% auto;
 }
 .about-box {
@@ -6944,7 +6944,7 @@ form .error {
 	position: relative;
 }
 .image_cover {
-	background-image: url(bg-10.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/bg-10.jpg*/;
+	background-image: url(../images/bg-10.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/bg-10.jpg*/;
 	background-size: cover;
 	display: block;
 	position: absolute;
@@ -6960,7 +6960,7 @@ form .error {
 	width: 50%;
 	right: 0;
 	left: auto;
-	background-image: url(bg-11.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/bg-11.jpg*/;
+	background-image: url(../images/bg-11.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/bg-11.jpg*/;
 }
 @media (min-width: 768px) and (max-width: 991px) {
 	#choose_us .image_cover {
@@ -7223,15 +7223,15 @@ form .error {
 	background: #000;
 }
 .abt-block__img1 {
-	background: url(people.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/people.jpg*/ center 0 no-repeat;
+	background: url(../images/people.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/people.jpg*/ center 0 no-repeat;
 	background-size: cover;
 }
 .abt-block__img2 {
-	background: url(people1.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/people1.jpg*/ center 0 no-repeat;
+	background: url(../images/people1.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/people1.jpg*/ center 0 no-repeat;
 	background-size: cover;
 }
 .abt-block__img3 {
-	background: url(people2.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/people2.jpg*/ center 0 no-repeat;
+	background: url(../images/people2.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/people2.jpg*/ center 0 no-repeat;
 	background-size: cover;
 }
 .abt-block__left h2 {
@@ -7334,7 +7334,8 @@ form .error {
 	color: #fff;
 	font-weight: bold;
 	display: inline-block;
-	margin: 20px 0 -webkit-transition : color 0.22s ease-in-out;
+	margin: 20px 0;
+	-webkit-transition : color 0.22s ease-in-out;
 	transition: color 0.22s ease-in-out;
 }
 .mv-block__mission_link {
@@ -7449,7 +7450,7 @@ form .error {
 	vertical-align: middle;
 }
 .history-block__img1 {
-	background: url(graph.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/graph.jpg*/ center 0 no-repeat;
+	background: url(../images/graph.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/graph.jpg*/ center 0 no-repeat;
 	background-size: cover;
 }
 .career_sub-title {
@@ -9582,7 +9583,7 @@ ul.tags li {
 	}
 }
 .bg-img1 {
-	background: url(slider-home-construction-02.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/slider-home-construction-02.jpg*/ no-repeat;
+	background: url(../images/slider-home-construction-02.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/slider-home-construction-02.jpg*/ no-repeat;
 }
 
 /***
