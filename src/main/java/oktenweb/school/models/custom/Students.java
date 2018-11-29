@@ -19,14 +19,14 @@ public class Students {
     private String email;
     private String phone;
     private String adress;
-    private String sex;
+    private String gender;
 
-    public String getSex() {
-        return sex;
+    public String getGender() {
+        return gender;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     @Autowired
@@ -97,6 +97,7 @@ public class Students {
 
     /*--------------------------------------------------------------------------------------------------*/
 
+
     @Override
     public String toString() {
         return "Students{" +
@@ -106,6 +107,8 @@ public class Students {
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", adress='" + adress + '\'' +
+                ", gender='" + gender + '\'' +
+                ", user=" + user +
                 '}';
     }
 }

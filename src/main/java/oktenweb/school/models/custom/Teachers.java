@@ -16,6 +16,15 @@ public class Teachers  {
     private String Email;
     private String Phone;
     private String Adress;
+    private String gender;
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
 
 
@@ -96,6 +105,8 @@ public class Teachers  {
                 ", Email='" + Email + '\'' +
                 ", Phone='" + Phone + '\'' +
                 ", Adress='" + Adress + '\'' +
+                ", gender='" + gender + '\'' +
+                ", user=" + user +
                 '}';
     }
 }

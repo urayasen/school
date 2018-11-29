@@ -21,7 +21,27 @@
                 <input type="radio" name="gender" value="meil"/>чоловік
 
             </label></div>
-            <div><input type="submit" value="Sign In"/></div>
+            <div><input id="btn" type="submit" value="Sign In"/></div>
         </form>
+
+
+        <script>
+            $("#btn").click(function (e) {
+                 e.preventDefault();
+                let id = $("input[name='id']").val();
+                let name = $("input[name='name']").val();
+                let surname = $("input[name='surname']").val();
+                let email = $("input[name='email']").val();
+                let gender = $("input[name='gender']").val();
+                console.log(id);
+                console.log(name);
+                console.log(surname);
+                console.log(email);
+                console.log(gender);
+
+            })
+
+
+        </script>
     </body>
 </html>

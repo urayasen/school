@@ -16,6 +16,15 @@ public class Deputy  {
     private String Email;
     private String Phone;
     private String Adress;
+    private String gender;
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
 
 
@@ -96,8 +105,8 @@ public class Deputy  {
                 ", Email='" + Email + '\'' +
                 ", Phone='" + Phone + '\'' +
                 ", Adress='" + Adress + '\'' +
+                ", gender='" + gender + '\'' +
+                ", user=" + user +
                 '}';
     }
-
-
 }
