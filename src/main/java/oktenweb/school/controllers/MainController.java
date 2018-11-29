@@ -54,11 +54,11 @@ public class MainController {
         if(user1.getRole()==Role.ROLE_STUDENT){
             return "registrationStudents";
         }else if(user1.getRole()==Role.ROLE_CLASSTHEACHER){
-            return "registrationClassteacher";
+            return "registationClassteacher";
         }else if(user1.getRole()==Role.ROLE_DEPUTI){
             return "registrationDeputi";
         }else if(user1.getRole()==Role.ROLE_PARENT){
-            return "registrationParents";
+            return "registrationParent";
         }else if(user1.getRole()==Role.ROLE_TEACHER){
             return "registrationTeacher";
         }
