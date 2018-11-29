@@ -17,7 +17,7 @@ public class Parents {
     private String Email;
     private String Phone;
     private String Adress;
-
+    private String gender;
 
 
     @Autowired
@@ -38,6 +38,13 @@ public class Parents {
     }
 
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     public int getId() {
         return id;
@@ -97,6 +104,8 @@ public class Parents {
                 ", Email='" + Email + '\'' +
                 ", Phone='" + Phone + '\'' +
                 ", Adress='" + Adress + '\'' +
+                ", gender='" + gender + '\'' +
+                ", user=" + user +
                 '}';
     }
 }

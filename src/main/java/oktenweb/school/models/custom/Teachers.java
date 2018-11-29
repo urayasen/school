@@ -16,6 +16,8 @@ public class Teachers  {
     private String Email;
     private String Phone;
     private String Adress;
+    private String gender;
+
 
 
 
@@ -36,7 +38,13 @@ public class Teachers  {
         this.user = user;
     }
 
+    public String getGender() {
+        return gender;
+    }
 
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     public int getId() {
         return id;
@@ -50,6 +58,9 @@ public class Teachers  {
     public String getName() {
         return Name;
     }
+
+
+
 
     public void setName(String name) {
         Name = name;
@@ -96,6 +107,8 @@ public class Teachers  {
                 ", Email='" + Email + '\'' +
                 ", Phone='" + Phone + '\'' +
                 ", Adress='" + Adress + '\'' +
+                ", gender='" + gender + '\'' +
+                ", user=" + user +
                 '}';
     }
 }
