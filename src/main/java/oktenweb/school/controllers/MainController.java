@@ -59,9 +59,11 @@ public class MainController {
             return "registrationDeputi";
         }else if(user1.getRole()==Role.ROLE_PARENT){
             return "registrationParents";
-        }else if(user1.getRole()==Role.){
+        }else if(user1.getRole()==Role.ROLE_TEACHER){
             return "registrationTeacher";
         }
+
+        return  null;
     }
 
 
