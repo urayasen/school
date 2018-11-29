@@ -21,7 +21,6 @@ import java.util.Map;
 public class MainController {
 
 
-
     @Autowired
     UserService userService;
 
@@ -40,6 +39,25 @@ public class MainController {
         return "succesed";
     }
 
+    @PostMapping("/lessonURL")
+    public String lessonURL() {
+        return "lesson";
+
+
+    }
+
+    @PostMapping("/marksURL")
+    public String marksURL() {
+        return "marks";
+
+
+    }
+
+    @PostMapping("/newsURL")
+    public String newsURL() {
+        return "news";
+    }
+
 
     @GetMapping("/saveUser")
     public String saveUser(User user, Model model) {
@@ -51,9 +69,19 @@ public class MainController {
         int id = user1.getId();
         System.out.println("saveUser ---------   " + id);
         model.addAttribute("user1", user1);
-        return "registrationStudents";
+        if (user1.getRole() == Role.ROLE_STUDENT) {
+            return "registrationStudents";
+        } else if (user1.getRole() == Role.ROLE_CLASSTHEACHER) {
+            return "registrationClassteacher";
+        } else if (user1.getRole() == Role.ROLE_DEPUTI) {
+            return "registrationDeputi";
+        } else if (user1.getRole() == Role.ROLE_PARENT) {
+            return "registrationParents";
+        } else if (user1.getRole() == Role.ROLE_TEACHER) {
+            return "registrationTeacher";
+        }
+        return null;
     }
-
 
 
     @GetMapping("/saveNewUser")
@@ -70,14 +98,18 @@ public class MainController {
     }
 
     @GetMapping("/admin/news")
-    private String news()
-    {
+    private String news() {
         return "news";
     }
 
     @GetMapping("/marks")
-    private String marks()
-    {
+    private String marks() {
         return "marks";
     }
+
+    @GetMapping("/home")
+    private String home() {
+        return "home";
+    }
 }
+
