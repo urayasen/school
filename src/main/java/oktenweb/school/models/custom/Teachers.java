@@ -17,6 +17,7 @@ public class Teachers  {
     private String Phone;
     private String Adress;
     private String gender;
+    private String birthday;
 
 
 
@@ -60,7 +61,13 @@ public class Teachers  {
     }
 
 
+    public String getBirthday() {
+        return birthday;
+    }
 
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
 
     public void setName(String name) {
         Name = name;
@@ -108,6 +115,7 @@ public class Teachers  {
                 ", Phone='" + Phone + '\'' +
                 ", Adress='" + Adress + '\'' +
                 ", gender='" + gender + '\'' +
+                ", birthday='" + birthday + '\'' +
                 ", user=" + user +
                 '}';
     }

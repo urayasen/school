@@ -72,7 +72,7 @@ public class MainController {
     public String saveNewUser(Model model) {
         Map<String, Role> mapRoles = new HashMap<>();
         mapRoles.put("Студент", Role.ROLE_STUDENT);
-        mapRoles.put("Адміністратор", Role.ROLE_ADMIN);
+//        mapRoles.put("Адміністратор", Role.ROLE_ADMIN);
         mapRoles.put("Вчитель", Role.ROLE_TEACHER);
         mapRoles.put("Батько", Role.ROLE_PARENT);
         mapRoles.put("Класний керівник", Role.ROLE_CLASSTHEACHER);

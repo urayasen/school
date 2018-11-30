@@ -17,6 +17,7 @@ public class Classteachers {
     private String Phone;
     private String Adress;
     private String gender;
+    private String birthday;
 
     @Autowired
     @OneToOne(
@@ -48,6 +49,14 @@ public class Classteachers {
         return id;
     }
 
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -103,6 +112,7 @@ public class Classteachers {
                 ", Phone='" + Phone + '\'' +
                 ", Adress='" + Adress + '\'' +
                 ", gender='" + gender + '\'' +
+                ", birthday='" + birthday + '\'' +
                 ", user=" + user +
                 '}';
     }

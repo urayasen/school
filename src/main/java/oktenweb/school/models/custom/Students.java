@@ -20,6 +20,7 @@ public class Students {
     private String phone;
     private String adress;
     private String gender;
+    private String birthday;
 
     public String getGender() {
         return gender;
@@ -50,6 +51,14 @@ public class Students {
         return id;
     }
 
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -107,6 +116,7 @@ public class Students {
                 ", phone='" + phone + '\'' +
                 ", adress='" + adress + '\'' +
                 ", gender='" + gender + '\'' +
+                ", birthday='" + birthday + '\'' +
                 ", user=" + user +
                 '}';
     }

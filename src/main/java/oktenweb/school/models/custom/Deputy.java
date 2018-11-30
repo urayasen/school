@@ -17,6 +17,7 @@ public class Deputy  {
     private String Phone;
     private String Adress;
     private String gender;
+    private String birthday;
 
 
 
@@ -50,6 +51,14 @@ public class Deputy  {
         return id;
     }
 
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -105,6 +114,7 @@ public class Deputy  {
                 ", Phone='" + Phone + '\'' +
                 ", Adress='" + Adress + '\'' +
                 ", gender='" + gender + '\'' +
+                ", birthday='" + birthday + '\'' +
                 ", user=" + user +
                 '}';
     }
