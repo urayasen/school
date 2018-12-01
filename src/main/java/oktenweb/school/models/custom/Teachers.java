@@ -21,7 +21,6 @@ public class Teachers  {
 
 
 
-
     @Autowired
     @OneToOne(
             fetch = FetchType.LAZY,

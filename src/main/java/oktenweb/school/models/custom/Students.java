@@ -22,14 +22,6 @@ public class Students {
     private String gender;
     private String birthday;
 
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
     @Autowired
     @OneToOne(
             fetch = FetchType.LAZY,
@@ -105,6 +97,7 @@ public class Students {
     }
 
     /*--------------------------------------------------------------------------------------------------*/
+
 
     @Override
     public String toString() {

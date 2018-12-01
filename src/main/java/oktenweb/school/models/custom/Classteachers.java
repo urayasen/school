@@ -19,6 +19,7 @@ public class Classteachers {
     private String gender;
     private String birthday;
 
+
     @Autowired
     @OneToOne(
             fetch = FetchType.LAZY,
