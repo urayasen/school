@@ -3,6 +3,10 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
         <title>Spring Security Example </title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+        <script th:src="@{/js/date.format.js}"></script>
+        <script th:src="@{/js/jquery-dropdate.js}"></script>
     </head>
     <body>
 
@@ -10,18 +14,35 @@
 
 
         <form th:action="@{/saveStudents}" method="Get">
-            <div> <input type="number" name="id" th:value="${user1.id}"/> </div>
+            <div> <input type="hidden" name="id" th:value="${user1.id}"/> </div>
             <div><label> Ім'я : <input type="text" name="name"/> </label></div>
             <div><label> Прізвище: <input type="text" name="surname"/> </label></div>
             <div><label> Електронна пошта: <input type="text" name="email"/> </label></div>
             <div><label> Телефон: <input type="text" name="phone"/> </label></div>
             <div><label> Місце проживання: <input type="text" name="adress"/> </label></div>
             <div><label> Стать:
-                <input type="radio" name="gender" value="femeil"/>жінка
-                <input type="radio" name="gender" value="meil"/>чоловік
+                <input type="radio" name="gender" value="female"/>Жінка
+                <input type="radio" name="gender" value="male"/>Чоловік
 
             </label></div>
-            <div><input type="submit" value="Sign In"/></div>
+
+
+            <div><label> Дата народження:
+                <input type="text" name="birthday" value="" class="dropdate">
+                <script>
+                    $(document).ready(function(){
+                        $('.dropdate').dropdate({
+                            dateFormat:'dd/mm/yyyy'
+                        });
+                    });
+                </script>
+
+
+            </label></div>
+            <div><input type="submit" value="Далі"/></div>
+
+
+
         </form>
     </body>
 </html>

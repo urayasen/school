@@ -40,21 +40,6 @@ public class MainController {
         return "succesed";
     }
 
-    @PostMapping("/lessonURL")
-    public String lessonURL(){
-        return "lesson";
-
-
-    }    @PostMapping("/marksURL")
-    public String marksURL(){
-        return "marks";
-
-
-    }    @PostMapping("/newsURL")
-    public String newsURL(){
-        return "news";
-    }
-
 
     @GetMapping("/saveUser")
     public String saveUser(User user, Model model) {
@@ -66,7 +51,19 @@ public class MainController {
         int id = user1.getId();
         System.out.println("saveUser ---------   " + id);
         model.addAttribute("user1", user1);
-        return "registrationStudents";
+        if(user1.getRole()==Role.ROLE_STUDENT){
+            return "registrationStudents";
+        }else if(user1.getRole()==Role.ROLE_CLASSTHEACHER){
+            return "registationClassteacher";
+        }else if(user1.getRole()==Role.ROLE_DEPUTI){
+            return "registrationDeputi";
+        }else if(user1.getRole()==Role.ROLE_PARENT){
+            return "registrationParent";
+        }else if(user1.getRole()==Role.ROLE_TEACHER){
+            return "registrationTeacher";
+        }
+
+        return  null;
     }
 
 
@@ -75,7 +72,7 @@ public class MainController {
     public String saveNewUser(Model model) {
         Map<String, Role> mapRoles = new HashMap<>();
         mapRoles.put("Студент", Role.ROLE_STUDENT);
-        mapRoles.put("Адміністратор", Role.ROLE_ADMIN);
+//        mapRoles.put("Адміністратор", Role.ROLE_ADMIN);
         mapRoles.put("Вчитель", Role.ROLE_TEACHER);
         mapRoles.put("Батько", Role.ROLE_PARENT);
         mapRoles.put("Класний керівник", Role.ROLE_CLASSTHEACHER);

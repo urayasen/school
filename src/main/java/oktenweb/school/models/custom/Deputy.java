@@ -1,14 +1,12 @@
 package oktenweb.school.models.custom;
 
 import oktenweb.school.models.User;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class Deputy extends User {
+public class Deputy  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,13 +16,50 @@ public class Deputy extends User {
     private String Email;
     private String Phone;
     private String Adress;
+    private String gender;
+    private String birthday;
 
-    @Override
+
+
+    @Autowired
+    @OneToOne(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL
+
+    )
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     public int getId() {
         return id;
     }
 
-    @Override
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -78,8 +113,9 @@ public class Deputy extends User {
                 ", Email='" + Email + '\'' +
                 ", Phone='" + Phone + '\'' +
                 ", Adress='" + Adress + '\'' +
+                ", gender='" + gender + '\'' +
+                ", birthday='" + birthday + '\'' +
+                ", user=" + user +
                 '}';
     }
-
-
 }

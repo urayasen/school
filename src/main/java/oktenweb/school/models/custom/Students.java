@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 public class Students {
-
+//ghxghxfghgh
 
     /*--------------------------------------------------------------------------------------------------*/
     @Id
@@ -19,14 +19,15 @@ public class Students {
     private String email;
     private String phone;
     private String adress;
-    private String sex;
+    private String gender;
+    private String birthday;
 
-    public String getSex() {
-        return sex;
+    public String getGender() {
+        return gender;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     @Autowired
@@ -50,6 +51,14 @@ public class Students {
         return id;
     }
 
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -106,6 +115,9 @@ public class Students {
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", adress='" + adress + '\'' +
+                ", gender='" + gender + '\'' +
+                ", birthday='" + birthday + '\'' +
+                ", user=" + user +
                 '}';
     }
 }

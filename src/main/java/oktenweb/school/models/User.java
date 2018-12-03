@@ -1,6 +1,6 @@
 package oktenweb.school.models;
 
-import oktenweb.school.models.custom.Students;
+import oktenweb.school.models.custom.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,7 +16,7 @@ import java.util.List;
 
 @Entity
 public class User implements UserDetails {
-
+//xgxgxghgh
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private int id;
@@ -30,8 +30,42 @@ public class User implements UserDetails {
             cascade = CascadeType.ALL,
             mappedBy = "user"
     )
-
     private Students students;
+
+    @Autowired
+    @OneToOne(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy = "user"
+    )
+    private Teachers teachers;
+
+
+
+    @Autowired
+    @OneToOne(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy = "user"
+    )
+    private Parents parents;
+
+    @Autowired
+    @OneToOne(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy = "user"
+    )
+    private Deputy deputy;
+
+    @Autowired
+    @OneToOne(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy = "user"
+    )
+    private Classteachers classteachers;
+
 
 
     @Override
@@ -141,6 +175,7 @@ public class User implements UserDetails {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", students=" + students +
                 ", enabled=" + enabled +
                 ", credentialsNonExpired=" + credentialsNonExpired +
                 ", accountNonExpired=" + accountNonExpired +

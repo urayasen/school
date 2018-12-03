@@ -14,12 +14,12 @@
             <!--You have been logged out.-->
         <!--</div>-->
         <form  th:action="@{/saveUser}" method="Get">
-            <div><label> User Name : <input type="text"  name="username"/> </label></div>
-            <div><label> Password: <input type="password" name="password" autocomplete="off"/></label></div>
+            <div><label> Логін  : <input type="text"  name="username"/> </label></div>
+            <div><label> Пароль : <input type="password" name="password" autocomplete="off"/></label></div>
             <!--<div><label> Email: <input type="text" name="email"/> </label></div>-->
             <!--<div><label> Phone: <input type="text" name="phone"/> </label></div>-->
             <!--<div><label> Password1: <input type="password" name="password"/> </label></div>-->
-            <div><label> Status: <select name="role">
+            <div><label> Роль: <select name="role">
                 <option value=""> -- </option>
                 <option th:each="entry : ${mapRoles.entrySet()}"
                         th:value="${entry.value}"
@@ -41,7 +41,7 @@
             </label>
             </div>
 
-            <div><input id="btn" type="submit" value="Sign In"/></div>
+            <div><input id="btn" type="submit" value="Далі"/></div>
         </form>
     <script>
     $("#btn").click(function (e) {
