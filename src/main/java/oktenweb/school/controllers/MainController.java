@@ -87,9 +87,9 @@ public class MainController {
         return "news";
     }
 
-    @GetMapping("/marks")
-    private String marks()
-    {
-        return "marks";
-    }
+//    @GetMapping("/marks")
+//    private String marks()
+//    {
+//        return "marks";
+//    }
 }

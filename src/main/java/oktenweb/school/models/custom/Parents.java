@@ -5,6 +5,8 @@ import oktenweb.school.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Parents {
@@ -29,6 +31,22 @@ public class Parents {
     )
     @JoinColumn(name = "user_id")
     private User user;
+
+    @Autowired
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy = "parents"
+    )
+    private List<Students> students = new ArrayList<>();
+
+    public List<Students> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Students> students) {
+        this.students = students;
+    }
 
     public User getUser() {
         return user;
@@ -116,6 +134,7 @@ public class Parents {
                 ", gender='" + gender + '\'' +
                 ", birthday='" + birthday + '\'' +
                 ", user=" + user +
+                ", students=" + students +
                 '}';
     }
 }

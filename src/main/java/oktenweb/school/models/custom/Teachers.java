@@ -1,9 +1,13 @@
 package oktenweb.school.models.custom;
 
 import oktenweb.school.models.User;
+import oktenweb.school.models.functional.ClassJournal;
+import oktenweb.school.models.functional.Subjects;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Teachers  {
@@ -30,6 +34,39 @@ public class Teachers  {
     )
     @JoinColumn(name = "user_id")
     private User user;
+
+    @Autowired
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy = "teachers"
+    )
+    private Subjects subjects;
+
+    @Autowired
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy = "teachers"
+    )
+    private List<ClassJournal> classJournals = new ArrayList<>();
+
+
+    public List<ClassJournal> getClassJournals() {
+        return classJournals;
+    }
+
+    public void setClassJournals(List<ClassJournal> classJournals) {
+        this.classJournals = classJournals;
+    }
+
+    public Subjects getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(Subjects subjects) {
+        this.subjects = subjects;
+    }
 
     public User getUser() {
         return user;
@@ -117,6 +154,8 @@ public class Teachers  {
                 ", gender='" + gender + '\'' +
                 ", birthday='" + birthday + '\'' +
                 ", user=" + user +
+                ", subjects=" + subjects +
+                ", classJournals=" + classJournals +
                 '}';
     }
 }
