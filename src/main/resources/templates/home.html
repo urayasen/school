@@ -1,53 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head >
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Шкільний журнал</title>
-    <link rel="shortcut icon" type="image/x-icon" th:href="@{/images/favicon.ico}">
-    <link th:href="@{/css/css-family=Raleway-300,400,700,800-Lato-300,400,700.css}"  rel="stylesheet" type="text/css">
+
+
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/favicon.ico}">
     <link th:href="@{/css/bootstrap.min.css}"
           rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" th:href="@{https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css}" type="text/css">
     <link th:href="@{/css/font-awesome.css}"  rel="stylesheet" type="text/css">
     <link th:href="@{/css/ionicons.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/css/simple-line-icons.css}" rel="stylesheet" type="text/css">
-    <!--   Main Slider-->
     <link th:href="@{/css/settings.css}"  type="text/css" rel="stylesheet" media="screen">
     <link th:href="@{/css/layers.css}"  type="text/css" rel="stylesheet" media="screen">
     /*<!— carousel —>*/
-    <!--Light box-->
     <link th:href="@{/css/jquery.fancybox.css}"  rel="stylesheet" type="text/css">
     <link th:href="@{/css/owl.carousel.css}"  rel="stylesheet" type="text/css">
     <link th:href="@{/css/style.css}"  rel="stylesheet">
 
 </head>
 <body>
-<script th:src="@{/js/style.js}"></script>
-
-<!--<img src="/img/first.jpg">-->
-
-<!--loader-->
-<!--<div id="preloader">-->
-    <!--<div class="sk-circle">-->
-        <!--<div class="sk-circle1 sk-child"></div>-->
-        <!--<div class="sk-circle2 sk-child"></div>-->
-        <!--<div class="sk-circle3 sk-child"></div>-->
-        <!--<div class="sk-circle4 sk-child"></div>-->
-        <!--<div class="sk-circle5 sk-child"></div>-->
-        <!--<div class="sk-circle6 sk-child"></div>-->
-        <!--<div class="sk-circle7 sk-child"></div>-->
-        <!--<div class="sk-circle8 sk-child"></div>-->
-        <!--<div class="sk-circle9 sk-child"></div>-->
-        <!--<div class="sk-circle10 sk-child"></div>-->
-        <!--<div class="sk-circle11 sk-child"></div>-->
-        <!--<div class="sk-circle12 sk-child"></div>-->
-    <!--</div>-->
-<!--</div>-->
-<!--loader-->
-<!--Header Section Start Here
-==================================-->
 
 <header>
     <div class="header-top-area">
@@ -56,175 +30,26 @@
                 <div class="col-md-2">
                     <!-- START LOGO DESIGN AREA -->
                     <div class="logo">
-                        <a href="index.html"> <img th:src="@{/images/logo.png}" alt="Logo"> </a>
+                        <a th:href="@{index.html}" > <img th:src="@{/img/logo.png}" alt="Logo"> </a>
                     </div>
                     <!-- END LOGO DESIGN AREA -->
                 </div>
                 <div class="col-md-10">
-                    <!-- START MENU DESIGN AREA -->
-                    <div class="mainmenu navbar-toggleable-sm">
-                        <div class="navbar navbar-nobg">
-                            <div class="navbar-header hidden-md-up">
-                                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse">
-                                    <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                                </button>
-                            </div>
-                            <div class="navbar-collapse collapse">
-                                <ul class="nav navbar-nav navbar-right justify-content-end justify-content-sm-end">
-                                    <li>
-                                        <a th:href="@{#}">Home</a>
-                                        <ul class="sub-menu">
-                                            <li>
-                                                <a href="index.html">Homepage 1</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Homepage 2</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#">About us <i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub-menu">
-                                            <li>
-                                                <a href="about.html">About</a>
-                                            </li>
-                                            <li>
-                                                <a href="about2.html">About 2</a>
-                                            </li>
-                                            <li>
-                                                <a href="about3.html">About 3</a>
-                                            </li>
-
-                                            <li>
-                                                <a href="history.html">history</a>
-                                            </li>
-                                            <li>
-                                                <a href="career.html">career</a>
-                                            </li>
-                                            <li>
-                                                <a href="leadership.html">leadership</a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:avoid(0);">Course <i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub-menu">
-                                            <li>
-                                                <a href="courses.html">All Courses</a>
-                                            </li>
-                                            <li>
-                                                <a href="courses-details.html">Courses Details</a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-
-                                    <li>
-                                        <a href="javascript:avoid(0);">blog <i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub-menu">
-                                            <li>
-                                                <a href="blog.html">Blog</a>
-                                            </li>
-                                            <li>
-                                                <a href="blog-detail.html">Blog Details</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:avoid(0);">Event <i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub-menu">
-                                            <li>
-                                                <a href="event.html">Event</a>
-                                            </li>
-                                            <li>
-                                                <a href="event-details.html">Event Details</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:avoid(0);">pages <i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub-menu mega-menu">
-
-                                            <li>
-                                                <a href="lecturers.html">Lecturers</a>
-                                            </li>
-                                            <li>
-                                                <a href="lecturers2.html">Lecturers 2</a>
-                                            </li>
-                                            <li>
-                                                <a href="lecturer-details.html">Lecturers Details</a>
-                                            </li>
-                                            <li>
-                                                <a href="pricing.html">pricing</a>
-                                            </li>
-                                            <li>
-                                                <a href="faq.html">Faq</a>
-                                            </li>
-                                            <li>
-                                                <a href="register.html">Register</a>
-                                            </li>
-                                            <li>
-                                                <a href="login.html">login</a>
-                                            </li>
-                                            <li>
-                                                <a href="testimonial.html">Testimonials</a>
-                                            </li>
-                                            <li>
-                                                <a href="partnerships.html">partnerships</a>
-                                            </li>
-                                            <li>
-                                                <a href="404.html">404 Error</a>
-                                            </li>
-                                            <li>
-                                                <a href="blank.html">blank</a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-
-                                    <li>
-                                        <a href="contact.html">Contact us <i class="fa fa-angle-down"></i></a>
-
-                                        <ul class="sub-menu">
-                                            <li>
-                                                <a href="contact.html">contact</a>
-                                            </li>
-                                            <li>
-                                                <a href="contact1.html">contact 1</a>
-                                            </li>
-                                            <li>
-                                                <a href="contact2.html">contact 2</a>
-                                            </li>
-
-                                        </ul>
-
-                                    </li>
-
-                                </ul>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END MENU DESIGN AREA -->
-                </div>
+                                        <a class="btn btn-primary"th:href="@{/login}" role="button" style="float: right; margin-top: 20px" >Ввійти</a>
             </div>
         </div>
-    </div>
 
 </header>
-<!--Header End Here-->
 
-<!--  Main Banner Start Here-->
+
 <div class="main-banner banner_up">
     <div id="rev_slider_34_1_wrapper" class="rev_slider_wrapper" data-alias="news-gallery34">
-        <!-- START REVOLUTION SLIDER 5.0.7 fullwidth mode -->
         <div id="rev_slider_34_1" class="rev_slider" data-version="5.0.7">
             <ul>
                 <!-- SLIDE  -->
                 <li data-index="rs-129"  >
                     <!-- MAIN IMAGE -->
-                    <img th:src="@{/images/blog.jpg}"   alt=""  class="rev-slidebg" >
+                    <img th:src="@{/img/slider1.jpg}"   alt=""  class="rev-slidebg" >
                     <!-- LAYERS -->
                     <!-- LAYER NR. 2 -->
                     <div class="tp-caption Newspaper-Title tp-resizeme "
@@ -258,7 +83,7 @@
                 <!-- SLIDE  -->
                 <li data-index="rs-130" data-title="" data-description="">
                     <!-- MAIN IMAGE -->
-                    <img th:src="@{/images/2.jpg}" alt="" class="rev-slidebg">
+                    <img th:src="@{/img/slider2.jpg}" alt="" class="rev-slidebg">
                     <!-- LAYERS -->
                     <!-- LAYER NR. 2 -->
                     <div class="tp-caption Newspaper-Title   tp-resizeme "
@@ -292,7 +117,7 @@
                 <!-- SLIDE  -->
                 <li data-index="rs-131">
                     <!-- MAIN IMAGE -->
-                    <img th:src="@{/images/slider3.jpg}" alt=""  class="rev-slidebg " >
+                    <img th:src="@{/img/slider3.jpg}" alt=""  class="rev-slidebg " >
                     <!-- LAYERS -->
                     <!-- LAYER NR. 2 -->
                     <div class="tp-caption Newspaper-Title   tp-resizeme "
@@ -430,7 +255,7 @@
 <!--Our Services End -->
 
 <!-- Counter Section -->
-<div class="fact-counter-wrapper padding ptb-xs-40 light-color parallax overlay-dark">
+<div class="fact-counter-wrapper padding ptb-xs-40 light-color parallax overlay-dark" style="background-image: url(/img/parallax2.jpg)">
     <div class="container text-center">
         <div class="row">
             <div class="col-md-6 col-lg-3 mb-sm-40 mb-xs-30">
@@ -500,7 +325,7 @@
                 <div class="courses-block img-scale">
 
                     <figure class="img__block">
-                        <img class="img-responsive" th:src="@{/images/img1.jpg}"  alt="courses">
+                        <img class="img-responsive" th:src="@{/img/img1.jpg}"  alt="courses">
 
                     </figure>
                     <div class="courses-content__block">
@@ -531,7 +356,7 @@
                 <div class="courses-block img-scale">
 
                     <figure class="img__block">
-                        <img class="img-responsive" th:src="@{/images/img2.jpg}" alt="courses">
+                        <img class="img-responsive" th:src="@{/img/img2.jpg}" alt="courses">
 
                     </figure>
                     <div class="courses-content__block">
@@ -562,7 +387,7 @@
                 <div class="courses-block img-scale">
 
                     <figure class="img__block">
-                        <img class="img-responsive" th:src="@{/images/img3.jpg}" alt="courses">
+                        <img class="img-responsive" th:src="@{/img/img3.jpg}" alt="courses">
 
                     </figure>
                     <div class="courses-content__block">
@@ -593,7 +418,7 @@
                 <div class="courses-block img-scale">
 
                     <figure class="img__block">
-                        <img class="img-responsive" th:src="@{/images/img4.jpg}" alt="courses">
+                        <img class="img-responsive" th:src="@{/img/img4.jpg}" alt="courses">
 
                     </figure>
                     <div class="courses-content__block">
@@ -641,7 +466,7 @@
         <div id="testimonial" class="nf-carousel-theme nf-carousel-arrow">
             <div class="testimonial-box row">
                 <div class="col-md-5 col-lg-5">
-                    <img th:src="@{/images/first.jpg}" alt="">
+                    <img th:src="@{/img/first.jpg}" alt="">
                 </div>
                 <div class="col-md-7 col-lg-7">
                     <div class="quote-box">
@@ -662,7 +487,7 @@
             </div>
             <div class="testimonial-box row">
                 <div class="col-md-5 col-lg-5">
-                    <img th:src="@{/images/first.jpg}" alt="">
+                    <img th:src="@{/img/first.jpg}" alt="">
                 </div>
                 <div class="col-md-7 col-lg-7">
                     <div class="quote-box">
@@ -694,7 +519,7 @@
         <div class="row">
             <div class="col-md-4 col-lg-4 hidden-xs">
                 <div class="mobile-app-image">
-                    <img th:src="@{/images/mobileapp.png}" class="img-responsive" alt="">
+                    <img th:src="@{/img/mobileapp.png}" class="img-responsive" alt="">
                 </div>
             </div>
             <div class="col-md-8 col-lg-8 col-xs-12 align-items-center d-flex">
@@ -731,7 +556,7 @@
             <div class="col-lg-4 col-md-12 mb-xs-30 mb-sm-30">
                 <div class="single-blog-post">
                     <div class="img-box">
-                        <img th:src="@{/images/blog-3.jpg}" alt="">
+                        <img th:src="@{/img/blog-3.jpg}" alt="">
                         <div class="overlay">
                             <div class="box">
                                 <div class="content">
@@ -765,7 +590,7 @@
             <div class="col-md-12 col-lg-4 mb-xs-30 mb-sm-30">
                 <div class="single-blog-post">
                     <div class="img-box">
-                        <img th:src="@{/images/blog-1.jpg}" alt="">
+                        <img th:src="@{/img/blog-1.jpg}" alt="">
                         <div class="overlay">
                             <div class="box">
                                 <div class="content">
@@ -800,7 +625,7 @@
             <div class="col-md-12 col-lg-4 ">
                 <div class="single-blog-post">
                     <div class="img-box">
-                        <img th:src="@{/images/blog-3.jpg}" alt="">
+                        <img th:src="@{/img/blog-3.jpg}" alt="">
                         <div class="overlay">
                             <div class="box">
                                 <div class="content">
@@ -847,7 +672,7 @@
                     <h2 class="widget-title"><span>ABOUT US</span></h2>
                     <div class="textwidget">
                         <a href="#" class="footer-logo">
-                            <img th:src="@{/images/footer-logo.png}"  alt="Awesome Logo"> </a>
+                            <img th:src="@{/img/footer-logo.png}"  alt="Awesome Logo"> </a>
                         <p>
                             Aenean suscipit eget mi act fermentum phasellus vulputate turpis tincidunt. Aenean suscipit eget. Aenean suscipit eget mi act fermentum phasellus vulputate turpis tincidunt. Aenean suscipit ege  Aenean suscipit eget mi act fermentum phasellus.
                         </p>

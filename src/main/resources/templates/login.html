@@ -2,15 +2,37 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+    <title>LOgin</title>
+    <link rel="icon" href="/img/favicon.ico">
 
-You succes login
-    <form th:action="@{/login}" method="post">
-        <input type="" name="username" placeholder="username">
-        <input type="password" name="password" placeholder="password">
-        <input type="submit" value="go!">
-    </form>
+    <link th:href="@{/css/floating-labels.css}" rel="stylesheet">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+</head>
+<body style="background-image: url('/img/our2.jpg');background-size: cover">
+        <form th:action="@{/login}" method="post" class="form-signin">
+            <div class="text-center mb-4">
+                <img class="mb-4" th:src="@{/img/slider1.jpg}" alt="" width="150" height="100">
+            </div>
+
+            <div class="form-label-group">
+                <input type="username" name="username" class="form-control" placeholder="Логін" required autofocus>
+                <label>Логін</label>
+            </div>
+
+            <div class="form-label-group">
+                <input type="password" name="password" class="form-control" placeholder="Пароль" required>
+                <label>Пароль</label>
+            </div>
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Запам'ятати мене
+                </label>
+            </div>
+             <button class="btn btn-lg btn-primary btn-block" value="go!" type="submit">Ввійти</button>
+            <!--<p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2018</p>-->
+        </form>
+
 </body>
 </html>
