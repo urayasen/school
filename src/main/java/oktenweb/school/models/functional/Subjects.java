@@ -48,7 +48,7 @@ public class Subjects {
             cascade = CascadeType.ALL,
             mappedBy = "subjects"
     )
-    private ClassJournal classJournal;
+    private List<ClassJournal> classJournal = new ArrayList<>();
 
 
 
@@ -70,11 +70,11 @@ public class Subjects {
         this.classteachers = classteachers;
     }
 
-    public ClassJournal getClassJournal() {
+    public List<ClassJournal> getClassJournal() {
         return classJournal;
     }
 
-    public void setClassJournal(ClassJournal classJournal) {
+    public void setClassJournal(List<ClassJournal> classJournal) {
         this.classJournal = classJournal;
     }
 
