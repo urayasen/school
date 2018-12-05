@@ -2,15 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
-        <title>Spring Security Example </title>
+        <title>Spring Security Example </title>]
+        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
     </head>
-    <body>
+    <body style="background-image: url('/img/our2.jpg')">
 
 
 
 
         <form th:action="@{/saveStudents}" method="Get">
-            <div> <input type="number" name="id" th:value="${user1.id}"/> </div>
+            <div class="mb-4 text-center" style="border: 10px double black;width: 500px;  ">
             <div><label> Ім'я : <input type="text" name="name"/> </label></div>
             <div><label> Прізвище: <input type="text" name="surname"/> </label></div>
             <div><label> Електронна пошта: <input type="text" name="email"/> </label></div>
@@ -21,7 +22,7 @@
                 <input type="radio" name="gender" value="meil"/>чоловік
 
             </label></div>
-            <div><input type="submit" value="Sign In"/></div>
+            <div><input type="submit" value="Sign In"/></div></div>
         </form>
     </body>
 </html>
