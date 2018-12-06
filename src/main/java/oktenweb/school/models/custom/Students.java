@@ -29,6 +29,9 @@ public class Students {
         this.gender = gender;
     }
 
+
+
+
     @Autowired
     @OneToOne(
             fetch = FetchType.LAZY,

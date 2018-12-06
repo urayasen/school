@@ -10,7 +10,7 @@
 
 
         <form th:action="@{/saveStudents}" method="Get">
-            <div> <input type="number" name="id" th:value="${user1.id}"/> </div>
+            <div> <input type="hidden" name="id" th:value="${user1.id}"/> </div>
             <div><label> Ім'я : <input type="text" name="name"/> </label></div>
             <div><label> Прізвище: <input type="text" name="surname"/> </label></div>
             <div><label> Електронна пошта: <input type="text" name="email"/> </label></div>
