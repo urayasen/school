@@ -51,11 +51,6 @@ public class Security extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/home","/saveUser","/saveNewUser").permitAll()
-//                .anyRequest().authenticated()
-//                .antMatchers("/admin/**").hasRole("ADMIN")
-//                .antMatchers().access("hasRole('ADMIN')")
-//                .antMatchers("/login").hasRole("ADMIN")
-//                .antMatchers("/admin/**").access("hasRole('STUDENT')")
                 .antMatchers("/admin/**").access("hasRole('TEACHER')")
                 .antMatchers("/admin/**").access("hasRole('ADMIN')")
 //                .antMatchers("/marks").access("hasRole('STUDENT')")
