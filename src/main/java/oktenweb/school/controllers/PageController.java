@@ -8,10 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class PageController {
 
     @GetMapping("/admin/news")
-    private String news()
-    {
-        return "news";
-    }
+    private String news()  { return "news"; }
 
     @GetMapping("/pages")
     private String pages(){
@@ -23,7 +20,6 @@ public class PageController {
         return "marks";
     }
 
-
     @GetMapping("/chat")
     private String chat(){
         return "chat";
@@ -33,7 +29,6 @@ public class PageController {
     private String homework(){
         return "homework";
     }
-
 
     @GetMapping("/lesson")
     private String lesson(){

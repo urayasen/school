@@ -135,7 +135,6 @@ public class RegistrationController {
         public String registrationFunctional(Model model){
             Map<String, Subjects> mapSubjects = new HashMap<>();
             mapSubjects.put("Математика", Subjects.MATH);
-//        mapRoles.put("Адміністратор", Role.ROLE_ADMIN);
             mapSubjects.put("Українська мова ", Subjects.UKR_LANG);
             mapSubjects.put("Біологія", Subjects.BIOLOGY);
             mapSubjects.put("Інформатика", Subjects.COM_SCIENCE);
