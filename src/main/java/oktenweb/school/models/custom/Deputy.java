@@ -1,9 +1,13 @@
 package oktenweb.school.models.custom;
 
 import oktenweb.school.models.User;
+import oktenweb.school.models.functional.ClassJournal;
+import oktenweb.school.models.functional.Subjects;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Deputy  {
@@ -17,14 +21,7 @@ public class Deputy  {
     private String Phone;
     private String Adress;
     private String gender;
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
+    private String birthday;
 
 
 
@@ -37,6 +34,42 @@ public class Deputy  {
     @JoinColumn(name = "user_id")
     private User user;
 
+
+    @Autowired
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy = "deputy"
+    )
+    private List<Subjects> subjects = new ArrayList<>();
+
+
+
+    @Autowired
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy = "deputy"
+    )
+    private List<ClassJournal> classJournals = new ArrayList<>();
+
+
+    public List<Subjects> getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(List<Subjects> subjects) {
+        this.subjects = subjects;
+    }
+
+    public List<ClassJournal> getClassJournals() {
+        return classJournals;
+    }
+
+    public void setClassJournals(List<ClassJournal> classJournals) {
+        this.classJournals = classJournals;
+    }
+
     public User getUser() {
         return user;
     }
@@ -46,11 +79,26 @@ public class Deputy  {
     }
 
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     public int getId() {
         return id;
     }
 
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -106,7 +154,10 @@ public class Deputy  {
                 ", Phone='" + Phone + '\'' +
                 ", Adress='" + Adress + '\'' +
                 ", gender='" + gender + '\'' +
+                ", birthday='" + birthday + '\'' +
                 ", user=" + user +
+                ", subjects=" + subjects +
+                ", classJournals=" + classJournals +
                 '}';
     }
 }

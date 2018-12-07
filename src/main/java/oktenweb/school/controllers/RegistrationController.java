@@ -86,7 +86,7 @@ public class RegistrationController {
             User user = userService.byId(id);
             students.setUser(user);
             studentsService.save(students);
-            return "registrationsElements";
+            return "redirect:/";
         }
 
 

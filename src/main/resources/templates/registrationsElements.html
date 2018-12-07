@@ -1,42 +1,20 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-    <head>
-        <meta charset="UTF-8">
-        <title>RegistrationsElements</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    </head>
-    <body>
-        <!--<form name="inputSubjects" th:action="@{/saveSubjects}" method="Get">-->
-        <form name="inputSubjects" >
-           <div><label>Введіть список предметів:
-           <input type="text" name="subjects">
-           </label></div><div><input id="btnSublects" type="submit" value="Sign In"/></div>
+<html <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+            xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">v>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+        <form th:action="@{/saveSublects}" method="Get">
+            <div><label>VVedit nazvy predmetiv:
+            <input type="text" name="subjects"> </label></div>
+            <script>
+
+
+            </script>
         </form>
 
-    </body>
+</body>
 </html>
-
-<script>
-    let elementsByName = document.getElementsByName("subjects");
-
-    elementsByName.addEventListener("keyup", function (event) {
-        event.preventDefault();
-        if(event.keyCode === 13){
-
-            document.getElementById("btnSublects").click();
-
-        }
-    });
-
-    document.getElementById("btnSublects").click = function onClick() {
-        document.forms.inputSubjects.subjects.style.width +=
-            document.forms.inputSubjects.subjects.style.height;
-
-
-    }
-
-
-
-
-</script>

@@ -3,6 +3,10 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
         <title>Spring Security Example </title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+        <script th:src="@{/js/date.format.js}"></script>
+        <script th:src="@{/js/jquery-dropdate.js}"></script>
     </head>
     <body>
 
@@ -17,31 +21,28 @@
             <div><label> Телефон: <input type="text" name="phone"/> </label></div>
             <div><label> Місце проживання: <input type="text" name="adress"/> </label></div>
             <div><label> Стать:
-                <input type="radio" name="gender" value="femeil"/>жінка
-                <input type="radio" name="gender" value="meil"/>чоловік
+                <input type="radio" name="gender" value="female"/>Жінка
+                <input type="radio" name="gender" value="male"/>Чоловік
 
             </label></div>
-            <div><input id="btn" type="submit" value="Sign In"/></div>
+
+
+            <div><label> Дата народження:
+                <input type="text" name="birthday" value="" class="dropdate">
+                <script>
+                    $(document).ready(function(){
+                        $('.dropdate').dropdate({
+                            dateFormat:'dd/mm/yyyy'
+                        });
+                    });
+                </script>
+
+
+            </label></div>
+            <div><input type="submit" value="Далі"/></div>
+
+
+
         </form>
-
-
-        <script>
-            $("#btn").click(function (e) {
-                 e.preventDefault();
-                let id = $("input[name='id']").val();
-                let name = $("input[name='name']").val();
-                let surname = $("input[name='surname']").val();
-                let email = $("input[name='email']").val();
-                let gender = $("input[name='gender']").val();
-                console.log(id);
-                console.log(name);
-                console.log(surname);
-                console.log(email);
-                console.log(gender);
-
-            })
-
-
-        </script>
     </body>
 </html>
