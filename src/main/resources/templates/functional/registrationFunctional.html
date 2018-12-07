@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Test registration</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link th:href="@{/css/multiple-select.css}" rel="stylesheet"/>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+
+</head>
+<body>
+<form th:action="@{/saveFunctional}" method="GET">
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script th:src="@{/js/multiselect.js}"></script>
+    <div class="row">
+        <div class="col-xs-5">
+            <select name="subjects"  class="form-control" size="20" multiple="multiple">
+                <option value=""> -- </option>
+                <option th:each="entry : ${mapSubjects.entrySet()}"
+                        th:value="${entry.value}"
+                        th:utext="${entry.key}">
+            </select>
+
+        </div>
+
+        <!--<div class="col-xs-2">-->
+            <!--<button type="button" id="multiselect_rightAll" class="btn btn-block"><i class="glyphicon glyphicon-forward"></i></button>-->
+            <!--<button type="button" id="multiselect_rightSelected" class="btn btn-block"><i class="glyphicon glyphicon-chevron-right"></i></button>-->
+            <!--<button type="button" id="multiselect_leftSelected" class="btn btn-block"><i class="glyphicon glyphicon-chevron-left"></i></button>-->
+            <!--<button type="button" id="multiselect_leftAll" class="btn btn-block"><i class="glyphicon glyphicon-backward"></i></button>-->
+
+        <!--</div>-->
+        <!--<div class="col-xs-5">-->
+            <!--<select name="to" id="multiselect_to" class="form-control" size="8" multiple="multiple">-->
+            <!--</select>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<script>-->
+        <!--$('#multiselect').multiselect();-->
+<!--</script>-->
+    <div><input id="btn" type="submit" value="Далі"/></div>
+
+</form>
+</body>
+</html>
