@@ -4,6 +4,7 @@ import oktenweb.school.models.Role;
 import oktenweb.school.models.Subjects;
 import oktenweb.school.models.User;
 import oktenweb.school.models.custom.*;
+import oktenweb.school.models.functional.ListSubjects;
 import oktenweb.school.service.UserService;
 import oktenweb.school.service.customService.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -133,18 +135,20 @@ public class RegistrationController {
 
         @GetMapping("/saveFunctional")
         public String registrationFunctional(Model model){
-            Map<String, Subjects> mapSubjects = new HashMap<>();
-            mapSubjects.put("Математика", Subjects.MATH);
-            mapSubjects.put("Українська мова ", Subjects.UKR_LANG);
-            mapSubjects.put("Біологія", Subjects.BIOLOGY);
-            mapSubjects.put("Інформатика", Subjects.COM_SCIENCE);
-            mapSubjects.put("Англійська мова ", Subjects.ENG_LANG);
-            mapSubjects.put("Фізична культура", Subjects.PHYSICAL_EDUCATION);
-            mapSubjects.put("Англійська мова ", Subjects.UKR_LIT);
+
+            ListSubjects listSubjects = new ListSubjects();
+            listSubjects.addSubjects();
+            List<String> listSubjectres = listSubjects.getListSubjectres();
+            Iterator<String> iterator = listSubjectres.iterator();
+            Map<String, String> mapSubjects = new HashMap<>();
+            while (iterator.hasNext()) {
+                String subject = iterator.next();
+                mapSubjects.put(subject, subject);
+            }
             model.addAttribute("mapSubjects", mapSubjects);
             return "/functional/registrationFunctional";
         }
 
 
 
-        }
+}
