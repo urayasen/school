@@ -4,6 +4,7 @@
 <head>
     <title>Test registration</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link th:href="@{/css/multiple-select.css}" rel="stylesheet"/>
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
 
@@ -25,6 +26,7 @@
         <!-- Left side select -->
         <div class="col-xs-5 col-md-5 col-sm-5">
             <select name="from[]" id="mySideToSideSelect" class="form-control" size="8" multiple="multiple">
+            <!--<select name="name" id="mySideToSideSelect" class="form-control" size="8" multiple="multiple">-->
                 <option value=""> -- </option>
                 <option th:each="entry : ${mapSubjects.entrySet()}"
                         th:value="${entry.value}"
@@ -42,7 +44,8 @@
 
         <!-- Right side select -->
         <div class="col-xs-5 col-md-5 col-sm-5">
-            <select name="to[]" id="mySideToSideSelect_to" class="form-control" size="8" multiple="multiple"></select>
+            <select name="name" id="mySideToSideSelect_to" class="form-control" size="8" multiple="multiple"></select>
+            <!--<select name="to[]" id="mySideToSideSelect_to" class="form-control" size="8" multiple="multiple"></select>-->
         </div>
     </div>
     <script>
@@ -53,5 +56,17 @@
     <div><input id="btn" type="submit" value="Далі"/></div>
 
 </form>
+
+<script>
+    $("#btn").click(function (e) {
+        // e.preventDefault();
+        let name = $("#mySideToSideSelect_to").val();
+
+        console.log(name);
+
+    })
+
+
+</script>
 </body>
 </html>
