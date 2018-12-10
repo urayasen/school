@@ -1,12 +1,13 @@
 package oktenweb.school.controllers;
 
 import oktenweb.school.models.Role;
-import oktenweb.school.models.Subjects;
+import oktenweb.school.models.functional.Subjects;
 import oktenweb.school.models.User;
 import oktenweb.school.models.custom.*;
 import oktenweb.school.models.functional.ListSubjects;
 import oktenweb.school.service.UserService;
 import oktenweb.school.service.customService.*;
+import oktenweb.school.service.functionalService.SubjectsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -46,6 +47,9 @@ public class RegistrationController {
 
     @Autowired
     TeachersService teachersService;
+
+    @Autowired
+    SubjectsService subjectsService;
 
 
     @PostMapping("/saveUser")
@@ -133,7 +137,7 @@ public class RegistrationController {
                 return "redirect:/";
             }
 
-        @GetMapping("/saveFunctional")
+        @GetMapping("/registrationFunctional")
         public String registrationFunctional(Model model){
 
             ListSubjects listSubjects = new ListSubjects();
@@ -147,6 +151,12 @@ public class RegistrationController {
             }
             model.addAttribute("mapSubjects", mapSubjects);
             return "/functional/registrationFunctional";
+        }
+
+        @GetMapping("/saveFunctional")
+        public String saveFunctional(Subjects subjects){
+             subjectsService.save(subjects);
+             return"redirect:/";
         }
 
 
