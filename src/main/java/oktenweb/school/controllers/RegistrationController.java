@@ -154,8 +154,9 @@ public class RegistrationController {
         }
 
         @GetMapping("/saveFunctional")
-        public String saveFunctional(Subjects subjects){
-             subjectsService.save(subjects);
+        public  String saveFunctional(@RequestParam(value="myArray[]") String[] myArray){
+            System.out.println(myArray.toString());
+//             subjectsService.save(subjects);
              return"redirect:/";
         }
 

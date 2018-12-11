@@ -17,7 +17,7 @@
         <!--th:value="${entry.value}"-->
         <!--th:utext="${entry.key}">-->
 
-<form th:action="@{/saveFunctional}" method="GET">
+<form th:action="@{/saveFunctional}" method="GET" ons>
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="https://cdn.rawgit.com/crlcu/multiselect/master/dist/js/multiselect.min.js"></script>
@@ -44,7 +44,7 @@
 
         <!-- Right side select -->
         <div class="col-xs-5 col-md-5 col-sm-5">
-            <select name="name" id="mySideToSideSelect_to" class="form-control" size="8" multiple="multiple"></select>
+            <select on name="name" id="mySideToSideSelect_to" class="form-control" size="8" multiple="multiple"></select>
             <!--<select name="to[]" id="mySideToSideSelect_to" class="form-control" size="8" multiple="multiple"></select>-->
         </div>
     </div>
@@ -53,18 +53,38 @@
             $('#mySideToSideSelect').multiselect();
         });
     </script>
-    <div><input id="btn" type="submit" value="Далі"/></div>
+    <div><input id="btn" type="submit" onclick="selectAllOptions(mySideToSideSelect_to)" value="Далі"/></div>
 
 </form>
 
 <script>
-    $("#btn").click(function (e) {
-        // e.preventDefault();
-        let name = $("#mySideToSideSelect_to").val();
+      function selectAllOptions(obj) {
+        // if (!hasOptions(obj)) { return; }
+          let stringarr = [];
+        for (var i = 0; i < obj.options.length; i++) {
+            obj.options[i].selected = true;
+            stringarr[i] = obj.options[i].value;
+        }
 
-        console.log(name);
+        console.log(stringarr);
 
-    })
+        $.ajax({
+            contentType: 'application/json',
+              data: {myArray: stringarr},
+              success: function (response) {
+              console.log(response);
+          },
+          error: function (err) {
+              console.log(err);
+          }
+        })
+
+    }
+
+      $("#btn").click(function (e) {
+          e.preventDefault();
+      })
+
 
 
 </script>
