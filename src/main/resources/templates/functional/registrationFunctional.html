@@ -24,8 +24,7 @@
     <div class="row">
         <!-- Left side select -->
         <div class="col-xs-5 col-md-5 col-sm-5">
-            <select name="from[]" id="mySideToSideSelect" class="form-control" size="8" multiple="multiple">
-                <option value=""> -- </option>
+            <select name="name" id="mySideToSideSelect" class="form-control" size="35" multiple="multiple">
                 <option th:each="entry : ${mapSubjects.entrySet()}"
                         th:value="${entry.value}"
                         th:utext="${entry.key}">
@@ -41,9 +40,9 @@
         </div>
 
         <!-- Right side select -->
-        <div class="col-xs-5 col-md-5 col-sm-5">
-            <select name="to[]" id="mySideToSideSelect_to" class="form-control" size="8" multiple="multiple"></select>
-        </div>
+        <!--<div class="col-xs-5 col-md-5 col-sm-5">-->
+            <!--<select name="name" id="mySideToSideSelect_to" class="form-control" size="35" multiple="multiple"></select>-->
+        <!--</div>-->
     </div>
     <script>
         $(document).ready(function() {
