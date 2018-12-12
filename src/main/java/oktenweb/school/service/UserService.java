@@ -8,4 +8,5 @@ public interface UserService extends UserDetailsService {
 
     void save(User user);
 
+    User byId(Integer id);
 }

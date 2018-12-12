@@ -1,10 +1,14 @@
 package oktenweb.school.models;
 
+import oktenweb.school.models.custom.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.awt.font.ShapeGraphicAttribute;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -14,18 +18,55 @@ import java.util.List;
 
 @Entity
 public class User implements UserDetails {
-
+//xgxgxghgh
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private int id;
-
    @Column(unique = true)
     private String username;
     private String password;
-    private String email;
-    private String phone;
+
+    @Autowired
+    @OneToOne(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy = "user"
+    )
+    private Students students;
+
+    @Autowired
+    @OneToOne(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy = "user"
+    )
+    private Teachers teachers;
 
 
+
+    @Autowired
+    @OneToOne(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy = "user"
+    )
+    private Parents parents;
+
+    @Autowired
+    @OneToOne(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy = "user"
+    )
+    private Deputy deputy;
+
+    @Autowired
+    @OneToOne(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy = "user"
+    )
+    private Classteachers classteachers;
 
 
 
@@ -103,7 +144,7 @@ public class User implements UserDetails {
     }
 
     @Enumerated(EnumType.STRING)
-    private Role role = Role.ROLE_ADMIN;
+    private Role role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -120,21 +161,6 @@ public class User implements UserDetails {
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 
 
     public Role getRole() {
@@ -151,8 +177,7 @@ public class User implements UserDetails {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
+                ", students=" + students +
                 ", enabled=" + enabled +
                 ", credentialsNonExpired=" + credentialsNonExpired +
                 ", accountNonExpired=" + accountNonExpired +
@@ -160,5 +185,4 @@ public class User implements UserDetails {
                 ", role=" + role +
                 '}';
     }
-
 }
