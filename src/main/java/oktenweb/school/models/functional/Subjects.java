@@ -19,7 +19,6 @@ public class Subjects {
     private int id;
     private String name;
 
-
     @Autowired
     @ManyToMany(
             fetch = FetchType.LAZY,
@@ -60,8 +59,8 @@ public class Subjects {
     )
     private Classteachers classteachers;
 
-    public Subjects(String sSubject) {
-        this.name = sSubject;
+    public Subjects(String subject) {
+        this.name = subject;
     }
 
 
