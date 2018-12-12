@@ -154,9 +154,14 @@ public class RegistrationController {
         }
 
         @GetMapping("/saveFunctional")
-        public  String saveFunctional(@RequestParam(value="myArray[]") String[] myArray){
-            System.out.println(myArray.toString());
-//             subjectsService.save(subjects);
+        public  String saveFunctional(Subjects  subjects ){
+            System.out.println(subjects.toString());
+            String[] listSubjects = subjects.getName().split(",");
+            for (String subject : listSubjects) {
+                Subjects newSubjects = new Subjects(subject);
+                subjectsService.save(newSubjects);
+            }
+
              return"redirect:/";
         }
 

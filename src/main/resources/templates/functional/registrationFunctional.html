@@ -14,8 +14,8 @@
 
 <!--<option value=""> &#45;&#45; </option>-->
 <!--<option th:each="entry : ${mapSubjects.entrySet()}"-->
-        <!--th:value="${entry.value}"-->
-        <!--th:utext="${entry.key}">-->
+<!--th:value="${entry.value}"-->
+<!--th:utext="${entry.key}">-->
 
 <form th:action="@{/saveFunctional}" method="GET" ons>
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
@@ -25,9 +25,9 @@
     <div class="row">
         <!-- Left side select -->
         <div class="col-xs-5 col-md-5 col-sm-5">
-            <select name="from[]" id="mySideToSideSelect" class="form-control" size="8" multiple="multiple">
-            <!--<select name="name" id="mySideToSideSelect" class="form-control" size="8" multiple="multiple">-->
-                <option value=""> -- </option>
+            <select name="fromArr" id="mySideToSideSelect" class="form-control" size="8" multiple>
+                <!--<select name="name" id="mySideToSideSelect" class="form-control" size="8" multiple="multiple">-->
+                <option value=""> --</option>
                 <option th:each="entry : ${mapSubjects.entrySet()}"
                         th:value="${entry.value}"
                         th:utext="${entry.key}">
@@ -36,55 +36,43 @@
 
         <!-- Action buttons -->
         <div class="col-xs-2 col-md-2 col-sm-2">
-            <button type="button" id="mySideToSideSelect_rightAll" class="btn btn-block"><i class="glyphicon glyphicon-forward"></i></button>
-            <button type="button" id="mySideToSideSelect_rightSelected" class="btn btn-block"><i class="glyphicon glyphicon-chevron-right"></i></button>
-            <button type="button" id="mySideToSideSelect_leftSelected" class="btn btn-block"><i class="glyphicon glyphicon-chevron-left"></i></button>
-            <button type="button" id="mySideToSideSelect_leftAll" class="btn btn-block"><i class="glyphicon glyphicon-backward"></i></button>
+            <button type="button" id="mySideToSideSelect_rightAll" class="btn btn-block"><i
+                    class="glyphicon glyphicon-forward"></i></button>
+            <button type="button" id="mySideToSideSelect_rightSelected" class="btn btn-block"><i
+                    class="glyphicon glyphicon-chevron-right"></i></button>
+            <button type="button" id="mySideToSideSelect_leftSelected" class="btn btn-block"><i
+                    class="glyphicon glyphicon-chevron-left"></i></button>
+            <button type="button" id="mySideToSideSelect_leftAll" class="btn btn-block"><i
+                    class="glyphicon glyphicon-backward"></i></button>
         </div>
 
         <!-- Right side select -->
         <div class="col-xs-5 col-md-5 col-sm-5">
-            <select on name="name" id="mySideToSideSelect_to" class="form-control" size="8" multiple="multiple"></select>
-            <!--<select name="to[]" id="mySideToSideSelect_to" class="form-control" size="8" multiple="multiple"></select>-->
+            <!--<select on name="name" id="mySideToSideSelect_to" class="form-control" size="8" multiple="multiple"></select>-->
+            <select name="name" id="mySideToSideSelect_to" class="form-control" size="8" multiple="multiple"></select>
         </div>
     </div>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#mySideToSideSelect').multiselect();
         });
     </script>
-    <div><input id="btn" type="submit" onclick="selectAllOptions(mySideToSideSelect_to)" value="Далі"/></div>
+<div><button id="btn" type="submit" onclick="selectAllOptions(/*mySideToSideSelect_to*/)" value="Далі">Зберегти</button></div>
 
 </form>
 
 <script>
-      function selectAllOptions(obj) {
-        // if (!hasOptions(obj)) { return; }
-          let stringarr = [];
-        for (var i = 0; i < obj.options.length; i++) {
-            obj.options[i].selected = true;
-            stringarr[i] = obj.options[i].value;
+    function selectAllOptions() {
+        let stringarr = [];
+
+        let selectRigth = document.getElementById("mySideToSideSelect_to");
+
+        for (var i = 0; i < selectRigth.options.length; i++) {
+            selectRigth.options[i].selected = true;
+            stringarr[i] = selectRigth.options[i].value;
         }
 
-        console.log(stringarr);
-
-        $.ajax({
-            contentType: 'application/json',
-              data: {myArray: stringarr},
-              success: function (response) {
-              console.log(response);
-          },
-          error: function (err) {
-              console.log(err);
-          }
-        })
-
     }
-
-      $("#btn").click(function (e) {
-          e.preventDefault();
-      })
-
 
 
 </script>

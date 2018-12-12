@@ -8,13 +8,13 @@ public  class ListSubjects {
     private List<String> listSubjectres = new ArrayList<>();
 
     public void addSubjects(){
-        listSubjectres.add("Математика");
-        listSubjectres.add("Фізика");
-        listSubjectres.add("Укр. мова");
-        listSubjectres.add("Укр. література");
-        listSubjectres.add("Англійська мова");
-        listSubjectres.add("Геометрія");
-        listSubjectres.add("Географія");
+        listSubjectres.add("Matematyka");
+        listSubjectres.add("Phizyka");
+        listSubjectres.add("Ykrmova");
+        listSubjectres.add("Ykrliteratura");
+        listSubjectres.add("Angliskamova");
+        listSubjectres.add("Heometria");
+        listSubjectres.add("Heographia");
     }
 
     public List<String> getListSubjectres() {
