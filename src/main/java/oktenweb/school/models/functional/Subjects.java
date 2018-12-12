@@ -18,7 +18,7 @@ public class Subjects {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private String subjects;
+
 
     @Autowired
     @ManyToMany(
@@ -60,14 +60,10 @@ public class Subjects {
     )
     private Classteachers classteachers;
 
-
-    public String getSubjects() {
-        return subjects;
+    public Subjects(String sSubject) {
+        this.name = sSubject;
     }
 
-    public void setSubjects(String subjects) {
-        this.subjects = subjects;
-    }
 
     public Classteachers getClassteachers() {
         return classteachers;
@@ -130,7 +126,6 @@ public class Subjects {
         return "Subjects{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", subjects='" + subjects + '\'' +
                 ", classes=" + classes +
                 ", teachers=" + teachers +
                 ", deputy=" + deputy +
