@@ -8,13 +8,38 @@ public  class ListSubjects {
     private List<String> listSubjectres = new ArrayList<>();
 
     public void addSubjects(){
-        listSubjectres.add("Matematyka");
-        listSubjectres.add("Phizyka");
-        listSubjectres.add("Ykrmova");
-        listSubjectres.add("Ykrliteratura");
-        listSubjectres.add("Angliskamova");
-        listSubjectres.add("Heometria");
-        listSubjectres.add("Heographia");
+        listSubjectres.add("Англійська мова");
+        listSubjectres.add("Алгебра");
+        listSubjectres.add("Астрономія");
+        listSubjectres.add("Біологія");
+        listSubjectres.add("Всесвітня історія");
+        listSubjectres.add("Геометрія");
+        listSubjectres.add("Географія");
+        listSubjectres.add("Екологія");
+        listSubjectres.add("Економіка");
+        listSubjectres.add("Етика");
+        listSubjectres.add("Зарубіжна література");
+        listSubjectres.add("Захист Вітчизни");
+        listSubjectres.add("Інформатика");
+        listSubjectres.add("Історія України");
+        listSubjectres.add("Людина і світ");
+        listSubjectres.add("Математика");
+        listSubjectres.add("Музичне мистецтво");
+        listSubjectres.add("Малювання");
+        listSubjectres.add("Німецька мова");
+        listSubjectres.add("Образотворче мистецтво");
+        listSubjectres.add("Основи здоров’я");
+        listSubjectres.add("Основи християнської етики");
+        listSubjectres.add("Природознавство");
+        listSubjectres.add("Польська мова");
+        listSubjectres.add("Трудове навчання");
+        listSubjectres.add("Укр. мова");
+        listSubjectres.add("Укр. література");
+        listSubjectres.add("Фізика");
+        listSubjectres.add("Фізкультура");
+        listSubjectres.add("Французька мова");
+        listSubjectres.add("Хімія");
+        listSubjectres.add("Художня культура");
     }
 
     public List<String> getListSubjectres() {

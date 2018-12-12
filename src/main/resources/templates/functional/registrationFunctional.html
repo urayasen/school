@@ -24,8 +24,8 @@
     <!--<script th:src="@{/js/multiselect.js}"></script>-->
     <div class="row">
         <!-- Left side select -->
-        <div class="col-xs-5 col-md-5 col-sm-5">
-            <select name="fromArr" id="mySideToSideSelect" class="form-control" size="8" multiple>
+        <div class="col-xs-5 col-md-5 col-sm-5" style="width: 700px; font-size:  44pt;">
+            <select name="fromArr" id="mySideToSideSelect" class="form-control" size="25" multiple="multiple"  style="font-size: 14px;">
                 <!--<select name="name" id="mySideToSideSelect" class="form-control" size="8" multiple="multiple">-->
                 <option value=""> --</option>
                 <option th:each="entry : ${mapSubjects.entrySet()}"
@@ -47,9 +47,9 @@
         </div>
 
         <!-- Right side select -->
-        <div class="col-xs-5 col-md-5 col-sm-5">
+        <div class="col-xs-5 col-md-5 col-sm-5 margin-top-5 margin-bottom-25">
             <!--<select on name="name" id="mySideToSideSelect_to" class="form-control" size="8" multiple="multiple"></select>-->
-            <select name="name" id="mySideToSideSelect_to" class="form-control" size="8" multiple="multiple"></select>
+            <select name="name" id="mySideToSideSelect_to" class="form-control" size="25" multiple="multiple" style="font-size: 14px;"></select>
         </div>
     </div>
     <script>
