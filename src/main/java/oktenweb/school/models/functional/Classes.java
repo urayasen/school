@@ -31,8 +31,7 @@ public class Classes {
     @Autowired
     @OneToMany (
             fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL,
-            mappedBy = "classes"
+            cascade = CascadeType.ALL
     )
     private List<Students> students = new ArrayList<>();
 

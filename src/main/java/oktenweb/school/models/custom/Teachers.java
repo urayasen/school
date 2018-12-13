@@ -41,7 +41,7 @@ public class Teachers  {
             cascade = CascadeType.ALL,
             mappedBy = "teachers"
     )
-    private Subjects subjects;
+    private List<Subjects> subjects = new ArrayList<>();
 
     @Autowired
     @OneToMany(
@@ -60,11 +60,11 @@ public class Teachers  {
         this.classJournals = classJournals;
     }
 
-    public Subjects getSubjects() {
+    public List<Subjects> getSubjects() {
         return subjects;
     }
 
-    public void setSubjects(Subjects subjects) {
+    public void setSubjects(List<Subjects> subjects) {
         this.subjects = subjects;
     }
 
