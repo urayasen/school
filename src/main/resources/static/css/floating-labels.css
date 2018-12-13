@@ -18,7 +18,7 @@ body {
   background-color: #f5f5f5;
 }
 
-.form-signin {
+.form-sign {
   width: 100%;
   max-width: 420px;
   padding: 15px;
@@ -30,10 +30,10 @@ body {
   margin-bottom: 1rem;
 }
 
-.form-label-group > input,
-.form-label-group > label {
-  padding: var(--input-padding-y) var(--input-padding-x);
-}
+/*.form-label-group > input,*/
+/*.form-label-group > label {*/
+  /*padding: var(--input-padding-y) var(--input-padding-x);*/
+/*}*/
 
 .form-label-group > label {
   position: absolute;
@@ -58,7 +58,7 @@ body {
   color: transparent;
 }
 
-.form-label-group input::-ms-input-placeholder {
+.form-label-group input:-ms-input-placeholder {
   color: transparent;
 }
 
@@ -88,7 +88,7 @@ body {
   .form-label-group > label {
     display: none;
   }
-  .form-label-group input::-ms-input-placeholder {
+  .form-label-group input:-ms-input-placeholder {
     color: #777;
   }
 }
