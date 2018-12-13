@@ -21,7 +21,9 @@ public class PageController {
     }
 
     @GetMapping("/chat")
-    private String chat(){
+    private String chat(
+
+    ){
         return "chat";
     }
 

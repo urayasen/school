@@ -2,6 +2,8 @@ package oktenweb.school.service.functionalService;
 
 import oktenweb.school.models.functional.Classes;
 
+import java.util.List;
+
 public interface ClassesService {
 
     void save(Classes classes);
@@ -9,4 +11,6 @@ public interface ClassesService {
     void delete(Classes classes);
 
     void deleteById(Integer id);
+
+    List<Classes> findAll();
 }

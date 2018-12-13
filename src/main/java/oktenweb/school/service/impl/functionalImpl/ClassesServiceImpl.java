@@ -4,7 +4,12 @@ import oktenweb.school.dao.functionalDAO.ClassesDAO;
 import oktenweb.school.models.functional.Classes;
 import oktenweb.school.service.functionalService.ClassesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+
+@Service
 public class ClassesServiceImpl implements ClassesService {
    @Autowired
    ClassesDAO classesDAO;
@@ -23,5 +28,10 @@ public class ClassesServiceImpl implements ClassesService {
     @Override
     public void deleteById(Integer id) {
         classesDAO.deleteById(id);
+    }
+
+    @Override
+    public List<Classes> findAll() {
+        return classesDAO.findAll();
     }
 }
