@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class PageController {
-
+//123
     @GetMapping("/admin/news")
     private String news()  { return "news"; }
 
