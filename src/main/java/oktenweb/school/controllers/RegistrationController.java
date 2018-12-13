@@ -149,6 +149,7 @@ public class RegistrationController {
                 String subject = iterator.next();
                 mapSubjects.put(subject, subject);
             }
+
             model.addAttribute("mapSubjects", mapSubjects);
             return "/functional/registrationFunctional";
         }
@@ -174,9 +175,7 @@ public class RegistrationController {
         }
 
         @GetMapping("/saveClasses")
-        public String saveClasses(Classes classes)
-        {
-
+        public String saveClasses(Classes classes) {
             System.out.println(classes.toString());
             classesService.save(classes);
             return "redirect:/registrationClasses";
