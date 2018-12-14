@@ -9,15 +9,32 @@
 
 </head>
 <body >
+<!--<form th:action="@{/login}" method="post" >-->
+<!--<div class="content">-->
+    <!--<div class="title">Create account</div>-->
+    <!--<input type="text" placeholder="E-mail"/>-->
+    <!--<input type="password" placeholder="Password"/>-->
+    <!--<input type="checkbox" id="rememberMe"/>-->
+    <!--<label for="rememberMe"></label><span>I have read and agree to the <a href="#">Terms of Use </a>and <a href="#">Privacy Policy</a></span>-->
+    <!--<button>Create Account</button>-->
+    <!--<div class="social"> <span>or sign up with social media</span></div>-->
+    <!--<div class="buttons">-->
+        <!--<button class="facebook"><i class="fa fa-facebook"></i>Facebook</button>-->
+        <!--<button class="twitter"><i class="fa fa-twitter"></i>Twitter</button>-->
+        <!--<button class="google"><i class="fa fa-google-plus"></i>Google</button>-->
+    <!--</div>-->
+    <!--<div class="already">Already have an account? <a href="#">Sign In</a></div>-->
+<!--</div>-->
+<!--</form>-->
 
     <form th:action="@{/login}" method="post" >
 
-    <div class="login-page " >
+    <div class="content " >
 
-        <div class="form"  style="opacity: 0.9;">
-            <!--<div class="text-center mb-4">-->
-                <!--<img class="mb-4" th:src="@{/img/slider1.jpg}" alt="" width="150" height="100" >-->
-            <!--</div>-->
+        <div class="form"  style="opacity: 1.0;">
+            <div class="text-center mb-4">
+                <img class="mb-4" th:src="@{/img/slider1.jpg}" alt="" width="150" height="100" >
+            </div>
 
             <form class="login-form" >
 
@@ -25,7 +42,7 @@
                 <input type="" name = username placeholder="username"/>
                 <input type="password" placeholder="password"/>
 
-                <button>login</button>
+                <button>Login</button>
 
             </form>
         </div>
