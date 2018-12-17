@@ -13,4 +13,6 @@ public interface ClassesService {
     void deleteById(Integer id);
 
     List<Classes> findAll();
+
+    Classes byId(Integer id);
 }

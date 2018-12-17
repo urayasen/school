@@ -34,4 +34,9 @@ public class ClassesServiceImpl implements ClassesService {
     public List<Classes> findAll() {
         return classesDAO.findAll();
     }
+
+    @Override
+    public Classes byId(Integer id) {
+        return classesDAO.byId(id);
+    }
 }
