@@ -166,11 +166,11 @@ public class RegistrationController {
         }
 
         @GetMapping ("/registrationClasses")
-        public String registrationClasses(Model model){
+        public List<Classes> registrationClasses(
+                Model model){
             List<Classes> classes = classesService.findAll();
             model.addAttribute("classes", classes);
-
-            return "registrationClasses";
+            return classes;
         }
 
         @GetMapping("/saveClasses")
@@ -181,6 +181,23 @@ public class RegistrationController {
             classesService.save(classes);
             return "redirect:/registrationClasses";
         }
+
+
+    @GetMapping("/edit/{id}")
+    public String resolveSingleContact(@PathVariable/*("id")*/ int id,
+                                       Model model){
+        Classes classes = classesService.byId(id);
+        model.addAttribute("classes", classes);
+//        System.out.println(contact);
+//        System.out.println(model);
+        return "registrationClasses";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteCustomer(@PathVariable Integer id) {
+        classesService.deleteById(id);
+        return "redirect:/registrationClasses";
+    }
 
 
 
