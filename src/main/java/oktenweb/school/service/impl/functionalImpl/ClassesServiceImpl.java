@@ -18,6 +18,7 @@ public class ClassesServiceImpl implements ClassesService {
     @Override
     public void save(Classes classes) {
         classesDAO.save(classes);
+
     }
 
     @Override
@@ -38,5 +39,10 @@ public class ClassesServiceImpl implements ClassesService {
     @Override
     public Classes byId(Integer id) {
         return classesDAO.byId(id);
+    }
+
+    @Override
+    public Integer maxById() {
+        return classesDAO.maxById();
     }
 }

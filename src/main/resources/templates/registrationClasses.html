@@ -96,23 +96,18 @@
 </form>
 <script>
     $(this).click(function (e) {
-        // e.preventDefault();
 
         if(e.target.parentElement.title === "Edit") {
             e.preventDefault();
-            // var i =
-            //     e.target.parentElement.parentElement.parentElement.parentElement
-            //         .getElementsByClassName("read_id")[0].textContent;
-            // console.log(e.target.parentElement.title);
 
-            // let val_read_id =
-            //     e.target.parentElement.parentElement.parentElement.parentElement
-            //         .getElementsByClassName("read_id")[0].textContent;
+            let val_read_id =
+                e.target.parentElement.parentElement.parentElement.parentElement
+                    .getElementsByClassName("read_id")[0].textContent;
             let val_read_name =
                 e.target.parentElement.parentElement.parentElement.parentElement
                     .getElementsByClassName("read_name")[0].textContent;
             console.log(val_read_name);
-            // document.getElementById("id").value = val_read_id;
+            document.getElementById("id").value = val_read_id;
             document.getElementById("name").value = val_read_name;
         }
     })

@@ -25,6 +25,10 @@ public class Classes {
         this.id = id;
     }
 
+    public Classes(String name) {
+        this.name = name;
+    }
+
     public Classes(Integer id, String name) {
         this.id = id;
         this.name = name;
