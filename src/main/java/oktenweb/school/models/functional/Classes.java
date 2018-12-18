@@ -18,6 +18,18 @@ public class Classes {
     private int id;
     private String name;
 
+    public Classes() {
+    }
+
+    public Classes(Integer id) {
+        this.id = id;
+    }
+
+    public Classes(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     @Autowired
     @ManyToMany(
             fetch = FetchType.LAZY,
@@ -42,6 +54,7 @@ public class Classes {
             cascade = CascadeType.ALL
     )
     private Classteachers classteachers;
+
 
     public List<Students> getStudents() {
         return students;
