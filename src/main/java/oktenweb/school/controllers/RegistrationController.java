@@ -149,7 +149,6 @@ public class RegistrationController {
                 String subject = iterator.next();
                 mapSubjects.put(subject, subject);
             }
-
             model.addAttribute("mapSubjects", mapSubjects);
             return "/functional/registrationFunctional";
         }
@@ -167,18 +166,22 @@ public class RegistrationController {
         }
 
         @GetMapping ("/registrationClasses")
-        public List<Classes> registrationClasses(
+        public String registrationClasses(
                 Model model){
             List<Classes> classes = classesService.findAll();
             model.addAttribute("classes", classes);
-            return classes;
+            return "registrationClasses";
         }
 
         @GetMapping("/saveClasses")
-        public String saveClasses(Classes classes) {
+        public String saveClasses(@RequestParam Integer id, @RequestParam String name)
+        {
+            Classes classes = new Classes(id, name);
             System.out.println(classes.toString());
             classesService.save(classes);
-            return "redirect:/registrationClasses";
+//
+            System.out.println(classes.toString());
+            return "registrationClasses";
         }
 
 
