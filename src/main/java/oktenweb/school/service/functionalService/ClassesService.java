@@ -15,4 +15,6 @@ public interface ClassesService {
     List<Classes> findAll();
 
     Classes byId(Integer id);
+
+    Integer maxById();
 }

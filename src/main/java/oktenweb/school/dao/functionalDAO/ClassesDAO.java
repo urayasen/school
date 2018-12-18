@@ -23,5 +23,7 @@ public interface ClassesDAO extends JpaRepository<Classes, Integer> {
     @Query("select c from Classes c where c.id = :xxx")
     Classes byId(@Param("xxx") Integer id);
 
+    @Query("select max(c.id) from Classes c" )
+    Integer maxById();
 
 }

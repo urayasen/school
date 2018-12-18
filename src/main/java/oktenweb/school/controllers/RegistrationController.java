@@ -176,12 +176,16 @@ public class RegistrationController {
         @GetMapping("/saveClasses")
         public String saveClasses(@RequestParam Integer id, @RequestParam String name)
         {
-            Classes classes = new Classes(id, name);
-            System.out.println(classes.toString());
+
+            Classes classes;
+            if(id == null){
+                classes = new Classes(name);
+            }else{
+                classes = new Classes(id, name);
+            }
             classesService.save(classes);
-//
-            System.out.println(classes.toString());
-            return "registrationClasses";
+
+            return "redirect:/registrationClasses";
         }
 
 
