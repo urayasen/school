@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/js/jqueryAjaxGet.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<!--<form th:action="@{/saveAddElements}" method="GET">-->
+    <div class="row clearfix">
+        <div class="col-lg-3 col-md-12">
+            <div class="card open_task">
+                <div class="header">
+                    <h2>Open</h2>
+                </div>
+                <div class="body taskboard">
+                    <div id="createelements" class="dd" data-plugin="nestable">
+                        <label> Виберіть елемент:
+                        <select id="elementsOne" >
+                            <option>------</option>
+                            <option th:each="entry : ${elements.entrySet()}"
+                            th:value="${entry.value}"
+                           th:utext="${entry.key}">
+                            </option>
+                            </select>
+                        </label><br/>
+
+                        <label id="labelOne"> Виберіть список елементів:
+                            <select id="listElementsOne" multiple>
+
+                            </select>
+                        </label><br/>
+
+                        <label> Виберіть елемент:
+                            <select id="elementsTwo">
+                                <option>------</option>
+                                <option th:each="entry : ${elements.entrySet()}"
+                                        th:value="${entry.value}"
+                                        th:utext="${entry.key}">
+                                </option>
+                            </select>
+                        </label><br/>
+
+                        <label id="labelTwo"> Виберіть тільки один елемент:
+                            <select id="listElementsTwo" >
+
+                            </select>
+                        </label>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--</form>-->
+</body>
+</html>

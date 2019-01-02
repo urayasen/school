@@ -6,6 +6,8 @@ import oktenweb.school.service.customService.ParentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ParentsServiceImpl implements ParentsService{
 
@@ -15,5 +17,10 @@ public class ParentsServiceImpl implements ParentsService{
     @Override
     public void save(Parents parents){
         parentsDAO.save(parents);
+    }
+
+    @Override
+    public List<Parents> findAll() {
+        return parentsDAO.findAll();
     }
 }

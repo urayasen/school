@@ -1,12 +1,14 @@
 package oktenweb.school.models.functional;
 
+import oktenweb.school.service.ParentService;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class HomeWork {
+public class HomeWork implements ParentService {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
