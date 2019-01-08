@@ -221,16 +221,13 @@ public class RegistrationController {
     @GetMapping("/regAddElements/{name}")
     public @ResponseBody
     List<Object> regAddElementsByName(@PathVariable String name) {
-        System.out.println(name+ "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         List<Object> parentElements = new ArrayList<>();
         if (name.equals("classteachers")) {
             System.out.println("classteachers");
             List<Classteachers> classteachers = classteachersService.findAll();
             Iterator<Classteachers> iterator = classteachers.iterator();
-            System.out.println("---------------------------------------------");
             while (iterator.hasNext()) {
                 Classteachers oneClassteacher = iterator.next();
-//                Object oneParentElement =  oneClassteacher;
                 parentElements.add(oneClassteacher);
             }
 
@@ -292,11 +289,17 @@ public class RegistrationController {
             }
         }
 
-        System.out.println(parentElements + "------------------------------------");
         return parentElements;
-//        return classteachersService.findAll();
 
     }
+
+    @GetMapping("/saveElements{arrElements}")
+    public void saveElements(@PathVariable String [] arrElements){
+        System.out.println(arrElements);
+
+    }
+
+
 
 
 }
