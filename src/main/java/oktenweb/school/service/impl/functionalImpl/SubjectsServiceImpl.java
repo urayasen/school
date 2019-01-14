@@ -6,6 +6,8 @@ import oktenweb.school.service.functionalService.SubjectsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SubjectsServiceImpl implements SubjectsService {
 
@@ -15,5 +17,10 @@ public class SubjectsServiceImpl implements SubjectsService {
     @Override
     public void save(Subjects subjects) {
         subjectsDAO.save(subjects);
+    }
+
+    @Override
+    public List<Subjects> findAll() {
+        return subjectsDAO.findAll();
     }
 }

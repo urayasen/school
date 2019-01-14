@@ -1,8 +1,10 @@
 package oktenweb.school.models.functional;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import oktenweb.school.models.custom.Classteachers;
 import oktenweb.school.models.custom.Students;
+import oktenweb.school.service.ParentService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
@@ -10,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Classes {
+public class Classes implements ParentService {
 
 
     @Id
@@ -34,7 +36,7 @@ public class Classes {
         this.name = name;
     }
 
-    @Autowired
+    @JsonIgnore
     @ManyToMany(
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL,
@@ -44,7 +46,7 @@ public class Classes {
 
 
 
-    @Autowired
+    @JsonIgnore
     @OneToMany (
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
@@ -52,7 +54,7 @@ public class Classes {
     private List<Students> students = new ArrayList<>();
 
 
-    @Autowired
+    @JsonIgnore
     @OneToOne(
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
