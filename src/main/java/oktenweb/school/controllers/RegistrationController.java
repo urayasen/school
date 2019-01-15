@@ -106,7 +106,6 @@ public class RegistrationController {
         teachersService.save(teachers);
         return "redirect:/";
     }
-
     @GetMapping("/saveParents")
     public String saveParents(Parents parents, int id) {
         System.out.println("saveParents ---------   " + id);
@@ -115,7 +114,6 @@ public class RegistrationController {
         parentsService.save(parents);
         return "redirect:/";
     }
-
     @GetMapping("/saveClassteachers")
     public String saveClassteachers(Classteachers classteachers, int id) {
         System.out.println("saveClassteachers ---------   " + id);
@@ -177,7 +175,7 @@ public class RegistrationController {
         if (id == null) {
             classes = new Classes(name);
         } else {
-            classes = new Classes(id, name);
+            classes = new Classes(id,name);
         }
         classesService.save(classes);
 
@@ -230,8 +228,6 @@ public class RegistrationController {
                 Classteachers oneClassteacher = iterator.next();
                 parentElements.add(oneClassteacher);
             }
-
-
         } else if (name.equals("teachers")) {
             System.out.println("teachers");
             List<Teachers> teachers = teachersService.findAll();
@@ -250,7 +246,6 @@ public class RegistrationController {
                 ParentService oneParentElement = oneClass;
                 parentElements.add(oneParentElement);
             }
-
         } else if (name.equals("deputy")) {
             System.out.println("deputy");
             List<Deputy> deputy = deputyService.findAll();
@@ -300,6 +295,49 @@ public class RegistrationController {
     }
 
 
+
+    @GetMapping("/registrationSubjects")
+    public String registrationSubjects(
+            Model model) {
+        List<Subjects> subjects = subjectsService.findAll();
+        model.addAttribute("subjects", subjects);
+        return "registrationSubjects";
+    }
+
+    @GetMapping("/saveSubjects")
+    public String saveSubjects(@RequestParam Integer id, @RequestParam String name) {
+
+        Subjects subjects;
+//        if (id == null) {
+//            subjects = new Subjects();
+//        } else {
+//            subjects = new Subjects(name);
+//        }
+        if (id == null){
+            subjects = new Subjects(name);
+        } else {
+            subjects = new Subjects(id, name);
+        }
+        subjectsService.save(subjects);
+
+        return "redirect:/registrationSubjects";
+    }
+
+    @GetMapping("/editSub/{id}")
+    public String resolveSingleSubject(@PathVariable/*("id")*/ int id,
+                                       Model model) {
+        Subjects subjects = subjectsService.byIdSub(id);
+        model.addAttribute("subjects", subjects);
+//        System.out.println(contact);
+//        System.out.println(model);
+        return "registrationSubjects";
+    }
+
+    @GetMapping("/deleteSub/{id}")
+    public String deleteSub(@PathVariable Integer id) {
+        subjectsService.deleteById(id);
+        return "redirect:/registrationSubjects";
+    }
 
 
 }

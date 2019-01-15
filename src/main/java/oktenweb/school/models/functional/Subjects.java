@@ -21,6 +21,20 @@ public class Subjects implements ParentService {
     private int id;
     private String name;
 
+
+    public Subjects(String subject) {
+        this.name = subject;
+    }
+
+    public Subjects(Integer id){
+        this.id = id;
+    }
+
+   public Subjects(Integer id, String name){
+        this.id = id;
+        this.name = name;
+   }
+
     @JsonIgnore
     @ManyToMany(
             fetch = FetchType.LAZY,
@@ -62,10 +76,7 @@ public class Subjects implements ParentService {
     private Classteachers classteachers;
 
     public Subjects() {
-    }
 
-    public Subjects(String subject) {
-        this.name = subject;
     }
 
 
