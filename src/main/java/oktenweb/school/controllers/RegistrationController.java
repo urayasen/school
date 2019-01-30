@@ -280,7 +280,7 @@ public class RegistrationController {
             }
         } else if (name.equals("subjects")) {
             System.out.println("subjects");
-            List<Subjects> subjects = subjectsService.findAll();
+            List<Subjects> subjects = subjectsService.findAll() ;
             Iterator<Subjects> iterator = subjects.iterator();
             while (iterator.hasNext()) {
                 Subjects oneSubject = iterator.next();
