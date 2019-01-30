@@ -217,7 +217,7 @@ public class RegistrationController {
         model.addAttribute("elements", elements);
         return "registrationAddElements";
     }
-
+//вибір елементів
     @GetMapping("/regAddElements/{name}")
     public @ResponseBody
     List<Object> regAddElementsByName(@PathVariable String name) {
