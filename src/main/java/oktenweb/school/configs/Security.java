@@ -50,7 +50,7 @@ public class Security extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/home","/saveUser","/saveNewUser").permitAll()
+                .antMatchers("/home","/saveUser","/saveNewUser", "/chat").permitAll()
                 .antMatchers("/admin/**").access("hasRole('TEACHER')")
                 .antMatchers("/admin/**").access("hasRole('ADMIN')")
 //                .antMatchers("/saveStudents").access("hasRole('ADMIN')")
@@ -58,7 +58,7 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .antMatchers("/marks").access("hasAnyRole('DEPUTI','PARENT', 'ADMIN', 'TEACHER','CLASSTHEACHER','ADMIN')")
                 .antMatchers("/account").access("hasAnyRole('DEPUTI','STUDENT','PARENT','TEACHER','CLASSTHEACHER','ADMIN')")
                 .antMatchers("/news").access("hasAnyRole('DEPUTI','STUDENT','PARENT','TEACHER','CLASSTHEACHER','ADMIN')")
-                .antMatchers("/chat").access("hasAnyRole('CLASSTHEACHER','PARENT','ADMIN')")
+//                .antMatchers("/chat").access("hasAnyRole('CLASSTHEACHER','PARENT','ADMIN')")
                 .antMatchers("/homework").access("hasAnyRole('DEPUTI','STUDENT','PARENT','TEACHER','CLASSTHEACHER','ADMIN')")
                 .antMatchers("/lesson").access("hasAnyRole('DEPUTI','STUDENT','PARENT','TEACHER','CLASSTHEACHER','ADMIN')")
                 .antMatchers("/visited").access("hasAnyRole('DEPUTI','STUDENT','PARENT','TEACHER','CLASSTHEACHER','ADMIN')")
