@@ -3,8 +3,15 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
     <head>
-        <title>Spring Security Example </title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <title>Registration Part 2 </title>
+        <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script th:src="@{/js/date.format.js}"></script>
+        <script th:src="@{/js/jquery-dropdate.js}"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <link th:href="@{/css/registration_2.css}"  rel="stylesheet" type="text/css">
     </head>
     <body>
         <!--<div th:if="${param.error}">-->
@@ -14,19 +21,69 @@
             <!--You have been logged out.-->
         <!--</div>-->
         <form  th:action="@{/saveUser}" method="POST">
-            <div><label> Логін  : <input type="text"  name="username"/> </label></div>
-            <div><label> Пароль : <input type="password" name="password" autocomplete="off"/></label></div>
-            <!--<div><label> Email: <input type="text" name="email"/> </label></div>-->
-            <!--<div><label> Phone: <input type="text" name="phone"/> </label></div>-->
-            <!--<div><label> Password1: <input type="password" name="password"/> </label></div>-->
-            <div><label> Роль: <select name="role">
-                <option value=""> -- </option>
-                <option th:each="entry : ${mapRoles.entrySet()}"
-                        th:value="${entry.value}"
-                        th:utext="${entry.key}">
-                </option>
-            </select>
+        <div class ="container">
 
+            <div  class ="row">
+
+                <div class = "col-lg-3"></div>
+
+                <div class = "col-lg-6">
+
+                    <div id ="ui">
+                        <div class="op">
+                            <h1 class="text-center">Registration Form</h1>
+                        </div>
+
+                        <form class ="form-group text-center">
+                            <br>
+
+                            <div class="row ">
+
+                                <div class = "col-lg-6">
+                                    <label>Логін</label>
+                                    <input type ="text" name="username " class = "form-control" placeholder="Введіть свій нікнейм..">
+                                </div>
+
+                                <div class = "col-lg-6">
+                                    <label> Пароль</label>
+                                    <input type="password" name="password"  class = "form-control" placeholder="Введіть пароль..">
+                                </div>
+                            </div>
+                            <br>
+                            <br>
+                            <label>Роль</label>
+                            <br>
+
+                            <select name="role" class="selectpicker" data-style="btn-warning">
+                                <option value=""> -- </option>
+                                <option th:each="entry : ${mapRoles.entrySet()}"
+                                        th:value="${entry.value}"
+                                        th:utext="${entry.key}">
+                                </option>
+                            </select>
+
+
+
+
+
+
+
+                            <br>
+                            <br>
+                            <br>
+
+                            <div><input id="btn" type="submit" class="btn btn-block  btn-warning" value="Далі"/></div>
+
+
+                        </form>
+                    </div>
+                </div>
+
+                <div class = "col-lg-3"></div>
+
+            </div>
+
+        </div>
 
 
                 <!--<select name="role">-->
@@ -38,29 +95,26 @@
                 <!--<option value="ROLE_DEPUTI">Зауч</option>-->
                 <!--</select> -->
 
-            </label>
-            </div>
 
-            <div><input id="btn" type="submit" value="Далі"/></div>
         </form>
-    <script>
-    $("#btn").click(function (e) {
-         // e.preventDefault();
-        let username = $("input[name='username']").val();
-        let password = $("input[name='password']").val();
-        let email = $("input[name='email']").val();
-        let phone = $("input[name='phone']").val();
-        let role = $("select[name='role']").val();
-        console.log(username);
-        console.log(password);
-        console.log(email);
-        console.log(phone);
-        console.log(role);
+    <!--<script>-->
+    <!--$("#btn").click(function (e) {-->
+         <!--// e.preventDefault();-->
+        <!--let username = $("input[name='username']").val();-->
+        <!--let password = $("input[name='password']").val();-->
+        <!--let email = $("input[name='email']").val();-->
+        <!--let phone = $("input[name='phone']").val();-->
+        <!--let role = $("select[name='role']").val();-->
+        <!--console.log(username);-->
+        <!--console.log(password);-->
+        <!--console.log(email);-->
+        <!--console.log(phone);-->
+        <!--console.log(role);-->
 
-    })
+    <!--})-->
 
 
-    </script>
+    <!--</script>-->
 
     </body>
 </html>
