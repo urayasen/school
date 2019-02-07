@@ -1,52 +1,17 @@
-/*Table Content
- =================================================
- * BASIC STYLE
- - Typography Style
- - Padding and Margin Style
- - General Style
- - Box Hover Style
- - Form Style
 
- * HEADER
- - Navigation Menu
-
- * FOOTER
- * ELEMENTS
- - Main Banner
- - Page Intro
- - Testimonial
- - Pagination Navigation
- - Sidebar Widget
- - blog Section
- - Partner Section
- - About Us Page
- - Timeline Section
- - Team
- - Serve
- - Faq Page
- - 404 page
- - Blog Page
- - Register and login Pages
- - Contact Page
- - Preloader
- ================================================
- */
-
-/*-------------------------------------------------------------------------------------------*/
-/* BASIC STYLE    ||---------------------------- */
-/*-------------------------------------------------------------------------------------------*/
 body, html {
 	margin: 0;
 	padding: 0;
 }
+
 body {
-	line-height: 24px;
+	line-height: 0px;
 	color: #323232;
 	font-size: 14px;
 	font-weight: 400;
 	font-family: 'Open Sans', Arial, Helvetica, sans-serif;
 }
-/*  Typography Style   ||-----------*/
+
 h1 {
 	font-size: 48px;
 	margin-top: 0;
@@ -112,7 +77,6 @@ a {
 	font-weight: 800;
 	text-transform: uppercase;
 }
-/*  Padding and Margin Style   ||-----------*/
 .padding {
 	padding-top: 90px;
 	padding-bottom: 90px;
@@ -483,11 +447,6 @@ a {
 		float: right;
 	}
 }
-/*
- * ----------------------------------------------------------------------------------------
- * Header And Banner
- * ----------------------------------------------------------------------------------------
- */
 a:focus, a:hover {
 	color: #ff0033;
 }
@@ -518,12 +477,12 @@ a:focus, a:hover {
 .welcome-image-area {
 	position: relative;
 	height: 100%;
-	background: url(../images/slider1.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/banner/slider1.jpg*/;
+	background: url(../img/slider1.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/banner/slider1.jpg*/;
 	background-size: cover;
 	z-index: 1;
 }
 .inner-img {
-	background: url(../images/02.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/2.jpg*/;
+	background: url(../img/02.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/2.jpg*/;
 	background-size: cover;
 }
 .welcome-area__inner {
@@ -607,6 +566,7 @@ a:focus, a:hover {
 		padding-top: 16px;
 	}
 }
+
 
 .logo a {
 	display: inline-block;
@@ -1087,7 +1047,7 @@ a:focus, a:hover {
 #statement {
 	/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/02.jpg*/;
 	background-size: cover;
-	background: url(../images/02.jpg) no-repeat fixed center center;
+	background: url(../img/02.jpg) no-repeat fixed center center;
 }
 
 #statement:before {
@@ -1144,7 +1104,7 @@ a:focus, a:hover {
 	z-index: -1;
 }
 .parallax {
-	background: url(../images/parallax2.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/parallax2.jpg*/ no-repeat;
+	background: url(../img/parallax2.jpg)/*tpa=http://theembazaar.com/demo/goldey/html/mark-educate/assets/images/parallax2.jpg*/ no-repeat;
 }
 .light-color {
 	color: #fff;
@@ -3122,13 +3082,7 @@ form label.error {
 	background: #8B4513;
 }
 
-/***
 
- ====================================================================
- Single-Blog-Post
- ====================================================================
-
- ***/
 
 .single-blog-post .img-box {
 	position: relative;

@@ -2,47 +2,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
-        <title>Spring Security Example </title>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-        <script th:src="@{/js/date.format.js}"></script>
-        <script th:src="@{/js/jquery-dropdate.js}"></script>
+        <title>Spring Security Example </title>]
+        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
     </head>
-    <body>
+    <body style="background-image: url('/img/our2.jpg')">
 
 
 
 
-        <form th:action="@{/saveStudents}" method="post">
-            <div> <input type="hidden" name="id" th:value="${user1.id}"/> </div>
-            <div><label> Ім'я : <input type="text" name="name"/></label></div>
+        <form th:action="@{/saveStudents}" method="Get">
+            <div class="mb-4 text-center" style="border: 10px double black;width: 500px;  ">
+            <div><label> Ім'я : <input type="text" name="name"/> </label></div>
             <div><label> Прізвище: <input type="text" name="surname"/> </label></div>
             <div><label> Електронна пошта: <input type="text" name="email"/> </label></div>
             <div><label> Телефон: <input type="text" name="phone"/> </label></div>
             <div><label> Місце проживання: <input type="text" name="adress"/> </label></div>
             <div><label> Стать:
-                <input type="radio" name="gender" value="female"/>Жінка
-                <input type="radio" name="gender" value="male"/>Чоловік
+                <input type="radio" name="gender" value="femeil"/>жінка
+                <input type="radio" name="gender" value="meil"/>чоловік
 
             </label></div>
-
-
-            <div><label> Дата народження:
-                <input type="text" name="birthday" value="" class="dropdate">
-                <script>
-                    $(document).ready(function(){
-                        $('.dropdate').dropdate({
-                            dateFormat:'dd/mm/yyyy'
-                        });
-                    });
-                </script>
-
-
-            </label></div>
-            <div><input type="submit" value="Далі"/></div>
-
-
-
+            <div><input type="submit" value="Sign In"/></div></div>
         </form>
     </body>
 </html>
