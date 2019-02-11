@@ -169,8 +169,8 @@ $(document).ready(function () {
 
         $.ajax({
             type: "GET",
-            url: "/saveElements{arrElements}",
-            data: {"arrElements": arrElements},
+            url: `/saveElements`,
+            data: JSON.stringify(arrElements),
             success: function (data) {
                 console.log(data);
             },

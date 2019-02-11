@@ -217,7 +217,8 @@ public class RegistrationController {
         model.addAttribute("elements", elements);
         return "registrationAddElements";
     }
-//вибір елементів
+
+    //вибір елементів
     @GetMapping("/regAddElements/{name}")
     public @ResponseBody
     List<Object> regAddElementsByName(@PathVariable String name) {
@@ -280,7 +281,7 @@ public class RegistrationController {
             }
         } else if (name.equals("subjects")) {
             System.out.println("subjects");
-            List<Subjects> subjects = subjectsService.findAll() ;
+            List<Subjects> subjects = subjectsService.findAll();
             Iterator<Subjects> iterator = subjects.iterator();
             while (iterator.hasNext()) {
                 Subjects oneSubject = iterator.next();
@@ -293,13 +294,12 @@ public class RegistrationController {
 
     }
 
-    @GetMapping("/saveElements{arrElements}")
-    public void saveElements(@PathVariable String [] arrElements){
-        System.out.println(arrElements);
+    @GetMapping("/saveElements")
+    public void saveElements(@RequestBody String body) {
+        System.out.println(body);
+
 
     }
-
-
 
 
 }
