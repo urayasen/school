@@ -1,7 +1,9 @@
 package oktenweb.school.models.custom;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import oktenweb.school.models.User;
+import oktenweb.school.service.ParentService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
@@ -9,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Parents {
+public class Parents implements ParentService {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +25,7 @@ public class Parents {
     private String birthday;
 
 
-    @Autowired
+    @JsonIgnore
     @OneToOne(
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
@@ -32,7 +34,7 @@ public class Parents {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Autowired
+    @JsonIgnore
     @OneToMany(
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL,

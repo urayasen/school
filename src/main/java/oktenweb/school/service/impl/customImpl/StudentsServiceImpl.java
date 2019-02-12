@@ -7,6 +7,8 @@ import oktenweb.school.service.customService.StudentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StudentsServiceImpl implements StudentsService{
 
@@ -16,5 +18,10 @@ public class StudentsServiceImpl implements StudentsService{
     @Override
     public void save(Students students) {
         studentsDAO.save(students);
+    }
+
+    @Override
+    public List<Students> findAll() {
+        return studentsDAO.findAll();
     }
 }

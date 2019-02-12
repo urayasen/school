@@ -6,6 +6,8 @@ import oktenweb.school.service.customService.ClassteachersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ClassteachersServiceImpl implements ClassteachersService{
 
@@ -15,5 +17,10 @@ public class ClassteachersServiceImpl implements ClassteachersService{
     @Override
     public void save(Classteachers classteachers){
         classteachersDAO.save(classteachers);
+    }
+
+    @Override
+    public List<Classteachers> findAll() {
+        return classteachersDAO.findAll();
     }
 }

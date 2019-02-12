@@ -4,6 +4,7 @@ import oktenweb.school.models.custom.Classteachers;
 import oktenweb.school.models.custom.Deputy;
 import oktenweb.school.models.custom.Students;
 import oktenweb.school.models.custom.Teachers;
+import oktenweb.school.service.ParentService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class ClassJournal {
+public class ClassJournal implements ParentService {
 
 
     @Id

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--<script src="/js/jqueryAjaxGet.js"></script>-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--<link rel="stylesheet" th:href="@{css/main.css}">-->
+    <!--<link rel="stylesheet" th:href="@{css/bootstrap.min.css}">-->
+    <!--<link rel="stylesheet" th:href="@{css/animate.min.css}">-->
+    <!--<link rel="stylesheet" th:href="@{css/font-awesome.min.css}">-->
+    <!--<link rel="stylesheet" th:href="@{css/jquery-nestable.css}"/>-->
+    <!--<link rel="stylesheet" th:href="@{css/sweetalert.css}"/>-->
+    <!--<link rel="stylesheet" th:href="@{css/bootstrap-datepicker3.min.css}">-->
+
+    <!--<link rel="stylesheet" th:href="@{css/main.css}">-->
+    <!--<link rel="stylesheet" th:href="@{css/color_skins.css}">-->
+</head>
+<body>
+
+<form th:action="@{/saveClasses}" method="GET">
+    <div class="row clearfix">
+        <div class="col-lg-3 col-md-12">
+            <div class="card open_task">
+                <div class="header">
+                    <h2>Open</h2>
+                </div>
+                <div class="body taskboard">
+                    <div class="dd" data-plugin="nestable">
+                        <ol class="dd-list">
+                            <!--<li th:each="class: ${classes}">-->
+                            <h5>Add class</h5>
+                            <input type="hidden" id="id" name="id" placeholder="id"><br>
+                            <input type="text" id="name" name="name" placeholder="name" size="10"><br>
+                            <input type="submit">
+                            <!--</li>-->
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<form id="f1" method="GET">
+    <div class="row clearfix">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="header">
+                    <h2>User List</h2>
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table id="customerTable" class="table table-hover m-b-0 c_list">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="class:${classes}">
+                                <td>
+                                    <!--<img src="../assets/images/xs/avatar1.jpg" class="rounded avatar" alt="">-->
+                                    <!--<input type="text" name="id" th:value="${classes.id}">-->
+                                    <!--<input type="text" name="id" th:value="${subjects.id}">-->
+                                    <p class="read_id">[[${class.id}]]</p>
+                                </td>
+                                <td>
+                                    <p class="read_name">[[${class.name}]]</p>
+                                </td>
+                                <td>
+
+                                    <a th:href="@{'edit-classes/' + ${class.id}}">
+                                        <button type="button" class="btn btn-link btn-sm" id="edit_btn" title="Edit"><i
+                                                class="fa fa-edit"></i></button>
+                                    </a>
+                                    <a th:href="@{'delete-classes/' + ${class.id}}">
+                                         <button type="button" data-type="confirm" class="btn btn-link btn-sm js-sweetalert"
+                                            title="Delete"><i class="fa fa-trash-o text-danger"></i></button>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    $(this).click(function (e) {
+
+        if(e.target.parentElement.title === "Edit") {
+            e.preventDefault();
+
+            let val_read_id =
+                e.target.parentElement.parentElement.parentElement.parentElement
+                    .getElementsByClassName("read_id")[0].textContent;
+            let val_read_name =
+                e.target.parentElement.parentElement.parentElement.parentElement
+                    .getElementsByClassName("read_name")[0].textContent;
+            console.log(val_read_name);
+            document.getElementById("id").value = val_read_id;
+            document.getElementById("name").value = val_read_name;
+        }
+    })
+
+
+</script>
+</body>
+</html>

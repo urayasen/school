@@ -26,7 +26,15 @@ public class User implements UserDetails {
     private String username;
     private String password;
 
-    @Autowired
+    public User() {
+    }
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+
     @OneToOne(
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL,
@@ -34,7 +42,6 @@ public class User implements UserDetails {
     )
     private Students students;
 
-    @Autowired
     @OneToOne(
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL,
@@ -44,7 +51,7 @@ public class User implements UserDetails {
 
 
 
-    @Autowired
+
     @OneToOne(
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL,
@@ -52,7 +59,7 @@ public class User implements UserDetails {
     )
     private Parents parents;
 
-    @Autowired
+
     @OneToOne(
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL,
@@ -60,7 +67,7 @@ public class User implements UserDetails {
     )
     private Deputy deputy;
 
-    @Autowired
+
     @OneToOne(
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL,
@@ -69,6 +76,45 @@ public class User implements UserDetails {
     private Classteachers classteachers;
 
 
+    public Students getStudents() {
+        return students;
+    }
+
+    public void setStudents(Students students) {
+        this.students = students;
+    }
+
+    public Teachers getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(Teachers teachers) {
+        this.teachers = teachers;
+    }
+
+    public Parents getParents() {
+        return parents;
+    }
+
+    public void setParents(Parents parents) {
+        this.parents = parents;
+    }
+
+    public Deputy getDeputy() {
+        return deputy;
+    }
+
+    public void setDeputy(Deputy deputy) {
+        this.deputy = deputy;
+    }
+
+    public Classteachers getClassteachers() {
+        return classteachers;
+    }
+
+    public void setClassteachers(Classteachers classteachers) {
+        this.classteachers = classteachers;
+    }
 
     @Override
     public String getPassword() {
@@ -177,7 +223,6 @@ public class User implements UserDetails {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", students=" + students +
                 ", enabled=" + enabled +
                 ", credentialsNonExpired=" + credentialsNonExpired +
                 ", accountNonExpired=" + accountNonExpired +

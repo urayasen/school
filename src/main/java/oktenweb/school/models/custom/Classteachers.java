@@ -1,9 +1,11 @@
 package oktenweb.school.models.custom;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import oktenweb.school.models.User;
 import oktenweb.school.models.functional.ClassJournal;
 import oktenweb.school.models.functional.Classes;
 import oktenweb.school.models.functional.Subjects;
+import oktenweb.school.service.ParentService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
@@ -11,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Classteachers {
+public class Classteachers implements ParentService {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +26,7 @@ public class Classteachers {
     private String gender;
     private String birthday;
 
-    @Autowired
+    @JsonIgnore
     @OneToOne(
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
@@ -33,7 +35,7 @@ public class Classteachers {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Autowired
+    @JsonIgnore
     @OneToMany(
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL,
@@ -42,7 +44,7 @@ public class Classteachers {
     private List<Subjects> subjects = new ArrayList<>();
 
 
-    @Autowired
+    @JsonIgnore
     @OneToOne(
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL,
@@ -50,7 +52,7 @@ public class Classteachers {
     )
     private Classes classes;
 
-    @Autowired
+    @JsonIgnore
     @OneToMany(
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL,
@@ -60,7 +62,7 @@ public class Classteachers {
 
 
 
-    @Autowired
+    @JsonIgnore
     @OneToMany(
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL,
@@ -70,6 +72,7 @@ public class Classteachers {
 
 
 
+    @JsonIgnore
     public List<Subjects> getSubjects() {
         return subjects;
     }
@@ -187,11 +190,6 @@ public class Classteachers {
                 ", Adress='" + Adress + '\'' +
                 ", gender='" + gender + '\'' +
                 ", birthday='" + birthday + '\'' +
-                ", user=" + user +
-                ", subjects=" + subjects +
-                ", classes=" + classes +
-                ", students=" + students +
-                ", classJournals=" + classJournals +
                 '}';
     }
 }
