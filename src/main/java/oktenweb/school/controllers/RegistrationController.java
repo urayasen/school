@@ -54,6 +54,7 @@ public class RegistrationController {
         System.out.println("user");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 //        int id = user.getId();
+        System.out.println(user);
         userService.save(user);
         User user1 = userService.byId(user.getId());
         int id = user1.getId();
