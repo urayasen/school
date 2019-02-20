@@ -5,15 +5,13 @@ import oktenweb.school.models.User;
 import oktenweb.school.models.functional.ClassJournal;
 import oktenweb.school.models.functional.Classes;
 import oktenweb.school.models.functional.Subjects;
-import oktenweb.school.service.ParentService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Classteachers implements ParentService {
+public class Classteachers {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

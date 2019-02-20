@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -50,17 +51,18 @@ public class Security extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/home","/saveUser","/saveNewUser", "/chat", "/regaddelements/all", "/lesson", "/news").permitAll()
+                .antMatchers("/home","/saveUser","/saveNewUser", "/chat", "/regaddelements/all", "/regaddelements/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/saveElements").permitAll()
                 .antMatchers("/admin/**").access("hasRole('TEACHER')")
                 .antMatchers("/admin/**").access("hasRole('ADMIN')")
 //                .antMatchers("/saveStudents").access("hasRole('ADMIN')")
-//                .antMatchers("/news").hasRole("STUDENT")
+                .antMatchers("/news").hasRole("STUDENT")
                 .antMatchers("/marks").access("hasAnyRole('DEPUTI','PARENT', 'ADMIN', 'TEACHER','CLASSTHEACHER','ADMIN')")
                 .antMatchers("/account").access("hasAnyRole('DEPUTI','STUDENT','PARENT','TEACHER','CLASSTHEACHER','ADMIN')")
-//                .antMatchers("/news").access("hasAnyRole('DEPUTI','STUDENT','PARENT','TEACHER','CLASSTHEACHER','ADMIN')")
+                .antMatchers("/news").access("hasAnyRole('DEPUTI','STUDENT','PARENT','TEACHER','CLASSTHEACHER','ADMIN')")
 //                .antMatchers("/chat").access("hasAnyRole('CLASSTHEACHER','PARENT','ADMIN')")
                 .antMatchers("/homework").access("hasAnyRole('DEPUTI','STUDENT','PARENT','TEACHER','CLASSTHEACHER','ADMIN')")
-//                .antMatchers("/lesson").access("hasAnyRole('DEPUTI','STUDENT','PARENT','TEACHER','CLASSTHEACHER','ADMIN')")
+                .antMatchers("/lesson").access("hasAnyRole('DEPUTI','STUDENT','PARENT','TEACHER','CLASSTHEACHER','ADMIN')")
                 .antMatchers("/visited").access("hasAnyRole('DEPUTI','STUDENT','PARENT','TEACHER','CLASSTHEACHER','ADMIN')")
 //                .antMatchers("/saveNewUser").hasAuthority("ADMIN")
 //                .antMatchers("/saveNewUser").hasRole("ADMIN")

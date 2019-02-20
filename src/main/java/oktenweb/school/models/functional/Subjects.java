@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import oktenweb.school.models.custom.Classteachers;
 import oktenweb.school.models.custom.Deputy;
 import oktenweb.school.models.custom.Teachers;
-import oktenweb.school.service.ParentService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -13,7 +11,7 @@ import java.util.List;
 
 
 @Entity
-public class Subjects implements ParentService {
+public class Subjects {
 
 
     @Id

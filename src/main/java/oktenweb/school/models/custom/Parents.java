@@ -3,24 +3,22 @@ package oktenweb.school.models.custom;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import oktenweb.school.models.User;
-import oktenweb.school.service.ParentService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Parents implements ParentService {
+public class Parents {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String Name;
-    private String Surname;
-    private String Email;
-    private String Phone;
-    private String Adress;
+    private String name;
+    private String surname;
+    private String email;
+    private String phone;
+    private String adress;
     private String gender;
     private String birthday;
 
@@ -85,58 +83,56 @@ public class Parents implements ParentService {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        name = name;
     }
 
     public String getSurname() {
-        return Surname;
+        return surname;
     }
 
     public void setSurname(String surname) {
-        Surname = surname;
+        surname = surname;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        email = email;
     }
 
     public String getPhone() {
-        return Phone;
+        return phone;
     }
 
     public void setPhone(String phone) {
-        Phone = phone;
+        phone = phone;
     }
 
     public String getAdress() {
-        return Adress;
+        return adress;
     }
 
     public void setAdress(String adress) {
-        Adress = adress;
+        adress = adress;
     }
 
     @Override
     public String toString() {
         return "Parents{" +
                 "id=" + id +
-                ", Name='" + Name + '\'' +
-                ", Surname='" + Surname + '\'' +
-                ", Email='" + Email + '\'' +
-                ", Phone='" + Phone + '\'' +
-                ", Adress='" + Adress + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", adress='" + adress + '\'' +
                 ", gender='" + gender + '\'' +
                 ", birthday='" + birthday + '\'' +
-                ", user=" + user +
-                ", students=" + students +
                 '}';
     }
 }
