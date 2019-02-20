@@ -15,6 +15,14 @@ $(document).ready(function () {
         });
     });
 
+    $(function () {
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+        $(document).ajaxSend(function(e, xhr, options) {
+            xhr.setRequestHeader(header, token);
+        });
+    });
+
 
     $('#elementsOne').change(function (e) {
         // e.preventDefault();
@@ -24,42 +32,42 @@ $(document).ready(function () {
         let labels = document.getElementById("labelOne");
         // labels.innerText = "Виберіть список класних керівників";
         let elementsTwo = document.getElementById('elementsTwo');
-        if(name==="classteachers"){
+        if (name === "classteachers") {
             // let elementsTwo = document.getElementById('elementsTwo');
             console.log(elementsTwo);
-            elementsTwo.innerHTML = '<option>------</option>'+
-                '<option  value="subjects">Предмети</option>'+
-                '<option  value="classes">Класи</option>'+
+            elementsTwo.innerHTML = '<option>------</option>' +
+                '<option  value="subjects">Предмети</option>' +
+                '<option  value="classes">Класи</option>' +
                 '<option  value="students">Студенти</option>';
 
-        }else if(name==="parents") {
-            elementsTwo.innerHTML = '<option>------</option>'+
+        } else if (name === "parents") {
+            elementsTwo.innerHTML = '<option>------</option>' +
                 '<option  value="students">Студенти</option>';
-        }else if(name==="deputy"){
-            elementsTwo.innerHTML = '<option>------</option>'+
+        } else if (name === "deputy") {
+            elementsTwo.innerHTML = '<option>------</option>' +
                 '<option value="subjects">Предмети</option>';
-        }else if(name==="students") {
+        } else if (name === "students") {
             // let elementsTwo = document.getElementById('elementsTwo');
             console.log(elementsTwo);
-            elementsTwo.innerHTML = '<option>------</option>'+
+            elementsTwo.innerHTML = '<option>------</option>' +
                 '<option value="parents">Батьки</option>' +
                 '<option value="classes">Класи</option>' +
                 '<option value="classteachers">Класний керівник</option>';
-        }else if(name==="subjects") {
+        } else if (name === "subjects") {
             console.log(elementsTwo);
-            elementsTwo.innerHTML = '<option>------</option>'+
+            elementsTwo.innerHTML = '<option>------</option>' +
                 '<option value="teachers">Викладачі</option>' +
                 '<option value="classes">Класи</option>' +
                 '<option value="deputy">Зауч</option>';
-        }else if(name==="classes") {
-            elementsTwo.innerHTML = '<option>------</option>'+
-                '<option value="subjects">Предмети</option>'+
-                '<option value="students">Студенти</option>'+
+        } else if (name === "classes") {
+            elementsTwo.innerHTML = '<option>------</option>' +
+                '<option value="subjects">Предмети</option>' +
+                '<option value="students">Студенти</option>' +
                 '<option value="classteachers">Класний керівник</option>';
-        }else if(name==="teachers"){
-            elementsTwo.innerHTML = '<option>------</option>'+
+        } else if (name === "teachers") {
+            elementsTwo.innerHTML = '<option>------</option>' +
                 '<option value="subjects">Предмети</option>';
-        }else {
+        } else {
             elementsTwo.innerHTML = '<option>-------</option>';
             $('#elementsTwo').change();
         }
@@ -68,20 +76,18 @@ $(document).ready(function () {
         $.ajax({
             type: "GET",
             url: url_page,
-            data:{'name': name},
+            data: {'name': name},
             success: function (data) {
                 let labels = document.getElementById("label");
                 // console.log(data);
                 $(labels).innerText = "Виберіть список класних керівників";
-               let elements = document.getElementById('listElementsOne');
+                let elements = document.getElementById('listElementsOne');
                 $(elements).empty();
-                for(let i=0;i<data.length; i++){
-                    $(elements).append('<option value = ' + data[i].name + '>' + data[i].name + '</option>' );
+                for (let i = 0; i < data.length; i++) {
+                    $(elements).append('<option value = ' + data[i].name + '>' + data[i].name + '</option>');
 
 
                 }
-
-
 
 
             },
@@ -104,15 +110,15 @@ $(document).ready(function () {
         $.ajax({
             type: "GET",
             url: url_page,
-            data:{'name': name},
+            data: {'name': name},
             success: function (data) {
                 let labels = document.getElementById("label");
                 // console.log($(this).val());
                 $(labels).innerText = "Виберіть список класних керівників";
                 let elements = document.getElementById('listElementsTwo');
                 $(elements).empty();
-                for(let i=0;i<data.length; i++){
-                    $(elements).append('<option value = ' + data[i].name + '>' + data[i].name + '</option>' );
+                for (let i = 0; i < data.length; i++) {
+                    $(elements).append('<option value = ' + data[i].name + '>' + data[i].name + '</option>');
                 }
 
 
@@ -125,7 +131,8 @@ $(document).ready(function () {
     });
 
 
-    
+
+
     $("#btnSaveElements").click(function () {
         let elementsOne = $("select[id='elementsOne']").val();
         let elementsTwo = $("select[id='elementsTwo']").val();
@@ -133,54 +140,51 @@ $(document).ready(function () {
         // let listElementsTwo = $("select[id='listElementsTwo']").val();
 
         // let elementsOne = document.getElementById("elementsOne");
-       let listElementsOne = document.getElementById("listElementsOne");
-       // let elementsTwo = document.getElementById("elementsTwo");
-       let listElementsTwo = document.getElementById("listElementsTwo");
+        let listElementsOne = document.getElementById("listElementsOne");
+        // let elementsTwo = document.getElementById("elementsTwo");
+        let listElementsTwo = document.getElementById("listElementsTwo");
 
 
         let stringlistElementsOne = [];
         let stringlistElementsTwo = [];
 
 
-
         for (let i = 0; i < listElementsOne.options.length; i++) {
-            if(listElementsOne.options[i].selected === true) {
+            if (listElementsOne.options[i].selected === true) {
                 stringlistElementsOne[i] = listElementsOne.options[i].value;
             }
         }
 
 
-
-
         for (let i = 0; i < listElementsTwo.options.length; i++) {
-            if(listElementsTwo.options[i].selected === true) {
+            if (listElementsTwo.options[i].selected === true) {
                 stringlistElementsTwo[i] = listElementsTwo.options[i].value;
             }
         }
 //вибір елементів
         let arrElements = [
-            {elementsOne: elementsOne},
-            {elementsTwo: elementsTwo},
-            {stringelementsOne: stringlistElementsOne},
-            {stringelementsTwo: stringlistElementsTwo}
+            {"elementsOne": elementsOne},
+            {"elementsTwo": elementsTwo},
+            {"stringelementsOne": stringlistElementsOne},
+            {"stringelementsTwo": stringlistElementsTwo}
         ];
 
         console.log(arrElements);
 
         $.ajax({
-            type: "GET",
-            url: `/saveElements`,
-            data: JSON.stringify(arrElements),
+            type: "POST",
+            url: "/saveElements",
+            data: {elementsOne, elementsTwo, stringlistElementsOne, stringlistElementsTwo},
             success: function (data) {
                 console.log(data);
             },
             error: function (e) {
+
                 alert("ERROR: ", e);
                 console.log("ERROR: ", e);
             }
 
         });
-
 
 
     })

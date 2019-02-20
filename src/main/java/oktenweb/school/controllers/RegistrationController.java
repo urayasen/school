@@ -6,7 +6,6 @@ import oktenweb.school.models.functional.Subjects;
 import oktenweb.school.models.User;
 import oktenweb.school.models.custom.*;
 import oktenweb.school.models.functional.ListSubjects;
-import oktenweb.school.service.ParentService;
 import oktenweb.school.service.UserService;
 import oktenweb.school.service.customService.*;
 import oktenweb.school.service.functionalService.ClassesService;
@@ -224,7 +223,7 @@ public class RegistrationController {
     List<Object> regAddElementsByName(@PathVariable String name) {
         List<Object> parentElements = new ArrayList<>();
         if (name.equals("classteachers")) {
-            System.out.println("classteachers");
+
             List<Classteachers> classteachers = classteachersService.findAll();
             Iterator<Classteachers> iterator = classteachers.iterator();
             while (iterator.hasNext()) {
@@ -234,58 +233,52 @@ public class RegistrationController {
 
 
         } else if (name.equals("teachers")) {
-            System.out.println("teachers");
+
             List<Teachers> teachers = teachersService.findAll();
             Iterator<Teachers> iterator = teachers.iterator();
             while (iterator.hasNext()) {
-                Teachers oneTeacher = iterator.next();
-                ParentService oneParentElement = oneTeacher;
+                Teachers oneParentElement = iterator.next();
                 parentElements.add(oneParentElement);
             }
         } else if (name.equals("classes")) {
-            System.out.println("classes");
+
             List<Classes> classes = classesService.findAll();
             Iterator<Classes> iterator = classes.iterator();
             while (iterator.hasNext()) {
-                Classes oneClass = iterator.next();
-                ParentService oneParentElement = oneClass;
+                Classes oneParentElement = iterator.next();
                 parentElements.add(oneParentElement);
             }
 
         } else if (name.equals("deputy")) {
-            System.out.println("deputy");
+
             List<Deputy> deputy = deputyService.findAll();
             Iterator<Deputy> iterator = deputy.iterator();
             while (iterator.hasNext()) {
-                Deputy oneDeputy = iterator.next();
-                ParentService oneParentElement = oneDeputy;
+                Deputy oneParentElement = iterator.next();
                 parentElements.add(oneParentElement);
             }
         } else if (name.equals("parents")) {
-            System.out.println("parents");
+
             List<Parents> parents = parentsService.findAll();
             Iterator<Parents> iterator = parents.iterator();
             while (iterator.hasNext()) {
-                Parents oneParent = iterator.next();
-                ParentService oneParentElement = oneParent;
+                Parents oneParentElement = iterator.next();
                 parentElements.add(oneParentElement);
             }
         } else if (name.equals("students")) {
-            System.out.println("students");
+
             List<Students> students = studentsService.findAll();
             Iterator<Students> iterator = students.iterator();
             while (iterator.hasNext()) {
-                Students oneStudent = iterator.next();
-                ParentService oneParentElement = oneStudent;
+                Students oneParentElement = iterator.next();
                 parentElements.add(oneParentElement);
             }
         } else if (name.equals("subjects")) {
-            System.out.println("subjects");
+
             List<Subjects> subjects = subjectsService.findAll();
             Iterator<Subjects> iterator = subjects.iterator();
             while (iterator.hasNext()) {
-                Subjects oneSubject = iterator.next();
-                ParentService oneParentElement = oneSubject;
+                Subjects oneParentElement = iterator.next();
                 parentElements.add(oneParentElement);
             }
         }
@@ -294,12 +287,56 @@ public class RegistrationController {
 
     }
 
-    @GetMapping("/saveElements")
-    public void saveElements(@RequestBody String body) {
-        System.out.println(body);
+    @PostMapping("/saveElements")
+    public @ResponseBody
+    String saveElements(@RequestBody String arrElements) {
+        System.out.println(arrElements);
+
+        String arrElementsNew = arrElements.replaceAll("&", " ");
+        System.out.println(arrElementsNew);
+        String stringElementsNew = arrElementsNew.replaceAll("%5B%5D", "");
+        System.out.println(stringElementsNew);
+        String[] arrayStringElements = stringElementsNew.split(" ");
+        if (arrayStringElements[0].equals("elementsOne=parents") || (arrayStringElements[1].equals("elementsTwo=students"))) {
 
 
+            List<String> arraySingleElements = new ArrayList<>();
+            String s;
+            for (int i = 2; i < arrayStringElements.length; i++) {
+                if (arrayStringElements[i].contains("stringlistElementsOne=") ) {
+                    s = arrayStringElements[i].replaceAll("stringlistElementsOne=", "");
+                    if (!s.equals("")) {
+                        arraySingleElements.add(s);
+                    }
+                } else {
+                    s = arrayStringElements[i].replaceAll("stringlistElementsTwo=", "");
+                    if (!s.equals("")){
+                        arraySingleElements.add(s);
+                    }
+                }
+            }
+
+
+            Parents parents = null;
+            Students students = null;
+
+            for (int i = 0; i < arraySingleElements.size(); i++) {
+                if (i == 0) {
+                    parents = parentsService.byName(arraySingleElements.get(i));
+                    System.out.println(parents);
+                } else {
+                    students = studentsService.byName(arraySingleElements.get(i));
+                    System.out.println(students);
+                    students.setParents(parents);
+                    studentsService.save(students);
+                }
+            }
+
+
+
+
+        }
+
+        return "fgsfgdfgdf";
     }
-
-
 }

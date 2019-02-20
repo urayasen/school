@@ -4,18 +4,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import oktenweb.school.models.User;
 import oktenweb.school.models.functional.ClassJournal;
 import oktenweb.school.models.functional.Classes;
-import oktenweb.school.service.ParentService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
 
 @Entity
-public class Students implements ParentService {
+public class Students {
 //ghxghxfghgh
 
     /*--------------------------------------------------------------------------------------------------*/
@@ -186,11 +182,6 @@ public class Students implements ParentService {
                 ", adress='" + adress + '\'' +
                 ", gender='" + gender + '\'' +
                 ", birthday='" + birthday + '\'' +
-                ", user=" + user +
-                ", classJournals=" + classJournals +
-                ", parents=" + parents +
-                ", classes=" + classes +
-                ", classteachers=" + classteachers +
                 '}';
     }
 }
