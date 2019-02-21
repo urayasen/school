@@ -1,6 +1,7 @@
 package oktenweb.school.dao.functionalDAO;
 
 import oktenweb.school.models.User;
+import oktenweb.school.models.custom.Classteachers;
 import oktenweb.school.models.functional.Classes;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -25,5 +26,8 @@ public interface ClassesDAO extends JpaRepository<Classes, Integer> {
 
     @Query("select max(c.id) from Classes c" )
     Integer maxById();
+
+    @Query("select c from Classes c where c.name = :xxx")
+    Classes byName(@Param("xxx") String name);
 
 }

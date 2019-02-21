@@ -101,7 +101,6 @@ public class Classes {
     }
 
 
-
     @Override
     public String toString() {
         return "Classes{" +
@@ -109,7 +108,6 @@ public class Classes {
                 ", name='" + name + '\'' +
                 ", subjects=" + subjects +
                 ", students=" + students +
-                ", classteachers=" + classteachers +
                 '}';
     }
 }
