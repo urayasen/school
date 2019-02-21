@@ -100,6 +100,7 @@ public class Classes {
         this.name = name;
     }
 
+
     @Override
     public String toString() {
         return "Classes{" +
@@ -107,7 +108,6 @@ public class Classes {
                 ", name='" + name + '\'' +
                 ", subjects=" + subjects +
                 ", students=" + students +
-                ", classteachers=" + classteachers +
                 '}';
     }
 }

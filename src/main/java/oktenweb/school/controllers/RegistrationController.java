@@ -333,7 +333,25 @@ public class RegistrationController {
                 }
             }
 
+            }else if (arrayStringElements[0].equals("elementsOne=classteachers") || (arrayStringElements[1].equals("elementsTwo=classes"))) {
+                Classteachers classteachers = null;
+                Classes classes = null;
+
+            for (int i = 0; i < arraySingleElements.size(); i++) {
+                if (i == 0) {
+                    classteachers = classteachersService.byName(arraySingleElements.get(i));
+                    System.out.println(classteachers);
+                } else {
+                    classes = classesService.byName(arraySingleElements.get(i));
+                    System.out.println(classes);
+                    classes.setClassteachers(classteachers);
+                    classesService.save(classes);
+                }
             }
+
+        }
+
+
 
         return "fgsfgdfgdf";
     }
