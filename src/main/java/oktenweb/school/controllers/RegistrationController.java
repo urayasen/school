@@ -298,7 +298,7 @@ public class RegistrationController {
         String stringElementsNew = arrElementsNew.replaceAll("%5B%5D", "");
         System.out.println(stringElementsNew);
         String[] arrayStringElements = stringElementsNew.split(" ");
-        if (arrayStringElements[0].equals("elementsOne=parents") || (arrayStringElements[1].equals("elementsTwo=students"))) {
+//        if (arrayStringElements[0].equals("elementsOne=parents") || (arrayStringElements[1].equals("elementsTwo=students"))) {
 
 
             List<String> arraySingleElements = new ArrayList<>();
@@ -317,9 +317,9 @@ public class RegistrationController {
                 }
             }
 
-
-            Parents parents = null;
-            Students students = null;
+            if (arrayStringElements[0].equals("elementsOne=parents") || (arrayStringElements[1].equals("elementsTwo=students"))) {
+                Parents parents = null;
+                Students students = null;
 
             for (int i = 0; i < arraySingleElements.size(); i++) {
                 if (i == 0) {
@@ -333,10 +333,7 @@ public class RegistrationController {
                 }
             }
 
-
-
-
-        }
+            }
 
         return "fgsfgdfgdf";
     }
