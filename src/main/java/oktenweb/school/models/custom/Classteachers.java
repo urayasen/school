@@ -23,7 +23,7 @@ public class Classteachers {
     private String Adress;
     private String gender;
     private String birthday;
-
+//fgsgfgg
     @JsonIgnore
     @OneToOne(
             fetch = FetchType.LAZY,
