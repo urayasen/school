@@ -2,15 +2,33 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>CSS3 design form</title>
+    <link rel="stylesheet" th:href="@{css/login_css.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{css/font-awesome.css}" type="text/css">
 </head>
-<body>
+<body >
 
-You succes login
-    <form th:action="@{/login}" method="post">
-        <input type="" name="username" placeholder="username">
-        <input type="password" name="password" placeholder="password">
-        <input type="submit" value="go!">
+
+    <form th:action="@{/login}" method="post" >
+
+        <div class="container">
+            <img th:src="@{/img/registration/men.png}">
+            <form>
+                <div class="dws-input">
+                    <input type="text" name="username" placeholder="Логін">
+                </div>
+                <div class="dws-input">
+                    <input type="password" name="password" placeholder="Пароль">
+                </div>
+                <input class="dws-submit" type="submit" name="submit" value="Вхід"><br />
+                <a href="#">Забули пароль?</a>
+            </form>
+
+        </div>
+
     </form>
+
 </body>
 </html>
+
+
