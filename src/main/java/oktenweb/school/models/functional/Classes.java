@@ -106,8 +106,6 @@ public class Classes {
         return "Classes{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", subjects=" + subjects +
-                ", students=" + students +
                 '}';
     }
 }

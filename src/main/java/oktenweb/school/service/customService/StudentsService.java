@@ -9,5 +9,5 @@ public interface StudentsService {
 
     List<Students> findAll();
 
-    Students byName(String name);
+    Students byId(Integer id);
 }

@@ -50,8 +50,8 @@ public class SubjectsServiceImpl implements SubjectsService {
 //    }
 
 @Override
-    public Subjects byIdSub(Integer id){
-        return subjectsDAO.byIdSub(id);
+    public Subjects byId(Integer id){
+        return subjectsDAO.byId(id);
 }
 
 }

@@ -11,5 +11,5 @@ public interface ClassteachersService {
 
     List<Classteachers> findAll();
 
-    Classteachers byName(String name);
+    Classteachers byId(Integer id);
 }

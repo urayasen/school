@@ -26,7 +26,7 @@ public class StudentsServiceImpl implements StudentsService{
     }
 
     @Override
-    public Students byName(String name) {
-        return studentsDAO.byName(name);
+    public Students byId(Integer id) {
+        return studentsDAO.byId(id);
     }
 }

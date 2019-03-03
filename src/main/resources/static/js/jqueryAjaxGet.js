@@ -84,7 +84,7 @@ $(document).ready(function () {
                 let elements = document.getElementById('listElementsOne');
                 $(elements).empty();
                 for (let i = 0; i < data.length; i++) {
-                    $(elements).append('<option value = ' + data[i].name + '>' + data[i].name + '</option>');
+                    $(elements).append('<option value = ' + data[i].id + '>' + data[i].name + '</option>');
 
 
                 }
@@ -118,7 +118,7 @@ $(document).ready(function () {
                 let elements = document.getElementById('listElementsTwo');
                 $(elements).empty();
                 for (let i = 0; i < data.length; i++) {
-                    $(elements).append('<option value = ' + data[i].name + '>' + data[i].name + '</option>');
+                    $(elements).append('<option value = ' + data[i].id + '>' + data[i].name + '</option>');
                 }
 
 

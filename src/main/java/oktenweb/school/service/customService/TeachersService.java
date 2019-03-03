@@ -8,4 +8,6 @@ public interface TeachersService {
     void save(Teachers teachers);
 
     List<Teachers> findAll();
+
+    Teachers byId(Integer id);
 }

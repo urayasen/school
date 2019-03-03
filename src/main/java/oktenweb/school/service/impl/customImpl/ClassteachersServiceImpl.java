@@ -25,7 +25,7 @@ public class ClassteachersServiceImpl implements ClassteachersService{
     }
 
     @Override
-    public Classteachers byName(String name) {
-        return classteachersDAO.byName(name);
+    public Classteachers byId(Integer id) {
+        return classteachersDAO.byId(id);
     }
 }
