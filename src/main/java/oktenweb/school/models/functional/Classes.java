@@ -47,7 +47,8 @@ public class Classes {
     @JsonIgnore
     @OneToMany (
             fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL
+            cascade = CascadeType.ALL,
+            mappedBy = "classes"
     )
     private List<Students> students = new ArrayList<>();
 

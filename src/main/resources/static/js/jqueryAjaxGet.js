@@ -62,8 +62,8 @@ $(document).ready(function () {
         } else if (name === "classes") {
             elementsTwo.innerHTML = '<option>------</option>' +
                 '<option value="subjects">Предмети</option>' +
-                '<option value="students">Студенти</option>' +
-                '<option value="classteachers">Класний керівник</option>';
+                '<option value="students">Студенти</option>';
+                // '<option value="classteachers">Класний керівник</option>';
         } else if (name === "teachers") {
             elementsTwo.innerHTML = '<option>------</option>' +
                 '<option value="subjects">Предмети</option>';
