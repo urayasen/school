@@ -37,8 +37,12 @@ public class Classes {
     @JsonIgnore
     @ManyToMany(
             fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL,
-            mappedBy = "classes"
+            cascade = CascadeType.MERGE
+    )
+    @JoinTable(
+            name = "Classes_Subjects",
+            joinColumns = { @JoinColumn(name = "classes_id") },
+            inverseJoinColumns = { @JoinColumn(name = "subjects_id") }
     )
     private List<Subjects> subjects = new ArrayList<>();
 
