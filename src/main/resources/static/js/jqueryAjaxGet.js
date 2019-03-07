@@ -73,6 +73,7 @@ $(document).ready(function () {
         }
 
 
+
         $.ajax({
             type: "GET",
             url: url_page,
@@ -102,10 +103,24 @@ $(document).ready(function () {
     $('#elementsTwo').change(function (e) {
         // e.preventDefault();
         let name = $(this).val();
-        console.dir(name);
+        console.log(name);
         let url_page = "/regAddElements/" + name;
-        let labels = document.getElementById("labelOne");
+        let elementsOne = document.getElementById("elementsOne");
+        let elementsTwo = document.getElementById("elementsTwo");
+        let listElementsTwo = document.getElementById("listElementsTwo");
+        let nameelementsOne =  elementsOne.value;
+        console.log(nameelementsOne);
         // labels.innerText = "Виберіть список класних керівників";
+        if(nameelementsOne ==="classteachers" && name==="classes") {
+            listElementsTwo.outerHTML='<select id="listElementsTwo">' +
+                '</select>';
+            console.log("multiple=false");
+        }
+        else {
+            listElementsTwo.outerHTML='<select id="listElementsTwo" multiple="multiple">' +
+                '</select>';
+            console.log("multiple=true");
+        }
 
         $.ajax({
             type: "GET",
