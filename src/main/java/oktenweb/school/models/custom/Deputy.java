@@ -22,8 +22,16 @@ public class Deputy {
     private String adress;
     private String gender;
     private String birthday;
+    transient private String loginname;
 
 
+    public String getLoginname() {
+        return user.getUsername();
+    }
+
+    public void setLoginname() {
+        this.loginname = user.getUsername();
+    }
 
     @JsonIgnore
     @OneToOne(
@@ -156,6 +164,7 @@ public class Deputy {
                 ", adress='" + adress + '\'' +
                 ", gender='" + gender + '\'' +
                 ", birthday='" + birthday + '\'' +
+                ", loginname='" + loginname + '\'' +
                 '}';
     }
 }

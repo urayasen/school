@@ -210,7 +210,7 @@ public class RegistrationController {
         elements.put("Класи", "classes");
         elements.put("Зауч", "deputy");
         elements.put("Батьки", "parents");
-        elements.put("Студенти", "students");
+//        elements.put("Студенти", "students");
         elements.put("Викладачі", "teachers");
 //        elements.put("Класний журнал", "class_journal");
         elements.put("Предмети", "subjects");
