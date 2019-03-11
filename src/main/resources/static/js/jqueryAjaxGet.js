@@ -114,12 +114,9 @@ $(document).ready(function () {
         if(nameelementsOne ==="classteachers" && name==="classes") {
             listElementsTwo.outerHTML='<select id="listElementsTwo">' +
                 '</select>';
-            console.log("multiple=false");
-        }
-        else {
+        }else{
             listElementsTwo.outerHTML='<select id="listElementsTwo" multiple="multiple">' +
                 '</select>';
-            console.log("multiple=true");
         }
 
         $.ajax({
