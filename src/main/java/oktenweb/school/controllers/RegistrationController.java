@@ -1,5 +1,6 @@
 package oktenweb.school.controllers;
 
+import oktenweb.school.dao.functionalDAO.ClassesDAO;
 import oktenweb.school.models.Role;
 import oktenweb.school.models.functional.Classes;
 import oktenweb.school.models.functional.Subjects;
@@ -556,6 +557,7 @@ public class RegistrationController {
         return "fgsfgdfgdf";
     }
 
+
     @GetMapping("/SelectElements")
     public String selectSubjects(Model model){
         List<Classes> classes = classesService.findAll();
@@ -637,4 +639,34 @@ public class RegistrationController {
 
         return "marks";
     }
+
+
+    @GetMapping ("/schedule")
+    public String schedule (Model model){
+        List<Classes> classes = classesService.findAll();
+        model.addAttribute("classes" , classes);
+        return "schedule";
+    }
+
+    @GetMapping ("/saveSchedule")
+    public String saveSchedule(@RequestParam("classes") int classes_id,
+            Model model){
+
+        List<Classes> classes = classesService.findAll();
+        model.addAttribute("classes" , classes);
+
+        Classes classed = classesService.byId(classes_id);
+
+        System.out.println(classed);
+
+        List<Subjects> subjectsList = classed.getSubjects();
+
+        model.addAttribute("subjects", subjectsList);
+
+
+        return "schedule";
+    }
+
+
+
 }

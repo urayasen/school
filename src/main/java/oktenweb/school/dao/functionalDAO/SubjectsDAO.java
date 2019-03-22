@@ -26,4 +26,6 @@ public interface SubjectsDAO extends JpaRepository<Subjects, Integer> {
     Integer maxByIdSub();
 
 
+
+
 }
