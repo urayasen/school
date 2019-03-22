@@ -71,13 +71,13 @@ public class Classteachers {
 
 
 
-    @JsonIgnore
-    @OneToMany(
-            fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL,
-            mappedBy = "classteachers"
-    )
-    private List<ClassJournal> classJournals = new ArrayList<>();
+//    @JsonIgnore
+//    @OneToMany(
+//            fetch = FetchType.LAZY,
+//            cascade = CascadeType.ALL,
+//            mappedBy = "classteachers"
+//    )
+//    private List<ClassJournal> classJournals = new ArrayList<>();
 
 
 
@@ -106,13 +106,13 @@ public class Classteachers {
         this.students = students;
     }
 
-    public List<ClassJournal> getClassJournals() {
-        return classJournals;
-    }
+//    public List<ClassJournal> getClassJournals() {
+//        return classJournals;
+//    }
 
-    public void setClassJournals(List<ClassJournal> classJournals) {
-        this.classJournals = classJournals;
-    }
+//    public void setClassJournals(List<ClassJournal> classJournals) {
+//        this.classJournals = classJournals;
+//    }
 
     public User getUser() {
         return user;

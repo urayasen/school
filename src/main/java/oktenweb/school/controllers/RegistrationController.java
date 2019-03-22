@@ -8,6 +8,7 @@ import oktenweb.school.models.custom.*;
 import oktenweb.school.models.functional.ListSubjects;
 import oktenweb.school.service.UserService;
 import oktenweb.school.service.customService.*;
+import oktenweb.school.service.functionalService.ClassJournalService;
 import oktenweb.school.service.functionalService.ClassesService;
 import oktenweb.school.service.functionalService.SubjectsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,9 @@ public class RegistrationController {
 
     @Autowired
     ClassesService classesService;
+
+//    @Autowired
+//    ClassJournalService classJournalService;
 
 
     @PostMapping("/saveUser")
@@ -550,5 +554,87 @@ public class RegistrationController {
 
 
         return "fgsfgdfgdf";
+    }
+
+    @GetMapping("/SelectElements")
+    public String selectSubjects(Model model){
+        List<Classes> classes = classesService.findAll();
+        model.addAttribute("classes", classes);
+
+        List<Subjects> subjects = subjectsService.findAll();
+        model.addAttribute("subjects", subjects);
+
+        List<String> months = new ArrayList<>();
+        months.add("Січень");
+        months.add("Лютий");
+        months.add("Березень");
+        months.add("Квітень");
+        months.add("Травень");
+        months.add("Червень");
+        months.add("Липень");
+        months.add("Серпень");
+        months.add("Вересень");
+        months.add("Жовтень");
+        months.add("Листопад");
+        months.add("Грудень");
+
+        model.addAttribute("months", months);
+        return "marks";
+
+
+    }
+
+    @GetMapping("/buttonSelectElements")
+    public String btnSelectElements(@RequestParam("classes") int classes_id,
+                                    @RequestParam("subjects") int subject_id,
+                                    @RequestParam("months") String month_name,
+                                    Model model){
+
+        System.out.println("classes_id = " + classes_id);
+        System.out.println("subject_id = " + subject_id);
+        System.out.println("month_name = " + month_name);
+
+
+        List<Classes> classes = classesService.findAll();
+        model.addAttribute("classes", classes);
+
+        List<Subjects> subjects = subjectsService.findAll();
+        model.addAttribute("subjects", subjects);
+
+        List<String> months = new ArrayList<>();
+        months.add("Січень");
+        months.add("Лютий");
+        months.add("Березень");
+        months.add("Квітень");
+        months.add("Травень");
+        months.add("Червень");
+        months.add("Липень");
+        months.add("Серпень");
+        months.add("Вересень");
+        months.add("Жовтень");
+        months.add("Листопад");
+        months.add("Грудень");
+
+        model.addAttribute("months", months);
+
+
+        model.addAttribute("classed", classesService.byId(classes_id).getName());
+        model.addAttribute("subjected", subjectsService.byId(subject_id).getName());
+        model.addAttribute("monthed", month_name);
+
+
+
+        List<Students> studentsList = studentsService.byClassId(classes_id);
+
+       model.addAttribute("students", studentsList);
+       List<Integer> dates = new ArrayList<>();
+       dates.add(2);
+       dates.add(3);
+       dates.add(5);
+       dates.add(7);
+
+       model.addAttribute("dates", dates);
+
+        return "marks";
     }
 }

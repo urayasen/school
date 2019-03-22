@@ -161,6 +161,7 @@ $(document).ready(function () {
         // let elementsTwo = document.getElementById("elementsTwo");
         let listElementsTwo = document.getElementById("listElementsTwo");
 
+        console.log(listElementsOne);
 
         let stringlistElementsOne = [];
         let stringlistElementsTwo = [];
@@ -171,6 +172,7 @@ $(document).ready(function () {
                 stringlistElementsOne[i] = listElementsOne.options[i].value;
             }
         }
+
 
 
         for (let i = 0; i < listElementsTwo.options.length; i++) {
