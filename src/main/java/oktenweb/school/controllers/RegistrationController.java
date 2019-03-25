@@ -667,6 +667,19 @@ public class RegistrationController {
         return "schedule";
     }
 
+    @GetMapping("/changeSubjects/{id}")
+    public String changeSubjects (@PathVariable/*("id")*/ int id,
+                                  Model model){
 
+
+        System.out.println("id=" + id);
+        Subjects subjects = subjectsService.byId(id);
+        System.out.println(subjects);
+
+        Teachers teachers = subjects.getTeachers();
+        System.out.println(teachers.getName());
+        model.addAttribute("teacher", teachers.getName());
+        return "schedule";
+    }
 
 }

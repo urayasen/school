@@ -10,6 +10,10 @@
 </head>
 <body>
 
+
+<p>Вчитель - [[${teachers}]]</p>
+<p>Вчитель</p>
+
 <div class="flex-container">
     <!--    <h1>Dynamically Add and Remove rows in a Table Using jquery</h1>-->
     <!--    <form enctype="multipart/form-data">-->
@@ -31,7 +35,7 @@
     <button th:formaction="@{/saveSchedule}">Select</button>
 </form>
 
-    <form class="flex-item">
+    <form class="cols">
         <table class="table table-bordered " id="tbl_posts" style="width: 350px;" >
             <div class="head" style="display:block; position:relative; background-color:#d24a43;">Понеділок</div>
             <thead>
@@ -45,14 +49,14 @@
             <tbody id="tbl_posts_body">
             <tr id="rec-1">
                 <td><span class="sn">1</span>.</td>
-                <td><select name="subjects">
+                <td><select name="subjects" class="elementsOne">
                     <option th:each="subject : ${subjects}"
                     th:value="${subject.id}"
                             th:text="${subject.name}">
 
                     </option>
                 </select></td>
-                <td>02</td>
+                <td id="elementsOne"><p>[[${teacher}]]</p></td>
                 <td><a class="btn btn-xs delete-record" data-id="1"><i class="glyphicon glyphicon-trash"></i></a></td>
             </tr>
 
@@ -65,14 +69,14 @@
             <table id="sample_table">
                 <tr id="">
                     <td><span class="sn"></span>.</td>
-                    <td><select name="subjects">
+                    <td><select name="subjects" class="elementsOne">
                         <option th:each="subject : ${subjects}"
                                 th:value="${subject.id}"
                                 th:text="${subject.name}">
 
                         </option>
                     </select></td>
-                    <td>04</td>
+                    <td><p>[[${teacher}]]</p></td>
                     <td><a class="btn btn-xs delete-record" data-id="0"><i class="glyphicon glyphicon-trash"></i></a></td>
                 </tr>
             </table>
@@ -98,7 +102,7 @@
             <tbody id="tbl_posts_body2">
             <tr id="rec2-1">
                 <td><span class="sn2">1</span>.</td>
-                <td><select name="subjects">
+                <td><select name="subjects" class="elementsOne">
                     <option th:each="subject : ${subjects}"
                             th:value="${subject.id}"
                             th:text="${subject.name}">
@@ -121,7 +125,7 @@
             <table id="sample_table2">
                 <tr id="">
                     <td><span class="sn2"></span>.</td>
-                    <td><select name="subjects">
+                    <td><select name="subjects" class="elementsOne">
                         <option th:each="subject : ${subjects}"
                                 th:value="${subject.id}"
                                 th:text="${subject.name}">
@@ -155,7 +159,7 @@
             <tbody id="tbl_posts_body3">
             <tr id="rec3-1">
                 <td><span class="sn3">1</span>.</td>
-                <td><select name="subjects">
+                <td><select name="subjects" class="elementsOne">
                     <option th:each="subject : ${subjects}"
                             th:value="${subject.id}"
                             th:text="${subject.name}">
@@ -206,7 +210,7 @@
             <tbody id="tbl_posts_body4">
             <tr id="rec4-1">
                 <td><span class="sn4">1</span>.</td>
-                <td><select name="subjects">
+                <td><select name="subjects" class="elementsOne">
                     <option th:each="subject : ${subjects}"
                             th:value="${subject.id}"
                             th:text="${subject.name}">
@@ -226,7 +230,7 @@
             <table id="sample_table4">
                 <tr id="">
                     <td><span class="sn4"></span>.</td>
-                    <td><select name="subjects">
+                    <td><select name="subjects" class="elementsOne">
                         <option th:each="subject : ${subjects}"
                                 th:value="${subject.id}"
                                 th:text="${subject.name}">
@@ -259,7 +263,7 @@
             <tbody id="tbl_posts_body5">
             <tr id="rec5-1">
                 <td><span class="sn5">1</span>.</td>
-                <td><select name="subjects">
+                <td><select name="subjects" class="elementsOne">
                     <option th:each="subject : ${subjects}"
                             th:value="${subject.id}"
                             th:text="${subject.name}">
@@ -279,7 +283,7 @@
             <table id="sample_table5">
                 <tr id="">
                     <td><span class="sn5"></span>.</td>
-                    <td><select name="subjects">
+                    <td><select name="subjects" class="elementsOne">
                         <option th:each="subject : ${subjects}"
                                 th:value="${subject.id}"
                                 th:text="${subject.name}">
@@ -372,6 +376,30 @@
                 return true;
             } else {
                 return false;
+            }
+        });
+
+
+
+    });
+</script>
+
+
+<script>
+    $('.elementsOne').change(function (e) {
+        let id = $(this).val();
+        let url_page = "/changeSubjects/" + id;
+
+        $.ajax({
+            type: "GET",
+            url: url_page,
+            data: {'id': id},
+            success: function (data) {
+            alert(url_page)
+            },
+            error: function (e) {
+                alert(e)
+
             }
         });
     });
