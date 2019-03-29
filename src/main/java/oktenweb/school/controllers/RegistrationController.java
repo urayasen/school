@@ -50,8 +50,8 @@ public class RegistrationController {
     @Autowired
     ClassesService classesService;
 
-//    @Autowired
-//    ClassJournalService classJournalService;
+    @Autowired
+    ClassJournalService classJournalService;
 
 
     @PostMapping("/saveUser")
@@ -640,6 +640,18 @@ public class RegistrationController {
         return "marks";
     }
 
+    @GetMapping("/buttonSaveMarks")
+    public String buttonSaveMarks(@RequestParam("subjected") String subject,
+                                  @RequestParam("dates") String dates,
+                                  @RequestParam("marks") String marks,
+                                  @RequestParam("students") String students,
+                                  Model model){
+
+
+
+        return "marks";
+    }
+
 
     @GetMapping ("/schedule")
     public String schedule (Model model){
@@ -668,8 +680,8 @@ public class RegistrationController {
     }
 
     @GetMapping("/changeSubjects/{id}")
-    public String changeSubjects (@PathVariable/*("id")*/ int id,
-                                  Model model){
+    public @ResponseBody
+    Teachers changeSubjects (@PathVariable/*("id")*/ int id){
 
 
         System.out.println("id=" + id);
@@ -677,9 +689,9 @@ public class RegistrationController {
         System.out.println(subjects);
 
         Teachers teachers = subjects.getTeachers();
-        System.out.println(teachers.getName());
-        model.addAttribute("teacher", teachers.getName());
-        return "schedule";
+        System.out.println(teachers);
+//        model.addAttribute("teacher", teachers.getName());
+        return teachers;
     }
 
 }
