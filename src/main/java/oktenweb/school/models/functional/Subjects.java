@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import oktenweb.school.models.custom.Classteachers;
 import oktenweb.school.models.custom.Deputy;
 import oktenweb.school.models.custom.Teachers;
-import oktenweb.school.service.ParentService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -13,7 +11,7 @@ import java.util.List;
 
 
 @Entity
-public class Subjects implements ParentService {
+public class Subjects {
 
 
     @Id
@@ -38,7 +36,12 @@ public class Subjects implements ParentService {
     @JsonIgnore
     @ManyToMany(
             fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL
+            cascade = CascadeType.MERGE
+    )
+    @JoinTable(
+            name = "Classes_Subjects",
+            joinColumns = { @JoinColumn(name = "subjects_id") },
+            inverseJoinColumns = { @JoinColumn(name = "classes_id") }
     )
     private List<Classes> classes = new ArrayList<>();
 
@@ -136,16 +139,25 @@ public class Subjects implements ParentService {
         this.name = name;
     }
 
+//    @Override
+//    public String toString() {
+//        return "Subjects{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", classes=" + classes +
+//                ", teachers=" + teachers +
+//                ", deputy=" + deputy +
+//                ", classJournal=" + classJournal +
+//                ", classteachers=" + classteachers +
+//                '}';
+//    }
+
+
     @Override
     public String toString() {
         return "Subjects{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", classes=" + classes +
-                ", teachers=" + teachers +
-                ", deputy=" + deputy +
-                ", classJournal=" + classJournal +
-                ", classteachers=" + classteachers +
                 '}';
     }
 }

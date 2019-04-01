@@ -24,4 +24,9 @@ public class StudentsServiceImpl implements StudentsService{
     public List<Students> findAll() {
         return studentsDAO.findAll();
     }
+
+    @Override
+    public Students byId(Integer id) {
+        return studentsDAO.byId(id);
+    }
 }

@@ -1,6 +1,7 @@
 package oktenweb.school.service.impl.functionalImpl;
 
 import oktenweb.school.dao.functionalDAO.ClassesDAO;
+import oktenweb.school.models.custom.Classteachers;
 import oktenweb.school.models.functional.Classes;
 import oktenweb.school.service.functionalService.ClassesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +45,10 @@ public class ClassesServiceImpl implements ClassesService {
     @Override
     public Integer maxById() {
         return classesDAO.maxById();
+    }
+
+    @Override
+    public Classes byName(String name) {
+        return classesDAO.byName(name);
     }
 }

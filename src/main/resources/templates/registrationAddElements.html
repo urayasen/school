@@ -2,6 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
     <title>Chat</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
@@ -16,7 +18,7 @@
 
 </head>
 <body>
-
+<!--//вибір елементів-->
 <!--&lt;!&ndash;<form th:action="@{/saveAddElements}" method="GET">&ndash;&gt;-->
     <div class="row clearfix">
         <div class="col-lg-3 col-md-12">
@@ -37,7 +39,7 @@
                         </label><br/>
 
                         <label id="labelOne"> Виберіть список елементів:
-                            <select id="listElementsOne"  multiple="multiple">
+                            <select id="listElementsOne"  >
 
                             </select>
                         </label><br/>
@@ -53,18 +55,11 @@
                         </label><br/>
 
                         <label id="labelTwo"> Виберіть тільки один елемент:
-                            <select id="listElementsTwo" >
+                            <select id="listElementsTwo" multiple="multiple">
 
                             </select>
                         </label>
-
                        <button id="btnSaveElements">Зберегти елементи</button>
-
-
-
-
-
-
                     </div>
                 </div>
             </div>

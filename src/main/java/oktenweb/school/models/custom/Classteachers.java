@@ -5,27 +5,25 @@ import oktenweb.school.models.User;
 import oktenweb.school.models.functional.ClassJournal;
 import oktenweb.school.models.functional.Classes;
 import oktenweb.school.models.functional.Subjects;
-import oktenweb.school.service.ParentService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Classteachers implements ParentService {
+public class Classteachers {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String Name;
-    private String Surname;
-    private String Email;
-    private String Phone;
-    private String Adress;
+    private String name;
+    private String surname;
+    private String email;
+    private String phone;
+    private String adress;
     private String gender;
     private String birthday;
-
+//fgsgfgg
     @JsonIgnore
     @OneToOne(
             fetch = FetchType.LAZY,
@@ -127,6 +125,52 @@ public class Classteachers implements ParentService {
     }
 
 
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
     public String getBirthday() {
         return birthday;
     }
@@ -135,59 +179,15 @@ public class Classteachers implements ParentService {
         this.birthday = birthday;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
-    }
-
-    public String getSurname() {
-        return Surname;
-    }
-
-    public void setSurname(String surname) {
-        Surname = surname;
-    }
-
-    public String getEmail() {
-        return Email;
-    }
-
-    public void setEmail(String email) {
-        Email = email;
-    }
-
-    public String getPhone() {
-        return Phone;
-    }
-
-    public void setPhone(String phone) {
-        Phone = phone;
-    }
-
-    public String getAdress() {
-        return Adress;
-    }
-
-    public void setAdress(String adress) {
-        Adress = adress;
-    }
-
     @Override
     public String toString() {
         return "Classteachers{" +
                 "id=" + id +
-                ", Name='" + Name + '\'' +
-                ", Surname='" + Surname + '\'' +
-                ", Email='" + Email + '\'' +
-                ", Phone='" + Phone + '\'' +
-                ", Adress='" + Adress + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", adress='" + adress + '\'' +
                 ", gender='" + gender + '\'' +
                 ", birthday='" + birthday + '\'' +
                 '}';

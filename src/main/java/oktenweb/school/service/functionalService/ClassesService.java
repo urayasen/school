@@ -17,4 +17,6 @@ public interface ClassesService {
     Classes byId(Integer id);
 
     Integer maxById();
+
+    Classes byName(String name);
 }

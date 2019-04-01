@@ -4,24 +4,22 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import oktenweb.school.models.User;
 import oktenweb.school.models.functional.ClassJournal;
 import oktenweb.school.models.functional.Subjects;
-import oktenweb.school.service.ParentService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Teachers implements ParentService {
+public class Teachers {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String Name;
-    private String Surname;
-    private String Email;
-    private String Phone;
-    private String Adress;
+    private String name;
+    private String surname;
+    private String email;
+    private String phone;
+    private String adress;
     private String gender;
     private String birthday;
 
@@ -95,9 +93,7 @@ public class Teachers implements ParentService {
         this.id = id;
     }
 
-    public String getName() {
-        return Name;
-    }
+
 
 
     public String getBirthday() {
@@ -108,56 +104,58 @@ public class Teachers implements ParentService {
         this.birthday = birthday;
     }
 
+
+    public String getName() {
+        return name;
+    }
+
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getSurname() {
-        return Surname;
+        return surname;
     }
 
     public void setSurname(String surname) {
-        Surname = surname;
+        this.surname = surname;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getPhone() {
-        return Phone;
+        return phone;
     }
 
     public void setPhone(String phone) {
-        Phone = phone;
+        this.phone = phone;
     }
 
     public String getAdress() {
-        return Adress;
+        return adress;
     }
 
     public void setAdress(String adress) {
-        Adress = adress;
+        this.adress = adress;
     }
 
     @Override
     public String toString() {
         return "Teachers{" +
                 "id=" + id +
-                ", Name='" + Name + '\'' +
-                ", Surname='" + Surname + '\'' +
-                ", Email='" + Email + '\'' +
-                ", Phone='" + Phone + '\'' +
-                ", Adress='" + Adress + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", adress='" + adress + '\'' +
                 ", gender='" + gender + '\'' +
                 ", birthday='" + birthday + '\'' +
-                ", user=" + user +
-                ", subjects=" + subjects +
-                ", classJournals=" + classJournals +
                 '}';
     }
 }

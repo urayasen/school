@@ -6,7 +6,6 @@ import oktenweb.school.models.functional.Subjects;
 import oktenweb.school.models.User;
 import oktenweb.school.models.custom.*;
 import oktenweb.school.models.functional.ListSubjects;
-import oktenweb.school.service.ParentService;
 import oktenweb.school.service.UserService;
 import oktenweb.school.service.customService.*;
 import oktenweb.school.service.functionalService.ClassesService;
@@ -55,6 +54,7 @@ public class RegistrationController {
         System.out.println("user");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 //        int id = user.getId();
+        System.out.println(user);
         userService.save(user);
         User user1 = userService.byId(user.getId());
         int id = user1.getId();
@@ -106,6 +106,7 @@ public class RegistrationController {
         teachersService.save(teachers);
         return "redirect:/";
     }
+
     @GetMapping("/saveParents")
     public String saveParents(Parents parents, int id) {
         System.out.println("saveParents ---------   " + id);
@@ -114,6 +115,7 @@ public class RegistrationController {
         parentsService.save(parents);
         return "redirect:/";
     }
+
     @GetMapping("/saveClassteachers")
     public String saveClassteachers(Classteachers classteachers, int id) {
         System.out.println("saveClassteachers ---------   " + id);
@@ -123,7 +125,7 @@ public class RegistrationController {
         return "redirect:/";
     }
 
-    @PostMapping("/saveStudents")
+    @GetMapping("/saveStudents")
     public String registrationStudents(Students students, int id) {
         System.out.println("saveStudents ---------   " + id);
         User user = userService.byId(id);
@@ -175,7 +177,7 @@ public class RegistrationController {
         if (id == null) {
             classes = new Classes(name);
         } else {
-            classes = new Classes(id,name);
+            classes = new Classes(id, name);
         }
         classesService.save(classes);
 
@@ -216,70 +218,68 @@ public class RegistrationController {
         return "registrationAddElements";
     }
 
+    //вибір елементів
     @GetMapping("/regAddElements/{name}")
     public @ResponseBody
     List<Object> regAddElementsByName(@PathVariable String name) {
         List<Object> parentElements = new ArrayList<>();
         if (name.equals("classteachers")) {
-            System.out.println("classteachers");
+
             List<Classteachers> classteachers = classteachersService.findAll();
             Iterator<Classteachers> iterator = classteachers.iterator();
             while (iterator.hasNext()) {
                 Classteachers oneClassteacher = iterator.next();
                 parentElements.add(oneClassteacher);
             }
+
+
         } else if (name.equals("teachers")) {
-            System.out.println("teachers");
+
             List<Teachers> teachers = teachersService.findAll();
             Iterator<Teachers> iterator = teachers.iterator();
             while (iterator.hasNext()) {
-                Teachers oneTeacher = iterator.next();
-                ParentService oneParentElement = oneTeacher;
+                Teachers oneParentElement = iterator.next();
                 parentElements.add(oneParentElement);
             }
         } else if (name.equals("classes")) {
-            System.out.println("classes");
+
             List<Classes> classes = classesService.findAll();
             Iterator<Classes> iterator = classes.iterator();
             while (iterator.hasNext()) {
-                Classes oneClass = iterator.next();
-                ParentService oneParentElement = oneClass;
+                Classes oneParentElement = iterator.next();
                 parentElements.add(oneParentElement);
             }
+
         } else if (name.equals("deputy")) {
-            System.out.println("deputy");
+
             List<Deputy> deputy = deputyService.findAll();
             Iterator<Deputy> iterator = deputy.iterator();
             while (iterator.hasNext()) {
-                Deputy oneDeputy = iterator.next();
-                ParentService oneParentElement = oneDeputy;
+                Deputy oneParentElement = iterator.next();
                 parentElements.add(oneParentElement);
             }
         } else if (name.equals("parents")) {
-            System.out.println("parents");
+
             List<Parents> parents = parentsService.findAll();
             Iterator<Parents> iterator = parents.iterator();
             while (iterator.hasNext()) {
-                Parents oneParent = iterator.next();
-                ParentService oneParentElement = oneParent;
+                Parents oneParentElement = iterator.next();
                 parentElements.add(oneParentElement);
             }
         } else if (name.equals("students")) {
-            System.out.println("students");
+
             List<Students> students = studentsService.findAll();
             Iterator<Students> iterator = students.iterator();
             while (iterator.hasNext()) {
-                Students oneStudent = iterator.next();
-                ParentService oneParentElement = oneStudent;
+                Students oneParentElement = iterator.next();
                 parentElements.add(oneParentElement);
             }
         } else if (name.equals("subjects")) {
-            System.out.println("subjects");
+
             List<Subjects> subjects = subjectsService.findAll();
             Iterator<Subjects> iterator = subjects.iterator();
             while (iterator.hasNext()) {
-                Subjects oneSubject = iterator.next();
-                ParentService oneParentElement = oneSubject;
+                Subjects oneParentElement = iterator.next();
                 parentElements.add(oneParentElement);
             }
         }
@@ -288,56 +288,267 @@ public class RegistrationController {
 
     }
 
-    @GetMapping("/saveElements{arrElements}")
-    public void saveElements(@PathVariable String [] arrElements){
+    @PostMapping("/saveElements")
+    public @ResponseBody
+    String saveElements(@RequestBody String arrElements) {
         System.out.println(arrElements);
 
+        String arrElementsNew = arrElements.replaceAll("&", " ");
+        System.out.println(arrElementsNew);
+        String stringElementsNew = arrElementsNew.replaceAll("%5B%5D", "");
+        System.out.println(stringElementsNew);
+        String[] arrayStringElements = stringElementsNew.split(" ");
+//        if (arrayStringElements[0].equals("elementsOne=parents") || (arrayStringElements[1].equals("elementsTwo=students"))) {
+
+
+            List<String> arraySingleElements = new ArrayList<>();
+            String s;
+            for (int i = 2; i < arrayStringElements.length; i++) {
+                if (arrayStringElements[i].contains("stringlistElementsOne=") ) {
+                    s = arrayStringElements[i].replaceAll("stringlistElementsOne=", "");
+                    if (!s.equals("")) {
+                        arraySingleElements.add(s);
+                    }
+                } else {
+                    s = arrayStringElements[i].replaceAll("stringlistElementsTwo=", "");
+                    if (!s.equals("")){
+                        arraySingleElements.add(s);
+                    }
+                }
+            }
+
+
+        System.out.println(arraySingleElements);
+
+
+        if (arrayStringElements[0].equals("elementsOne=parents") && (arrayStringElements[1].equals("elementsTwo=students"))) {
+                Parents parents = null;
+                Students students = null;
+
+            for (int i = 0; i < arraySingleElements.size(); i++) {
+                if (i == 0) {
+                    parents = parentsService.byId(Integer.parseInt( arraySingleElements.get(i)));
+                    List<Students> students1 = parents.getStudents();
+                    Iterator<Students> iterator = students1.iterator();
+                    while (iterator.hasNext()) {
+                             students = iterator.next();
+                             students.setParents(null);
+                             studentsService.save(students);
+                    }
+                    System.out.println(parents);
+                } else {
+                    students = studentsService.byId(Integer.parseInt( arraySingleElements.get(i)));
+                    System.out.println(students);
+                    students.setParents(parents);
+                    studentsService.save(students);
+                }
+            }
+
+            }else if (arrayStringElements[0].equals("elementsOne=classteachers") && (arrayStringElements[1].equals("elementsTwo=classes"))) {
+                Classteachers classteachers = null;
+                Classes classes = null;
+
+                for (int i = 0; i < arraySingleElements.size(); i++) {
+                    if (i == 0) {
+                        classteachers = classteachersService.byId(Integer.parseInt( arraySingleElements.get(i)));
+                        System.out.println(classteachers);
+                        classes = classteachers.getClasses();
+                        System.out.println(classes);
+                        if (classes==null ) continue;
+                        classes.setClassteachers(null);
+                        classesService.save(classes);
+                    } else {
+                        classes = classesService.byId(Integer.parseInt( arraySingleElements.get(i)));
+                        classes.setClassteachers(classteachers);
+                        classesService.save(classes);
+
+                    }
+                }
+
+            }else if (arrayStringElements[0].equals("elementsOne=classteachers") && (arrayStringElements[1].equals("elementsTwo=students"))) {
+                Classteachers classteachers = null;
+                Students students = null;
+
+                for (int i = 0; i < arraySingleElements.size(); i++) {
+                    if (i == 0) {
+                        classteachers = classteachersService.byId(Integer.parseInt( arraySingleElements.get(i)));
+                        System.out.println(classteachers);
+                        List<Students> students1 = classteachers.getStudents();
+                        System.out.println(students1);
+                        Iterator<Students> iterator = students1.iterator();
+                        while (iterator.hasNext()) {
+                             students = iterator.next();
+
+                            System.out.println(students);
+                            students.setClassteachers(null);
+                             studentsService.save(students);
+                        }
+
+                        System.out.println(classteachers);
+                    } else {
+                        students = studentsService.byId(Integer.parseInt( arraySingleElements.get(i)));
+                        System.out.println(students);
+                        students.setClassteachers(classteachers);
+                        studentsService.save(students);
+                    }
+                }
+
+            }else if (arrayStringElements[0].equals("elementsOne=classteachers") && (arrayStringElements[1].equals("elementsTwo=subjects"))) {
+                Classteachers classteachers = null;
+                Subjects subjects = null;
+
+                for (int i = 0; i < arraySingleElements.size(); i++) {
+                    if (i == 0) {
+                        classteachers = classteachersService.byId(Integer.parseInt( arraySingleElements.get(i)));
+                        System.out.println(classteachers);
+                        List<Subjects> subjects1 = classteachers.getSubjects();
+                        System.out.println(subjects1);
+                        Iterator<Subjects> iterator = subjects1.iterator();
+                        while (iterator.hasNext()) {
+                            subjects = iterator.next();
+
+                            System.out.println(subjects);
+                            subjects.setClassteachers(null);
+                            subjectsService.save(subjects);
+                        }
+
+                        System.out.println(classteachers);
+                    } else {
+                        subjects = subjectsService.byId(Integer.parseInt( arraySingleElements.get(i)));
+                        System.out.println(subjects);
+                        subjects.setClassteachers(classteachers);
+                        subjectsService.save(subjects);
+                    }
+                }
+
+            }else if (arrayStringElements[0].equals("elementsOne=deputy") && (arrayStringElements[1].equals("elementsTwo=subjects"))) {
+                Deputy deputy = null;
+                Subjects subjects = null;
+
+                for (int i = 0; i < arraySingleElements.size(); i++) {
+                    if (i == 0) {
+                        deputy = deputyService.byId(Integer.parseInt( arraySingleElements.get(i)));
+                        System.out.println(deputy);
+                        List<Subjects> subjects1 = deputy.getSubjects();
+                        System.out.println(subjects1);
+                        Iterator<Subjects> iterator = subjects1.iterator();
+                        while (iterator.hasNext()) {
+                            subjects = iterator.next();
+
+                            System.out.println(subjects);
+                            subjects.setDeputy(null);
+                            subjectsService.save(subjects);
+                        }
+
+                        System.out.println(deputy);
+                    } else {
+                        subjects = subjectsService.byId(Integer.parseInt( arraySingleElements.get(i)));
+                        System.out.println(subjects);
+                        subjects.setDeputy(deputy);
+                        subjectsService.save(subjects);
+                    }
+                }
+
+            }else if (arrayStringElements[0].equals("elementsOne=teachers") && (arrayStringElements[1].equals("elementsTwo=subjects"))) {
+                Teachers teachers = null;
+                Subjects subjects = null;
+
+                for (int i = 0; i < arraySingleElements.size(); i++) {
+                    if (i == 0) {
+                        teachers = teachersService.byId(Integer.parseInt( arraySingleElements.get(i)));
+                        System.out.println(teachers);
+                        List<Subjects> subjects1 = teachers.getSubjects();
+                        System.out.println(subjects1);
+                        Iterator<Subjects> iterator = subjects1.iterator();
+                        while (iterator.hasNext()) {
+                            subjects = iterator.next();
+
+                            System.out.println(subjects);
+                            subjects.setTeachers(null);
+                            subjectsService.save(subjects);
+                        }
+
+                        System.out.println(teachers);
+                    } else {
+                        subjects = subjectsService.byId(Integer.parseInt( arraySingleElements.get(i)));
+                        System.out.println(subjects);
+                        subjects.setTeachers(teachers);
+                        subjectsService.save(subjects);
+                    }
+                }
+
+            }else if (arrayStringElements[0].equals("elementsOne=classes") && (arrayStringElements[1].equals("elementsTwo=students"))) {
+                Classes classes = null;
+                Students students = null;
+
+                for (int i = 0; i < arraySingleElements.size(); i++) {
+                    if (i == 0) {
+                        classes = classesService.byId(Integer.parseInt( arraySingleElements.get(i)));
+                        System.out.println(classes);
+                        List<Students> students1 = classes.getStudents();
+                        System.out.println(students1);
+                        Iterator<Students> iterator = students1.iterator();
+                        while (iterator.hasNext()) {
+                            students = iterator.next();
+
+                            System.out.println(students);
+                            students.setClasses(null);
+                            studentsService.save(students);
+                        }
+
+                        System.out.println(students);
+                    } else {
+                        students = studentsService.byId(Integer.parseInt( arraySingleElements.get(i)));
+                        System.out.println(students);
+                        students.setClasses(classes);
+                        studentsService.save(students);
+                    }
+                }
+
+            }else if (arrayStringElements[0].equals("elementsOne=classes") && (arrayStringElements[1].equals("elementsTwo=subjects"))) {
+                Classes classes = null;
+                Subjects subjects = null;
+                List<Subjects> subjects1 = new ArrayList<>();
+
+                for (int i = 0; i < arraySingleElements.size(); i++) {
+                    if (i == 0) {
+                        classes = classesService.byId(Integer.parseInt( arraySingleElements.get(i)));
+
+                    } else {
+                        subjects = subjectsService.byId(Integer.parseInt( arraySingleElements.get(i)));
+                        System.out.println(subjects);
+                        subjects1.add(subjects);
+//
+                    }
+                }
+
+            classes.setSubjects(subjects1);
+            classesService.save(classes);
+
+
+            }else if (arrayStringElements[0].equals("elementsOne=subjects") && (arrayStringElements[1].equals("elementsTwo=classes"))) {
+                Classes classes = null;
+                Subjects subjects = null;
+                List<Classes> classes1 = new ArrayList<>();
+
+                for (int i = 0; i < arraySingleElements.size(); i++) {
+                    if (i == 0) {
+                        subjects = subjectsService.byId(Integer.parseInt( arraySingleElements.get(i)));
+                    } else {
+                        classes = classesService.byId(Integer.parseInt( arraySingleElements.get(i)));
+                        System.out.println(classes);
+                        classes1.add(classes);
+
+                    }
+                }
+
+            subjects.setClasses(classes1);
+            subjectsService.save(subjects);
+
+            }
+
+
+
+        return "fgsfgdfgdf";
     }
-
-
-
-    @GetMapping("/registrationSubjects")
-    public String registrationSubjects(
-            Model model) {
-        List<Subjects> subjects = subjectsService.findAll();
-        model.addAttribute("subjects", subjects);
-        return "registrationSubjects";
-    }
-
-    @GetMapping("/saveSubjects")
-    public String saveSubjects(@RequestParam Integer id, @RequestParam String name) {
-
-        Subjects subjects;
-//        if (id == null) {
-//            subjects = new Subjects();
-//        } else {
-//            subjects = new Subjects(name);
-//        }
-        if (id == null){
-            subjects = new Subjects(name);
-        } else {
-            subjects = new Subjects(id, name);
-        }
-        subjectsService.save(subjects);
-
-        return "redirect:/registrationSubjects";
-    }
-
-    @GetMapping("/editSub/{id}")
-    public String resolveSingleSubject(@PathVariable/*("id")*/ int id,
-                                       Model model) {
-        Subjects subjects = subjectsService.byIdSub(id);
-        model.addAttribute("subjects", subjects);
-//        System.out.println(contact);
-//        System.out.println(model);
-        return "registrationSubjects";
-    }
-
-    @GetMapping("/deleteSub/{id}")
-    public String deleteSub(@PathVariable Integer id) {
-        subjectsService.deleteById(id);
-        return "redirect:/registrationSubjects";
-    }
-
-
 }

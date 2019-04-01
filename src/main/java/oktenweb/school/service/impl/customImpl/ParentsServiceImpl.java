@@ -23,4 +23,9 @@ public class ParentsServiceImpl implements ParentsService{
     public List<Parents> findAll() {
         return parentsDAO.findAll();
     }
+
+    @Override
+    public Parents byId(Integer id) {
+        return parentsDAO.byId(id);
+    }
 }

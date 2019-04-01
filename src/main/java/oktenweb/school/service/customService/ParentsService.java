@@ -8,4 +8,6 @@ public interface ParentsService {
     void save(Parents parents);
 
     List<Parents> findAll();
+
+    Parents byId(Integer id);
 }
