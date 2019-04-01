@@ -21,6 +21,7 @@ public class Parents {
     private String adress;
     private String gender;
     private String birthday;
+    transient private String loginname;
 
 
     @JsonIgnore
@@ -31,6 +32,14 @@ public class Parents {
     )
     @JoinColumn(name = "user_id")
     private User user;
+
+    public String getLoginname() {
+        return user.getUsername();
+    }
+
+    public void setLoginname() {
+        this.loginname = user.getUsername();
+    }
 
     @JsonIgnore
     @OneToMany(
@@ -131,6 +140,7 @@ public class Parents {
                 ", adress='" + adress + '\'' +
                 ", gender='" + gender + '\'' +
                 ", birthday='" + birthday + '\'' +
+                ", loginname='" + loginname + '\'' +
                 '}';
     }
 }

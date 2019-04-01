@@ -56,9 +56,9 @@ $(document).ready(function () {
         } else if (name === "subjects") {
             console.log(elementsTwo);
             elementsTwo.innerHTML = '<option>------</option>' +
-                '<option value="teachers">Викладачі</option>' +
-                '<option value="classes">Класи</option>' +
-                '<option value="deputy">Зауч</option>';
+                // '<option value="teachers">Викладачі</option>' +
+                '<option value="classes">Класи</option>';
+                // '<option value="deputy">Зауч</option>';
         } else if (name === "classes") {
             elementsTwo.innerHTML = '<option>------</option>' +
                 '<option value="subjects">Предмети</option>' +
@@ -85,10 +85,11 @@ $(document).ready(function () {
                 let elements = document.getElementById('listElementsOne');
                 $(elements).empty();
                 for (let i = 0; i < data.length; i++) {
-                    $(elements).append('<option value = ' + data[i].id + '>' + data[i].name + '</option>');
-
-
-                }
+                    if(name==="classes" || name==="subjects") {
+                        $(elements).append('<option value = ' + data[i].id + '>' + data[i].name + '</option>');
+                    }else{
+                        $(elements).append('<option value = ' + data[i].id + '>' + data[i].loginname + '</option>');
+                    }                }
 
 
             },
@@ -114,12 +115,9 @@ $(document).ready(function () {
         if(nameelementsOne ==="classteachers" && name==="classes") {
             listElementsTwo.outerHTML='<select id="listElementsTwo">' +
                 '</select>';
-            console.log("multiple=false");
-        }
-        else {
+        }else{
             listElementsTwo.outerHTML='<select id="listElementsTwo" multiple="multiple">' +
                 '</select>';
-            console.log("multiple=true");
         }
 
         $.ajax({
@@ -133,7 +131,11 @@ $(document).ready(function () {
                 let elements = document.getElementById('listElementsTwo');
                 $(elements).empty();
                 for (let i = 0; i < data.length; i++) {
-                    $(elements).append('<option value = ' + data[i].id + '>' + data[i].name + '</option>');
+                    if(name==="classes" || name==="subjects") {
+                        $(elements).append('<option value = ' + data[i].id + '>' + data[i].name + '</option>');
+                    }else{
+                        $(elements).append('<option value = ' + data[i].id + '>' + data[i].loginname + '</option>');
+                    }
                 }
 
 
@@ -159,6 +161,7 @@ $(document).ready(function () {
         // let elementsTwo = document.getElementById("elementsTwo");
         let listElementsTwo = document.getElementById("listElementsTwo");
 
+        console.log(listElementsOne);
 
         let stringlistElementsOne = [];
         let stringlistElementsTwo = [];
@@ -169,6 +172,7 @@ $(document).ready(function () {
                 stringlistElementsOne[i] = listElementsOne.options[i].value;
             }
         }
+
 
 
         for (let i = 0; i < listElementsTwo.options.length; i++) {

@@ -18,4 +18,6 @@ public interface SubjectsService {
     Integer maxByIdSub();
 
     Subjects byId(Integer id);
+
+
 }

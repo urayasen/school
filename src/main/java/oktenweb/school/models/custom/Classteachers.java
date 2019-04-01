@@ -23,7 +23,18 @@ public class Classteachers {
     private String adress;
     private String gender;
     private String birthday;
-//fgsgfgg
+    transient private String loginname;
+
+
+    public String getLoginname() {
+        return user.getUsername();
+    }
+
+    public void setLoginname() {
+        this.loginname = user.getUsername();
+    }
+
+    //fgsgfgg
     @JsonIgnore
     @OneToOne(
             fetch = FetchType.LAZY,
@@ -60,13 +71,13 @@ public class Classteachers {
 
 
 
-    @JsonIgnore
-    @OneToMany(
-            fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL,
-            mappedBy = "classteachers"
-    )
-    private List<ClassJournal> classJournals = new ArrayList<>();
+//    @JsonIgnore
+//    @OneToMany(
+//            fetch = FetchType.LAZY,
+//            cascade = CascadeType.ALL,
+//            mappedBy = "classteachers"
+//    )
+//    private List<ClassJournal> classJournals = new ArrayList<>();
 
 
 
@@ -95,13 +106,13 @@ public class Classteachers {
         this.students = students;
     }
 
-    public List<ClassJournal> getClassJournals() {
-        return classJournals;
-    }
+//    public List<ClassJournal> getClassJournals() {
+//        return classJournals;
+//    }
 
-    public void setClassJournals(List<ClassJournal> classJournals) {
-        this.classJournals = classJournals;
-    }
+//    public void setClassJournals(List<ClassJournal> classJournals) {
+//        this.classJournals = classJournals;
+//    }
 
     public User getUser() {
         return user;
@@ -190,6 +201,7 @@ public class Classteachers {
                 ", adress='" + adress + '\'' +
                 ", gender='" + gender + '\'' +
                 ", birthday='" + birthday + '\'' +
+                ", loginname='" + loginname + '\'' +
                 '}';
     }
 }

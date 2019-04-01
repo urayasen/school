@@ -19,6 +19,9 @@ public class ClassJournal {
     private String marks;
 
 
+    public ClassJournal() {
+
+    }
 
     @Autowired
     @ManyToOne(
@@ -36,20 +39,20 @@ public class ClassJournal {
     private Students students;
 
 
-    @Autowired
-    @ManyToOne(
-            fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL
-    )
-    private Deputy deputy;
+//    @Autowired
+//    @ManyToOne(
+//            fetch = FetchType.LAZY,
+//            cascade = CascadeType.ALL
+//    )
+//    private Deputy deputy;
 
 
-    @Autowired
-    @ManyToOne(
-            fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL
-    )
-    private Classteachers classteachers;
+//    @Autowired
+//    @ManyToOne(
+//            fetch = FetchType.LAZY,
+//            cascade = CascadeType.ALL
+//    )
+//    private Classteachers classteachers;
 
     @Autowired
     @ManyToOne(
@@ -59,21 +62,21 @@ public class ClassJournal {
     private Teachers teachers;
 
 
-    public Deputy getDeputy() {
-        return deputy;
-    }
+//    public Deputy getDeputy() {
+//        return deputy;
+//    }
 
-    public void setDeputy(Deputy deputy) {
-        this.deputy = deputy;
-    }
+//    public void setDeputy(Deputy deputy) {
+//        this.deputy = deputy;
+//    }
 
-    public Classteachers getClassteachers() {
-        return classteachers;
-    }
+//    public Classteachers getClassteachers() {
+//        return classteachers;
+//    }
 
-    public void setClassteachers(Classteachers classteachers) {
-        this.classteachers = classteachers;
-    }
+//    public void setClassteachers(Classteachers classteachers) {
+//        this.classteachers = classteachers;
+//    }
 
     public Students getStudents() {
         return students;
@@ -132,8 +135,6 @@ public class ClassJournal {
                 ", marks='" + marks + '\'' +
                 ", subjects=" + subjects +
                 ", students=" + students +
-                ", deputy=" + deputy +
-                ", classteachers=" + classteachers +
                 ", teachers=" + teachers +
                 '}';
     }

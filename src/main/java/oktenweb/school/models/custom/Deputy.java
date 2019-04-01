@@ -22,8 +22,16 @@ public class Deputy {
     private String adress;
     private String gender;
     private String birthday;
+    transient private String loginname;
 
 
+    public String getLoginname() {
+        return user.getUsername();
+    }
+
+    public void setLoginname() {
+        this.loginname = user.getUsername();
+    }
 
     @JsonIgnore
     @OneToOne(
@@ -44,14 +52,14 @@ public class Deputy {
     private List<Subjects> subjects = new ArrayList<>();
 
 
-
-    @JsonIgnore
-    @OneToMany(
-            fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL,
-            mappedBy = "deputy"
-    )
-    private List<ClassJournal> classJournals = new ArrayList<>();
+//
+//    @JsonIgnore
+//    @OneToMany(
+//            fetch = FetchType.LAZY,
+//            cascade = CascadeType.ALL,
+//            mappedBy = "deputy"
+//    )
+//    private List<ClassJournal> classJournals = new ArrayList<>();
 
 
     public List<Subjects> getSubjects() {
@@ -62,13 +70,13 @@ public class Deputy {
         this.subjects = subjects;
     }
 
-    public List<ClassJournal> getClassJournals() {
-        return classJournals;
-    }
+//    public List<ClassJournal> getClassJournals() {
+//        return classJournals;
+//    }
 
-    public void setClassJournals(List<ClassJournal> classJournals) {
-        this.classJournals = classJournals;
-    }
+//    public void setClassJournals(List<ClassJournal> classJournals) {
+//        this.classJournals = classJournals;
+//    }
 
     public User getUser() {
         return user;
@@ -156,6 +164,7 @@ public class Deputy {
                 ", adress='" + adress + '\'' +
                 ", gender='" + gender + '\'' +
                 ", birthday='" + birthday + '\'' +
+                ", loginname='" + loginname + '\'' +
                 '}';
     }
 }

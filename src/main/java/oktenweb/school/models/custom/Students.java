@@ -25,6 +25,16 @@ public class Students {
     private String adress;
     private String gender;
     private String birthday;
+    transient private String loginname;
+
+
+    public String getLoginname() {
+        return user.getUsername();
+    }
+
+    public void setLoginname() {
+        this.loginname = user.getUsername();
+    }
 
     public String getGender() {
         return gender;
@@ -171,6 +181,7 @@ public class Students {
 
     /*--------------------------------------------------------------------------------------------------*/
 
+
     @Override
     public String toString() {
         return "Students{" +
@@ -182,6 +193,7 @@ public class Students {
                 ", adress='" + adress + '\'' +
                 ", gender='" + gender + '\'' +
                 ", birthday='" + birthday + '\'' +
+                ", loginname='" + loginname + '\'' +
                 '}';
     }
 }

@@ -1,5 +1,6 @@
 package oktenweb.school.controllers;
 
+import oktenweb.school.dao.functionalDAO.ClassesDAO;
 import oktenweb.school.models.Role;
 import oktenweb.school.models.functional.Classes;
 import oktenweb.school.models.functional.Subjects;
@@ -8,6 +9,7 @@ import oktenweb.school.models.custom.*;
 import oktenweb.school.models.functional.ListSubjects;
 import oktenweb.school.service.UserService;
 import oktenweb.school.service.customService.*;
+import oktenweb.school.service.functionalService.ClassJournalService;
 import oktenweb.school.service.functionalService.ClassesService;
 import oktenweb.school.service.functionalService.SubjectsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +49,9 @@ public class RegistrationController {
 
     @Autowired
     ClassesService classesService;
+
+//    @Autowired
+//    ClassJournalService classJournalService;
 
 
     @PostMapping("/saveUser")
@@ -210,7 +215,7 @@ public class RegistrationController {
         elements.put("Класи", "classes");
         elements.put("Зауч", "deputy");
         elements.put("Батьки", "parents");
-        elements.put("Студенти", "students");
+//        elements.put("Студенти", "students");
         elements.put("Викладачі", "teachers");
 //        elements.put("Класний журнал", "class_journal");
         elements.put("Предмети", "subjects");
@@ -551,4 +556,130 @@ public class RegistrationController {
 
         return "fgsfgdfgdf";
     }
+
+
+    @GetMapping("/SelectElements")
+    public String selectSubjects(Model model){
+        List<Classes> classes = classesService.findAll();
+        model.addAttribute("classes", classes);
+
+        List<Subjects> subjects = subjectsService.findAll();
+        model.addAttribute("subjects", subjects);
+
+        List<String> months = new ArrayList<>();
+        months.add("Січень");
+        months.add("Лютий");
+        months.add("Березень");
+        months.add("Квітень");
+        months.add("Травень");
+        months.add("Червень");
+        months.add("Липень");
+        months.add("Серпень");
+        months.add("Вересень");
+        months.add("Жовтень");
+        months.add("Листопад");
+        months.add("Грудень");
+
+        model.addAttribute("months", months);
+        return "marks";
+
+
+    }
+
+    @GetMapping("/buttonSelectElements")
+    public String btnSelectElements(@RequestParam("classes") int classes_id,
+                                    @RequestParam("subjects") int subject_id,
+                                    @RequestParam("months") String month_name,
+                                    Model model){
+
+        System.out.println("classes_id = " + classes_id);
+        System.out.println("subject_id = " + subject_id);
+        System.out.println("month_name = " + month_name);
+
+
+        List<Classes> classes = classesService.findAll();
+        model.addAttribute("classes", classes);
+
+        List<Subjects> subjects = subjectsService.findAll();
+        model.addAttribute("subjects", subjects);
+
+        List<String> months = new ArrayList<>();
+        months.add("Січень");
+        months.add("Лютий");
+        months.add("Березень");
+        months.add("Квітень");
+        months.add("Травень");
+        months.add("Червень");
+        months.add("Липень");
+        months.add("Серпень");
+        months.add("Вересень");
+        months.add("Жовтень");
+        months.add("Листопад");
+        months.add("Грудень");
+
+        model.addAttribute("months", months);
+
+
+        model.addAttribute("classed", classesService.byId(classes_id).getName());
+        model.addAttribute("subjected", subjectsService.byId(subject_id).getName());
+        model.addAttribute("monthed", month_name);
+
+
+
+        List<Students> studentsList = studentsService.byClassId(classes_id);
+
+       model.addAttribute("students", studentsList);
+       List<Integer> dates = new ArrayList<>();
+       dates.add(2);
+       dates.add(3);
+       dates.add(5);
+       dates.add(7);
+
+       model.addAttribute("dates", dates);
+
+        return "marks";
+    }
+
+
+    @GetMapping ("/schedule")
+    public String schedule (Model model){
+        List<Classes> classes = classesService.findAll();
+        model.addAttribute("classes" , classes);
+        return "schedule";
+    }
+
+    @GetMapping ("/saveSchedule")
+    public String saveSchedule(@RequestParam("classes") int classes_id,
+            Model model){
+
+        List<Classes> classes = classesService.findAll();
+        model.addAttribute("classes" , classes);
+
+        Classes classed = classesService.byId(classes_id);
+
+        System.out.println(classed);
+
+        List<Subjects> subjectsList = classed.getSubjects();
+
+        model.addAttribute("subjects", subjectsList);
+
+
+        return "schedule";
+    }
+
+    @GetMapping("/changeSubjects/{id}")
+    public String changeSubjects (@PathVariable/*("id")*/ int id,
+                                  Model model){
+
+
+        System.out.println("id=" + id);
+        Subjects subjects = subjectsService.byId(id);
+        System.out.println(subjects);
+
+        Teachers teachers = subjects.getTeachers();
+        System.out.println(teachers.getName());
+        model.addAttribute("teacher", teachers.getName());
+        return "schedule";
+    }
+
 }

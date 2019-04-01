@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" th:src="@{/css/schedule/main.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <title>js-tutorials.com : Dynamically Add and Remove rows in a Table Using jquery</title>
+</head>
+<body>
+
+
+<p>Вчитель - [[${teachers}]]</p>
+<p>Вчитель</p>
+
+<div class="flex-container">
+    <!--    <h1>Dynamically Add and Remove rows in a Table Using jquery</h1>-->
+    <!--    <form enctype="multipart/form-data">-->
+
+
+    <!--  1 TABLE!!!!!!!!!!  -->
+    <!--  1 TABLE!!!!!!!!!!  -->
+    <!--  1 TABLE!!!!!!!!!!  -->
+
+
+<form th:action="@{/schedule}" method="GET">
+    <select name="classes" id="">
+        <option>------</option>
+        <option th:each="class : ${classes}"
+                th:value="${class.id}"
+                th:utext="${class.name}">
+        </option>
+    </select>
+    <button th:formaction="@{/saveSchedule}">Select</button>
+</form>
+
+    <form class="cols">
+        <table class="table table-bordered " id="tbl_posts" style="width: 350px;" >
+            <div class="head" style="display:block; position:relative; background-color:#d24a43;">Понеділок</div>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Предмет</th>
+                <th>Вчитель</th>
+                <th><a class="btn btn-primary pull-left add-record" data-added="0"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add Row</a></th>
+            </tr>
+            </thead>
+            <tbody id="tbl_posts_body">
+            <tr id="rec-1">
+                <td><span class="sn">1</span>.</td>
+                <td><select name="subjects" class="elementsOne">
+                    <option th:each="subject : ${subjects}"
+                    th:value="${subject.id}"
+                            th:text="${subject.name}">
+
+                    </option>
+                </select></td>
+                <td id="elementsOne"><p>[[${teacher}]]</p></td>
+                <td><a class="btn btn-xs delete-record" data-id="1"><i class="glyphicon glyphicon-trash"></i></a></td>
+            </tr>
+
+            </tbody>
+        </table>
+        <!--    </div> -->
+        <!--  </form>-->
+
+        <div style="display:none;">
+            <table id="sample_table">
+                <tr id="">
+                    <td><span class="sn"></span>.</td>
+                    <td><select name="subjects" class="elementsOne">
+                        <option th:each="subject : ${subjects}"
+                                th:value="${subject.id}"
+                                th:text="${subject.name}">
+
+                        </option>
+                    </select></td>
+                    <td><p>[[${teacher}]]</p></td>
+                    <td><a class="btn btn-xs delete-record" data-id="0"><i class="glyphicon glyphicon-trash"></i></a></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+
+
+
+    <!--  2 TABLE!!!!!!!!!!  -->
+    <!--  2 TABLE!!!!!!!!!!  -->
+    <!--  2 TABLE!!!!!!!!!!  -->
+    <div>
+        <table class="table table-bordered" id="tbl_posts2" style="width: 350px;">
+            <div class="head" style="display:block; position:relative; background-color:#e18c44;">Вівторок</div>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Предмет</th>
+                <th>Вчитель</th>
+                <th><a class="btn btn-primary pull-left add-record2" data-added="0"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add Row</a></th>
+            </tr>
+            </thead>
+            <tbody id="tbl_posts_body2">
+            <tr id="rec2-1">
+                <td><span class="sn2">1</span>.</td>
+                <td><select name="subjects" class="elementsOne">
+                    <option th:each="subject : ${subjects}"
+                            th:value="${subject.id}"
+                            th:text="${subject.name}">
+
+                    </option>
+                </select></td>
+                <td>02</td>
+                <td><a class="btn btn-xs delete-record2" data-id2="1"><i class="glyphicon glyphicon-trash"></i></a></td>
+            </tr>
+
+            </tbody>
+        </table>
+        <!--    </div> -->
+        <!--  </form>-->
+
+
+
+
+        <div style="display:none;">
+            <table id="sample_table2">
+                <tr id="">
+                    <td><span class="sn2"></span>.</td>
+                    <td><select name="subjects" class="elementsOne">
+                        <option th:each="subject : ${subjects}"
+                                th:value="${subject.id}"
+                                th:text="${subject.name}">
+
+                        </option>
+                    </select></td>
+                    <td>04</td>
+                    <td><a class="btn btn-xs delete-record2" data-id2="0"><i class="glyphicon glyphicon-trash"></i></a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+
+    <!--  3 TABLE!!!!!!!!!!  -->
+    <!--  3 TABLE!!!!!!!!!!  -->
+    <!--  3 TABLE!!!!!!!!!!  -->
+
+    <div >
+        <table class="table table-bordered" id="tbl_posts3"style="width: 350px;" >
+            <div class="head" style="display:block; position:relative; background-color:#fff343;">Середа</div>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Предмет</th>
+                <th>Вчитель</th>
+                <th><a class="btn btn-primary pull-left add-record3" data-added="0"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add Row</a></th>
+            </tr>
+            </thead>
+            <tbody id="tbl_posts_body3">
+            <tr id="rec3-1">
+                <td><span class="sn3">1</span>.</td>
+                <td><select name="subjects" class="elementsOne">
+                    <option th:each="subject : ${subjects}"
+                            th:value="${subject.id}"
+                            th:text="${subject.name}">
+
+                    </option>
+                </select></td>
+                <td>02</td>
+                <td><a class="btn btn-xs delete-record3" data-id3="1"><i class="glyphicon glyphicon-trash"></i></a></td>
+            </tr>
+
+            </tbody>
+        </table>
+        <!--    </div> -->
+        <!--  </form>-->
+
+        <div style="display:none;">
+            <table id="sample_table3">
+                <tr id="">
+                    <td><span class="sn3"></span>.</td>
+                    <td><select>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select></td>
+                    <td>04</td>
+                    <td><a class="btn btn-xs delete-record3" data-id3="0"><i class="glyphicon glyphicon-trash"></i></a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+
+    <!--  4 TABLE!!!!!!!!!!  -->
+    <!--  4 TABLE!!!!!!!!!!  -->
+    <!--  4 TABLE!!!!!!!!!!  -->
+    <div>
+        <table class="table table-bordered" id="tbl_posts4" style="width: 350px;" >
+            <div class="head" style="display:block; position:relative; background-color:#77b97e;">Четвер</div>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Предмет</th>
+                <th>Вчитель</th>
+                <th><a class="btn btn-primary pull-left add-record4" data-added="0"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add Row</a></th>
+            </tr>
+            </thead>
+            <tbody id="tbl_posts_body4">
+            <tr id="rec4-1">
+                <td><span class="sn4">1</span>.</td>
+                <td><select name="subjects" class="elementsOne">
+                    <option th:each="subject : ${subjects}"
+                            th:value="${subject.id}"
+                            th:text="${subject.name}">
+
+                    </option>
+                </select></td>
+                <td>02</td>
+                <td><a class="btn btn-xs delete-record4" data-id4="1"><i class="glyphicon glyphicon-trash"></i></a></td>
+            </tr>
+
+            </tbody>
+        </table>
+        <!--    </div> -->
+        <!--  </form>-->
+
+        <div style="display:none;">
+            <table id="sample_table4">
+                <tr id="">
+                    <td><span class="sn4"></span>.</td>
+                    <td><select name="subjects" class="elementsOne">
+                        <option th:each="subject : ${subjects}"
+                                th:value="${subject.id}"
+                                th:text="${subject.name}">
+
+                        </option>
+                    </select></td>
+                    <td>04</td>
+                    <td><a class="btn btn-xs delete-record4" data-id4="0"><i class="glyphicon glyphicon-trash"></i></a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+
+    <!--  5 TABLE!!!!!!!!!!  -->
+    <!--  5 TABLE!!!!!!!!!!  -->
+    <!--  5 TABLE!!!!!!!!!!  -->
+    <div>
+        <table class="table table-bordered" id="tbl_posts5"  style="width: 350px;">
+            <div class="head" style="display:block; position:relative; background-color:#b2d179;">П'ятниця</div>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Предмет</th>
+                <th>Вчитель</th>
+                <th><a class="btn btn-primary pull-left add-record5" data-added="0"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add Row</a></th>
+            </tr>
+            </thead>
+            <tbody id="tbl_posts_body5">
+            <tr id="rec5-1">
+                <td><span class="sn5">1</span>.</td>
+                <td><select name="subjects" class="elementsOne">
+                    <option th:each="subject : ${subjects}"
+                            th:value="${subject.id}"
+                            th:text="${subject.name}">
+
+                    </option>
+                </select></td>
+                <td>02</td>
+                <td><a class="btn btn-xs delete-record5" data-id5="1"><i class="glyphicon glyphicon-trash"></i></a></td>
+            </tr>
+
+            </tbody>
+        </table>
+        <!--    </div> -->
+        <!--  </form>-->
+
+        <div style="display:none;">
+            <table id="sample_table5">
+                <tr id="">
+                    <td><span class="sn5"></span>.</td>
+                    <td><select name="subjects" class="elementsOne">
+                        <option th:each="subject : ${subjects}"
+                                th:value="${subject.id}"
+                                th:text="${subject.name}">
+
+                        </option>
+                    </select></td>
+                    <td>04</td>
+                    <td><a class="btn btn-xs delete-record5" data-id5="0"><i class="glyphicon glyphicon-trash"></i></a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+
+
+    <!--      РОЗКЛАД!!!!!!!!!!-->
+    <div class="box">
+        <div class="head">Розклад уроків</div>
+        <table class="table table-bordered"   style="width: 350px;">
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>Час</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="num">1-й урок</td>
+                <td class="theme">8-30-9-15</td>
+            </tr>
+            <tr>
+                <td class="num">2-й урок</td>
+                <td class="theme">9-25-10-10</td>
+            </tr>
+            <tr>
+                <td class="num">3-й урок</td>
+                <td class="theme">10-20-11-05</td>
+            </tr>
+            <tr>
+                <td class="num">4-й урок</td>
+                <td class="theme">11-25-12-10</td>
+            </tr>
+            <tr>
+                <td class="num">5-й урок</td>
+                <td class="theme">12-20-13-05</td>
+            </tr>
+            <tr>
+                <td class="num">6-й урок</td>
+                <td class="theme">13-15-14-00</td>
+            </tr>
+            <tr>
+                <td class="num">7-й урок</td>
+                <td class="theme">14-10-14-55</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<!--1 table-->
+<!--//////////////////////////////////////////////////////////-->
+<!--//////////////////////////////////////////////////////////-->
+<script type="text/javascript">
+    $(document).ready(function(){
+        jQuery(document).delegate('a.add-record', 'click', function(e) {
+            e.preventDefault();
+            var content = jQuery('#sample_table tr'),
+                size = jQuery('#tbl_posts >tbody >tr').length + 1,
+                element = null,
+                element = content.clone();
+            element.attr('id', 'rec-'+size);
+            element.find('.delete-record').attr('data-id', size);
+            element.appendTo('#tbl_posts_body');
+            element.find('.sn').html(size);
+        });
+        jQuery(document).delegate('a.delete-record', 'click', function(e) {
+            e.preventDefault();
+            var didConfirm = confirm("Are you sure You want to delete");
+            if (didConfirm == true) {
+                var id = jQuery(this).attr('data-id');
+                var targetDiv = jQuery(this).attr('targetDiv');
+                jQuery('#rec-' + id).remove();
+
+                //regnerate index number on table
+                $('#tbl_posts_body tr').each(function(index){
+                    $(this).find('span.sn').html(index+1);
+                });
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+
+
+    });
+</script>
+
+
+<script>
+    $('.elementsOne').change(function (e) {
+        let id = $(this).val();
+        let url_page = "/changeSubjects/" + id;
+
+        $.ajax({
+            type: "GET",
+            url: url_page,
+            data: {'id': id},
+            success: function (data) {
+            alert(url_page)
+            },
+            error: function (e) {
+                alert(e)
+
+            }
+        });
+    });
+</script>
+
+
+
+
+
+<!--2 table-->
+<!--//////////////////////////////////////////////////////////-->
+<!--//////////////////////////////////////////////////////////-->
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        jQuery(document).delegate('a.add-record2', 'click', function(e) {
+            e.preventDefault();
+            var content = jQuery('#sample_table2 tr'),
+                size = jQuery('#tbl_posts2 >tbody >tr').length + 1,
+                element = null,
+                element = content.clone();
+            element.attr('id', 'rec2-'+size);
+            element.find('.delete-record2').attr('data-id2', size);
+            element.appendTo('#tbl_posts_body2');
+            element.find('.sn2').html(size);
+        });
+        jQuery(document).delegate('a.delete-record2', 'click', function(e) {
+            e.preventDefault();
+            var didConfirm = confirm("Are you sure You want to delete");
+            if (didConfirm == true) {
+                var id = jQuery(this).attr('data-id2');
+                var targetDiv = jQuery(this).attr('targetDiv');
+                jQuery('#rec2-' + id).remove();
+
+                //regnerate index number on table
+                $('#tbl_posts_body2 tr').each(function(index){
+                    $(this).find('span.sn2').html(index+1);
+                });
+                return true;
+            } else {
+                return false;
+            }
+        });
+    });
+</script>
+
+
+
+<!--3 table-->
+<!--//////////////////////////////////////////////////////////-->
+<!--//////////////////////////////////////////////////////////-->
+<script type="text/javascript">
+    $(document).ready(function(){
+        jQuery(document).delegate('a.add-record3', 'click', function(e) {
+            e.preventDefault();
+            var content = jQuery('#sample_table3 tr'),
+                size = jQuery('#tbl_posts3 >tbody >tr').length + 1,
+                element = null,
+                element = content.clone();
+            element.attr('id', 'rec3-'+size);
+            element.find('.delete-record3').attr('data-id3', size);
+            element.appendTo('#tbl_posts_body3');
+            element.find('.sn3').html(size);
+        });
+        jQuery(document).delegate('a.delete-record3', 'click', function(e) {
+            e.preventDefault();
+            var didConfirm = confirm("Are you sure You want to delete");
+            if (didConfirm == true) {
+                var id = jQuery(this).attr('data-id3');
+                var targetDiv = jQuery(this).attr('targetDiv');
+                jQuery('#rec3-' + id).remove();
+
+                //regnerate index number on table
+                $('#tbl_posts_body3 tr').each(function(index){
+                    $(this).find('span.sn3').html(index+1);
+                });
+                return true;
+            } else {
+                return false;
+            }
+        });
+    });
+</script>
+
+
+
+
+<!--4 table-->
+<!--//////////////////////////////////////////////////////////-->
+<!--//////////////////////////////////////////////////////////-->
+<script type="text/javascript">
+    $(document).ready(function(){
+        jQuery(document).delegate('a.add-record4', 'click', function(e) {
+            e.preventDefault();
+            var content = jQuery('#sample_table4 tr'),
+                size = jQuery('#tbl_posts4 >tbody >tr').length + 1,
+                element = null,
+                element = content.clone();
+            element.attr('id', 'rec4-'+size);
+            element.find('.delete-record4').attr('data-id4', size);
+            element.appendTo('#tbl_posts_body4');
+            element.find('.sn4').html(size);
+        });
+        jQuery(document).delegate('a.delete-record4', 'click', function(e) {
+            e.preventDefault();
+            var didConfirm = confirm("Are you sure You want to delete");
+            if (didConfirm == true) {
+                var id = jQuery(this).attr('data-id4');
+                var targetDiv = jQuery(this).attr('targetDiv');
+                jQuery('#rec4-' + id).remove();
+
+                //regnerate index number on table
+                $('#tbl_posts_body4 tr').each(function(index){
+                    $(this).find('span.sn4').html(index+1);
+                });
+                return true;
+            } else {
+                return false;
+            }
+        });
+    });
+</script>
+
+
+
+
+
+<!--5 table-->
+<!--//////////////////////////////////////////////////////////-->
+<!--//////////////////////////////////////////////////////////-->
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        jQuery(document).delegate('a.add-record5', 'click', function(e) {
+            e.preventDefault();
+            var content = jQuery('#sample_table5 tr'),
+                size = jQuery('#tbl_posts5 >tbody >tr').length + 1,
+                element = null,
+                element = content.clone();
+            element.attr('id', 'rec5-'+size);
+            element.find('.delete-record5').attr('data-id5', size);
+            element.appendTo('#tbl_posts_body5');
+            element.find('.sn5').html(size);
+        });
+        jQuery(document).delegate('a.delete-record5', 'click', function(e) {
+            e.preventDefault();
+            var didConfirm = confirm("Are you sure You want to delete");
+            if (didConfirm == true) {
+                var id = jQuery(this).attr('data-id5');
+                var targetDiv = jQuery(this).attr('targetDiv');
+                jQuery('#rec5-' + id).remove();
+
+                //regnerate index number on table
+                $('#tbl_posts_body5 tr').each(function(index){
+                    $(this).find('span.sn5').html(index+1);
+                });
+                return true;
+            } else {
+                return false;
+            }
+        });
+    });
+
+</script>
+
+
+
+
+
+
+<!--style="display: inline-block;  margin: 0px 50px;"-->
+
+
+
+
+</body>
+</html>
