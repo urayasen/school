@@ -13,11 +13,16 @@ import oktenweb.school.service.functionalService.ClassJournalService;
 import oktenweb.school.service.functionalService.ClassesService;
 import oktenweb.school.service.functionalService.SubjectsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.WebUtils;
 
+import java.security.Principal;
 import java.util.*;
 
 @Controller
@@ -681,5 +686,18 @@ public class RegistrationController {
         model.addAttribute("teacher", teachers.getName());
         return "schedule";
     }
+
+    @GetMapping(value = "/account")
+    @ResponseBody
+    public Object currentUserName(Authentication authentication) {
+
+        if (authentication != null) {
+            System.out.println(authentication);
+            return authentication.getDetails();
+        } else {
+            return "";
+        }
+    }
+
 
 }
