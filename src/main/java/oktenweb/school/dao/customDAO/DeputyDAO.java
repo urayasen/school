@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface DeputyDAO extends JpaRepository<Deputy, Integer>{
+
     @Override
     List<Deputy> findAll();
 

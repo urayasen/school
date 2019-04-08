@@ -12,4 +12,6 @@ public interface DeputyService {
 
     Deputy byId(Integer id);
 
+
+
 }

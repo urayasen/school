@@ -699,17 +699,38 @@ public class RegistrationController {
         return teachers;
     }
 
-    @GetMapping(value = "/account")
+    @GetMapping("/account")
     @ResponseBody
-    public Object currentUserName(Authentication authentication) {
+    public Object currentUserName(Authentication authentication, Model model) {
 
-        if (authentication != null) {
+
             System.out.println(authentication);
-            return authentication.getDetails();
-        } else {
-            return "";
-        }
+            System.out.println(authentication.getName());
+            User user = userService.findByUsername(authentication.getName());
+//            Deputy deputy = deputyService.findByUsername(authentication.getName());
+        model.addAttribute("name", user.getClassteachers().getName());
+        model.addAttribute("phone", user.getClassteachers().getPhone());
+        return "account";
     }
 
+
+
+
+
+//    @GetMapping(value = "/account")
+//    @ResponseBody
+//    public Object currentUserName(Authentication authentication) {
+//
+//        if (authentication != null) {
+//            System.out.println(authentication);
+//            System.out.println(authentication.getName());
+//            User user = userService.findByUsername(authentication.getName());
+////            Deputy deputy = deputyService.findByUsername(authentication.getName());
+//            user.getClassteachers();
+//            return null;
+//        } else {
+//            return "";
+//        }
+//    }
 
 }

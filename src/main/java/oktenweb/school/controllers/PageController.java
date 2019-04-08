@@ -47,10 +47,6 @@ public class PageController {
         return "visited";
     }
 
-    @GetMapping("account")
-    private String account(){
-        return "account";
-    }
 
 
 }

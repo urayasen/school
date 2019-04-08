@@ -4,13 +4,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import oktenweb.school.models.User;
 import oktenweb.school.models.functional.ClassJournal;
 import oktenweb.school.models.functional.Subjects;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
-public class Deputy {
+public class Deputy  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -167,4 +170,6 @@ public class Deputy {
                 ", loginname='" + loginname + '\'' +
                 '}';
     }
+
+
 }

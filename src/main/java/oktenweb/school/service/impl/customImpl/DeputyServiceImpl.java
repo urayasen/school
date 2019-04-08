@@ -29,4 +29,7 @@ public class DeputyServiceImpl implements DeputyService{
     public Deputy byId(Integer id) {
         return deputyDAO.byId(id);
     }
+
+
+
 }
