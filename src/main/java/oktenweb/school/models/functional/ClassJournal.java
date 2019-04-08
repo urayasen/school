@@ -1,10 +1,7 @@
 package oktenweb.school.models.functional;
 
-import oktenweb.school.models.custom.Classteachers;
-import oktenweb.school.models.custom.Deputy;
 import oktenweb.school.models.custom.Students;
 import oktenweb.school.models.custom.Teachers;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 
@@ -23,7 +20,13 @@ public class ClassJournal {
 
     }
 
-    @Autowired
+    public ClassJournal(String dateMark, String marks) {
+        this.dateMark = dateMark;
+        this.marks = marks;
+    }
+
+
+
     @ManyToOne(
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
@@ -31,7 +34,6 @@ public class ClassJournal {
     private Subjects subjects;
 
 
-    @Autowired
     @ManyToOne(
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
@@ -39,22 +41,8 @@ public class ClassJournal {
     private Students students;
 
 
-//    @Autowired
-//    @ManyToOne(
-//            fetch = FetchType.LAZY,
-//            cascade = CascadeType.ALL
-//    )
-//    private Deputy deputy;
 
 
-//    @Autowired
-//    @ManyToOne(
-//            fetch = FetchType.LAZY,
-//            cascade = CascadeType.ALL
-//    )
-//    private Classteachers classteachers;
-
-    @Autowired
     @ManyToOne(
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
@@ -62,21 +50,6 @@ public class ClassJournal {
     private Teachers teachers;
 
 
-//    public Deputy getDeputy() {
-//        return deputy;
-//    }
-
-//    public void setDeputy(Deputy deputy) {
-//        this.deputy = deputy;
-//    }
-
-//    public Classteachers getClassteachers() {
-//        return classteachers;
-//    }
-
-//    public void setClassteachers(Classteachers classteachers) {
-//        this.classteachers = classteachers;
-//    }
 
     public Students getStudents() {
         return students;

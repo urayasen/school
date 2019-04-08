@@ -48,7 +48,7 @@ public class Subjects {
 
     @JsonIgnore
     @ManyToOne(
-            fetch = FetchType.LAZY,
+//            fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
     )
     private Teachers teachers;

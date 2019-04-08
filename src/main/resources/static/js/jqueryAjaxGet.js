@@ -80,7 +80,7 @@ $(document).ready(function () {
             data: {'name': name},
             success: function (data) {
                 let labels = document.getElementById("label");
-                // console.log(data);
+                console.log(data);
                 $(labels).innerText = "Виберіть список класних керівників";
                 let elements = document.getElementById('listElementsOne');
                 $(elements).empty();
@@ -127,6 +127,8 @@ $(document).ready(function () {
             success: function (data) {
                 let labels = document.getElementById("label");
                 // console.log($(this).val());
+
+                console.log(data);
                 $(labels).innerText = "Виберіть список класних керівників";
                 let elements = document.getElementById('listElementsTwo');
                 $(elements).empty();
