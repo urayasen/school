@@ -68,7 +68,7 @@ public class RegistrationController {
         if (user1.getRole() == Role.ROLE_STUDENT) {
             return "registrationUser/registrationStudents";
         } else if (user1.getRole() == Role.ROLE_CLASSTHEACHER) {
-            return "registrationUser/registationClassteacher";
+            return "registrationUser/registrationClassteacher";
         } else if (user1.getRole() == Role.ROLE_DEPUTI) {
             return "registrationUser/registrationDeputi";
         } else if (user1.getRole() == Role.ROLE_PARENT) {
@@ -91,7 +91,7 @@ public class RegistrationController {
         mapRoles.put("Класний керівник", Role.ROLE_CLASSTHEACHER);
         mapRoles.put("Зауч", Role.ROLE_DEPUTI);
         model.addAttribute("mapRoles", mapRoles);
-        return "registration";
+        return "main/registration";
     }
 
     @GetMapping("/saveDeputy")
@@ -203,7 +203,7 @@ public class RegistrationController {
     @GetMapping("/delete/{id}")
     public String deleteCustomer(@PathVariable Integer id) {
         classesService.deleteById(id);
-        return "redirect:/registrationClasses";
+        return "redirect:registrationFunction/registrationClasses";
     }
 
     private Map<String, String> elements;

@@ -9,14 +9,14 @@ public class MainController {
 //123
     @GetMapping("/")
     public String index() {
-        return "login";
+        return "main/login";
     }
 
 
     @PostMapping("/successURL")
     public String successURL() {
         System.out.println("You succes login");
-        return "redirect:/pages";
+        return "redirect:main/hhh";
     }
 
 }
