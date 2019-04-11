@@ -68,7 +68,7 @@ public class RegistrationController {
         if (user1.getRole() == Role.ROLE_STUDENT) {
             return "registrationUser/registrationStudents";
         } else if (user1.getRole() == Role.ROLE_CLASSTHEACHER) {
-            return "registrationUser/registrationClassteacher";
+            return "registrationUser/registationClassteacher";
         } else if (user1.getRole() == Role.ROLE_DEPUTI) {
             return "registrationUser/registrationDeputi";
         } else if (user1.getRole() == Role.ROLE_PARENT) {
