@@ -1,6 +1,5 @@
 package oktenweb.school.controllers;
 
-import oktenweb.school.dao.functionalDAO.ClassesDAO;
 import oktenweb.school.models.Role;
 import oktenweb.school.models.functional.Classes;
 import oktenweb.school.models.functional.Subjects;
@@ -14,15 +13,11 @@ import oktenweb.school.service.functionalService.ClassesService;
 import oktenweb.school.service.functionalService.SubjectsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.WebUtils;
 
-import java.security.Principal;
 import java.util.*;
 
 @Controller
@@ -71,15 +66,15 @@ public class RegistrationController {
         System.out.println("saveUser ---------   " + id);
         model.addAttribute("user1", user1);
         if (user1.getRole() == Role.ROLE_STUDENT) {
-            return "registrationStudents";
+            return "registrationUser/registrationStudents";
         } else if (user1.getRole() == Role.ROLE_CLASSTHEACHER) {
-            return "registationClassteacher";
+            return "registrationUser/registationClassteacher";
         } else if (user1.getRole() == Role.ROLE_DEPUTI) {
-            return "registrationDeputi";
+            return "registrationUser/registrationDeputi";
         } else if (user1.getRole() == Role.ROLE_PARENT) {
-            return "registrationParent";
+            return "registrationUser/registrationParent";
         } else if (user1.getRole() == Role.ROLE_TEACHER) {
-            return "registrationTeacher";
+            return "registrationUser/registrationTeacher";
         }
 
         return null;
@@ -157,7 +152,7 @@ public class RegistrationController {
             mapSubjects.put(subject, subject);
         }
         model.addAttribute("mapSubjects", mapSubjects);
-        return "/functional/registrationFunctional";
+        return "/registrationFunction/registrationFunctional";
     }
 
     @GetMapping("/saveFunctional")
@@ -177,7 +172,7 @@ public class RegistrationController {
             Model model) {
         List<Classes> classes = classesService.findAll();
         model.addAttribute("classes", classes);
-        return "registrationClasses";
+        return "registrationFunction/registrationClasses";
     }
 
     @GetMapping("/saveClasses")
@@ -191,7 +186,7 @@ public class RegistrationController {
         }
         classesService.save(classes);
 
-        return "redirect:/registrationClasses";
+        return "redirect:registrationFunction/registrationClasses";
     }
 
 
@@ -202,7 +197,7 @@ public class RegistrationController {
         model.addAttribute("classes", classes);
 //        System.out.println(contact);
 //        System.out.println(model);
-        return "registrationClasses";
+        return "registrationFunction/registrationClasses";
     }
 
     @GetMapping("/delete/{id}")
@@ -225,7 +220,7 @@ public class RegistrationController {
 //        elements.put("Класний журнал", "class_journal");
         elements.put("Предмети", "subjects");
         model.addAttribute("elements", elements);
-        return "registrationAddElements";
+        return "registrationFunction/registrationAddElements";
     }
 
     //вибір елементів
@@ -559,7 +554,7 @@ public class RegistrationController {
 
 
 
-        return "fgsfgdfgdf";
+        return "111";
     }
 
 
@@ -586,7 +581,7 @@ public class RegistrationController {
         months.add("Грудень");
 
         model.addAttribute("months", months);
-        return "marks";
+        return "functional/marks";
 
 
     }
@@ -642,7 +637,7 @@ public class RegistrationController {
 
        model.addAttribute("dates", dates);
 
-        return "marks";
+        return "functional/marks";
     }
 
     @GetMapping("/buttonSaveMarks")
@@ -662,7 +657,7 @@ public class RegistrationController {
     public String schedule (Model model){
         List<Classes> classes = classesService.findAll();
         model.addAttribute("classes" , classes);
-        return "schedule";
+        return "functional/schedule";
     }
 
     @GetMapping ("/saveSchedule")
@@ -681,7 +676,7 @@ public class RegistrationController {
         model.addAttribute("subjects", subjectsList);
 
 
-        return "schedule";
+        return "functional/schedule";
     }
 
     @GetMapping("/changeSubjects/{id}")
@@ -710,7 +705,7 @@ public class RegistrationController {
 //            Deputy deputy = deputyService.findByUsername(authentication.getName());
         model.addAttribute("name", user.getClassteachers().getName());
         model.addAttribute("phone", user.getClassteachers().getPhone());
-        return "account";
+        return "functional/account";
     }
 
 
