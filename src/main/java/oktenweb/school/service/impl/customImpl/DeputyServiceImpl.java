@@ -24,4 +24,12 @@ public class DeputyServiceImpl implements DeputyService{
     public List<Deputy> findAll() {
         return deputyDAO.findAll();
     }
+
+    @Override
+    public Deputy byId(Integer id) {
+        return deputyDAO.byId(id);
+    }
+
+
+
 }

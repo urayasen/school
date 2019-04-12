@@ -9,5 +9,5 @@ public interface ParentsService {
 
     List<Parents> findAll();
 
-    Parents byName(String name);
+    Parents byId(Integer id);
 }

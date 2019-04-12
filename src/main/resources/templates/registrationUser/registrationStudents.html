@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Registration Part 2 </title>
+        <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script th:src="@{/js/date.format.js}"></script>
+        <script th:src="@{/js/jquery-dropdate.js}"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <link th:href="@{/css/registration_2.css}"  rel="stylesheet" type="text/css">
+    </head>
+    <body >
+
+
+
+
+        <form th:action="@{/saveStudents}" method="Get">
+            <div class ="container">
+
+                <div  class ="row">
+
+                    <div class = "col-lg-3"></div>
+
+                    <div class = "col-lg-6">
+
+                        <div id ="ui">
+                            <div class="op">
+                                <h1 class="text-center">Registration Form</h1>
+                            </div>
+
+                            <form class ="form-group text-center">
+                                <br>
+
+                                <div class="row ">
+
+                                    <div class = "col-lg-6">
+                                        <label style="text-align: center">Ім'я</label>
+                                        <input type="hidden" name="id" th:value="${user1.id}">
+                                        <input type ="text" name="name" class = "form-control" placeholder="Введіть ім'я..">
+                                    </div>
+                                    <div><input type="hidden" name="id" th:value="${user1.id}"/></div>
+                                    <div class = "col-lg-6">
+                                        <label style="text-align: center">Прізвище</label>
+                                        <input type ="text" name="surname" class = "form-control" placeholder="Введіть прізвище..">
+                                    </div>
+                                </div>
+                                <br>
+                                <label class="icono-mail" style="text-align: center">Електронна пошта</label>
+                                <input type="email" name="email" class= "form-control" placeholder="Введіть електронну пошту..">
+                                <br>
+
+                                <div class="row">
+
+                                    <div class = "col-lg-6">
+                                        <label style="text-align: center">Телефон</label>
+                                        <input type ="text" name="phone" class = "form-control" placeholder="+380..">
+                                    </div>
+
+                                    <div class = "col-lg-6">
+                                        <label style="text-align: center">Місце проживання</label>
+                                        <input type ="text" name="adress" class = "form-control" placeholder="Адреса..">
+                                    </div>
+                                </div>
+
+                                <br>
+                                <div class="row">
+                                    <div class = "col-lg-6">
+                                        <label style="text-align: center">Стать</label>
+                                        <br>
+                                        <input type="radio" name="gender"  value="female"/><label>Ж</label>
+                                        <input type="radio" name="gender"  value="male"/><label>Ч</label>
+
+                                    </div>
+
+
+
+                                    <div class = "col-lg-6">
+
+                                        <label style="text-align: center">Дата народження</label>
+                                        <br>
+                                        <!--
+                                                                    <input type="text" name="birthday" value="" class="dropdate">
+                                                                        <script>
+                                                                           $(document).ready(function(){
+                                                                           $('.dropdate').dropdate({
+                                                                            dateFormat:'dd/mm/yyyy'
+                                                                              });
+                                                                              });
+                                                                       </script>
+                                        -->
+
+
+                                        <input type="date" name="birthday" min="1950-08-15" max="2030-08-26" step="7">
+
+
+
+
+                                    </div>
+
+                                </div>
+                                <br>
+
+                                <button type="submit"class="btn btn-block  btn-warning">Зберегти</button>
+
+
+                            </form>
+
+
+
+
+                        </div>
+
+
+                    </div>
+
+                    <div class = "col-lg-3"></div>
+
+                </div>
+
+            </div>
+        </form>
+    </body>
+</html>

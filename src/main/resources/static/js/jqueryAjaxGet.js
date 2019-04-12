@@ -56,14 +56,14 @@ $(document).ready(function () {
         } else if (name === "subjects") {
             console.log(elementsTwo);
             elementsTwo.innerHTML = '<option>------</option>' +
-                '<option value="teachers">Викладачі</option>' +
-                '<option value="classes">Класи</option>' +
-                '<option value="deputy">Зауч</option>';
+                // '<option value="teachers">Викладачі</option>' +
+                '<option value="classes">Класи</option>';
+                // '<option value="deputy">Зауч</option>';
         } else if (name === "classes") {
             elementsTwo.innerHTML = '<option>------</option>' +
                 '<option value="subjects">Предмети</option>' +
-                '<option value="students">Студенти</option>' +
-                '<option value="classteachers">Класний керівник</option>';
+                '<option value="students">Студенти</option>';
+                // '<option value="classteachers">Класний керівник</option>';
         } else if (name === "teachers") {
             elementsTwo.innerHTML = '<option>------</option>' +
                 '<option value="subjects">Предмети</option>';
@@ -73,21 +73,23 @@ $(document).ready(function () {
         }
 
 
+
         $.ajax({
             type: "GET",
             url: url_page,
             data: {'name': name},
             success: function (data) {
                 let labels = document.getElementById("label");
-                // console.log(data);
+                console.log(data);
                 $(labels).innerText = "Виберіть список класних керівників";
                 let elements = document.getElementById('listElementsOne');
                 $(elements).empty();
                 for (let i = 0; i < data.length; i++) {
-                    $(elements).append('<option value = ' + data[i].name + '>' + data[i].name + '</option>');
-
-
-                }
+                    if(name==="classes" || name==="subjects") {
+                        $(elements).append('<option value = ' + data[i].id + '>' + data[i].name + '</option>');
+                    }else{
+                        $(elements).append('<option value = ' + data[i].id + '>' + data[i].loginname + '</option>');
+                    }                }
 
 
             },
@@ -102,10 +104,21 @@ $(document).ready(function () {
     $('#elementsTwo').change(function (e) {
         // e.preventDefault();
         let name = $(this).val();
-        console.dir(name);
+        console.log(name);
         let url_page = "/regAddElements/" + name;
-        let labels = document.getElementById("labelOne");
+        let elementsOne = document.getElementById("elementsOne");
+        let elementsTwo = document.getElementById("elementsTwo");
+        let listElementsTwo = document.getElementById("listElementsTwo");
+        let nameelementsOne =  elementsOne.value;
+        console.log(nameelementsOne);
         // labels.innerText = "Виберіть список класних керівників";
+        if(nameelementsOne ==="classteachers" && name==="classes") {
+            listElementsTwo.outerHTML='<select id="listElementsTwo">' +
+                '</select>';
+        }else{
+            listElementsTwo.outerHTML='<select id="listElementsTwo" multiple="multiple">' +
+                '</select>';
+        }
 
         $.ajax({
             type: "GET",
@@ -114,11 +127,17 @@ $(document).ready(function () {
             success: function (data) {
                 let labels = document.getElementById("label");
                 // console.log($(this).val());
+
+                console.log(data);
                 $(labels).innerText = "Виберіть список класних керівників";
                 let elements = document.getElementById('listElementsTwo');
                 $(elements).empty();
                 for (let i = 0; i < data.length; i++) {
-                    $(elements).append('<option value = ' + data[i].name + '>' + data[i].name + '</option>');
+                    if(name==="classes" || name==="subjects") {
+                        $(elements).append('<option value = ' + data[i].id + '>' + data[i].name + '</option>');
+                    }else{
+                        $(elements).append('<option value = ' + data[i].id + '>' + data[i].loginname + '</option>');
+                    }
                 }
 
 
@@ -144,6 +163,7 @@ $(document).ready(function () {
         // let elementsTwo = document.getElementById("elementsTwo");
         let listElementsTwo = document.getElementById("listElementsTwo");
 
+        console.log(listElementsOne);
 
         let stringlistElementsOne = [];
         let stringlistElementsTwo = [];
@@ -154,6 +174,7 @@ $(document).ready(function () {
                 stringlistElementsOne[i] = listElementsOne.options[i].value;
             }
         }
+
 
 
         for (let i = 0; i < listElementsTwo.options.length; i++) {

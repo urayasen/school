@@ -1,5 +1,6 @@
 package oktenweb.school.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import oktenweb.school.models.custom.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

@@ -20,10 +20,12 @@ public interface SubjectsDAO extends JpaRepository<Subjects, Integer> {
     List<Subjects> findAll();
 
     @Query("select q from Subjects q where q.id = :xxx")
-    Subjects byIdSub(@Param("xxx") Integer id);
+    Subjects byId(@Param("xxx") Integer id);
 
     @Query("select max(q.id) from Subjects q" )
     Integer maxByIdSub();
+
+
 
 
 }

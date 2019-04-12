@@ -17,5 +17,7 @@ public interface SubjectsService {
 
     Integer maxByIdSub();
 
-    Subjects byIdSub(Integer id);
+    Subjects byId(Integer id);
+
+
 }

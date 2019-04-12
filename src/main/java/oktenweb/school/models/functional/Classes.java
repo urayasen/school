@@ -34,11 +34,17 @@ public class Classes {
         this.name = name;
     }
 
+
+
     @JsonIgnore
     @ManyToMany(
             fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL,
-            mappedBy = "classes"
+            cascade = CascadeType.MERGE
+    )
+    @JoinTable(
+            name = "Classes_Subjects",
+            joinColumns = { @JoinColumn(name = "classes_id") },
+            inverseJoinColumns = { @JoinColumn(name = "subjects_id") }
     )
     private List<Subjects> subjects = new ArrayList<>();
 
@@ -47,7 +53,8 @@ public class Classes {
     @JsonIgnore
     @OneToMany (
             fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL
+            cascade = CascadeType.ALL,
+            mappedBy = "classes"
     )
     private List<Students> students = new ArrayList<>();
 
@@ -106,8 +113,6 @@ public class Classes {
         return "Classes{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", subjects=" + subjects +
-                ", students=" + students +
                 '}';
     }
 }

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <title>MARKS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--<script src="/js/jqueryMarksHendler.js"></script>-->
+
+    <style>
+        .box{
+
+        border: 1px double black;
+        /*margin: 0 auto;*/
+        background: lime
+
+        }
+
+        .box td, th, input{
+
+        text-align: center;
+        border: 1px double black;
+        padding: 0 20px;
+
+        }
+
+    </style>
+
+</head>
+<body>
+
+<form id="formSelectElements" th:action="@{/SelectElements}" method="GET">
+    <div>
+        <h1>Класний журнал</h1>
+
+
+        <label>Класс:
+            <select id="classes_id" name="classes" >
+                <option>------</option>
+                <option
+                        th:each="class : ${classes}"
+                        th:value="${class.id}"
+                        th:text="${class.name}">
+                </option>
+            </select>
+        </label>
+
+
+        <label>Предмет:
+            <select name="subjects" >
+                <option>------</option>
+                <option th:each="subject : ${subjects}"
+                        th:value="${subject.id}"
+                        th:text="${subject.name}">
+                </option>
+            </select>
+        </label>
+
+
+        <label>Місяць/Період:
+            <select name="months" >
+                <option>------</option>
+                <option  th:each="month : ${months}"
+                        th:value="${month}"
+                        th:text="${month}">
+                </option>
+            </select>
+        </label>
+
+
+        <button id="btnSelectElements" th:formaction="@{/buttonSelectElements}" method="GET">Відобразити</button>
+        <!--<button id="btnSalectElements">Відобразити</button>-->
+    </div>
+</form>
+<br/>
+<p>[[${classed}]] --- [[${subjected}]] -- [[${monthed}]]</p>
+<br/>
+<form th:action="@{/SelectMarks}" method="GET">
+    <table class="box">
+        <thead>
+            <tr>
+                <th>
+                    №
+                </th>
+
+                <th>
+                    ПІБ
+                </th>
+                <th th:each="date:${dates}">
+                    [[${date}]]
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="student:${students}">
+                <td>
+                   <p>[[${student.id}]]</p>
+                </td>
+                <td>
+                    <p>[[${student.name}]]</p>
+                </td>
+                <td th:each="date:${dates}">
+                    <!--<input type="" name="marks" th:value="${class_jounal.marks}">-->
+                    <input type="" name="marks" placeholder="marks">
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <button id="btnSaveMarks" th:formaction="@{/buttonSaveMarks}" method="GET">Зберегти</button>
+</form>
+<script>
+
+        $("#btnSelectElements").click(function (e) {
+
+            window.onload = function() {
+                // e.preventDefault();
+
+                console.log('Документ и все ресурсы загружены');
+
+            };
+
+            let getClasses = document.getElementById("classes_id");
+            let oneClasses = $("select[name='classes']").val();
+            console.log(getClasses);
+            console.log(oneClasses);
+
+
+            // $("select[id='elementsOne']").val();
+            for (let i = 0; i < getClasses.options.length; i++) {
+                if (getClasses.options[i].value === oneClasses) {
+                    getClasses.options[i].selected = true;
+                }
+            }
+        })
+
+
+
+</script>
+
+</body>
+</html>

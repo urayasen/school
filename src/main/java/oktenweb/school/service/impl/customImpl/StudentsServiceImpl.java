@@ -3,6 +3,7 @@ package oktenweb.school.service.impl.customImpl;
 
 import oktenweb.school.dao.customDAO.StudentsDAO;
 import oktenweb.school.models.custom.Students;
+import oktenweb.school.models.functional.Classes;
 import oktenweb.school.service.customService.StudentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,14 @@ public class StudentsServiceImpl implements StudentsService{
     }
 
     @Override
-    public Students byName(String name) {
-        return studentsDAO.byName(name);
+    public Students byId(Integer id) {
+        return studentsDAO.byId(id);
     }
+
+    @Override
+    public List<Students> byClassId(Integer id) {
+        return studentsDAO.byClassId(id);
+    }
+
+
 }

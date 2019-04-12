@@ -4,26 +4,37 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import oktenweb.school.models.User;
 import oktenweb.school.models.functional.ClassJournal;
 import oktenweb.school.models.functional.Subjects;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
-public class Deputy {
+public class Deputy  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String Name;
-    private String Surname;
-    private String Email;
-    private String Phone;
-    private String Adress;
+    private String name;
+    private String surname;
+    private String email;
+    private String phone;
+    private String adress;
     private String gender;
     private String birthday;
+    transient private String loginname;
 
 
+    public String getLoginname() {
+        return user.getUsername();
+    }
+
+    public void setLoginname() {
+        this.loginname = user.getUsername();
+    }
 
     @JsonIgnore
     @OneToOne(
@@ -44,14 +55,14 @@ public class Deputy {
     private List<Subjects> subjects = new ArrayList<>();
 
 
-
-    @JsonIgnore
-    @OneToMany(
-            fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL,
-            mappedBy = "deputy"
-    )
-    private List<ClassJournal> classJournals = new ArrayList<>();
+//
+//    @JsonIgnore
+//    @OneToMany(
+//            fetch = FetchType.LAZY,
+//            cascade = CascadeType.ALL,
+//            mappedBy = "deputy"
+//    )
+//    private List<ClassJournal> classJournals = new ArrayList<>();
 
 
     public List<Subjects> getSubjects() {
@@ -62,13 +73,13 @@ public class Deputy {
         this.subjects = subjects;
     }
 
-    public List<ClassJournal> getClassJournals() {
-        return classJournals;
-    }
+//    public List<ClassJournal> getClassJournals() {
+//        return classJournals;
+//    }
 
-    public void setClassJournals(List<ClassJournal> classJournals) {
-        this.classJournals = classJournals;
-    }
+//    public void setClassJournals(List<ClassJournal> classJournals) {
+//        this.classJournals = classJournals;
+//    }
 
     public User getUser() {
         return user;
@@ -104,60 +115,61 @@ public class Deputy {
         this.id = id;
     }
 
+
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getSurname() {
-        return Surname;
+        return surname;
     }
 
     public void setSurname(String surname) {
-        Surname = surname;
+        this.surname = surname;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getPhone() {
-        return Phone;
+        return phone;
     }
 
     public void setPhone(String phone) {
-        Phone = phone;
+        this.phone = phone;
     }
 
     public String getAdress() {
-        return Adress;
+        return adress;
     }
 
     public void setAdress(String adress) {
-        Adress = adress;
+        this.adress = adress;
     }
 
     @Override
     public String toString() {
         return "Deputy{" +
                 "id=" + id +
-                ", Name='" + Name + '\'' +
-                ", Surname='" + Surname + '\'' +
-                ", Email='" + Email + '\'' +
-                ", Phone='" + Phone + '\'' +
-                ", Adress='" + Adress + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", adress='" + adress + '\'' +
                 ", gender='" + gender + '\'' +
                 ", birthday='" + birthday + '\'' +
-                ", user=" + user +
-                ", subjects=" + subjects +
-                ", classJournals=" + classJournals +
+                ", loginname='" + loginname + '\'' +
                 '}';
     }
+
+
 }

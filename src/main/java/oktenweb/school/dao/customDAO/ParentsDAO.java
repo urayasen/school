@@ -11,8 +11,8 @@ public interface ParentsDAO extends JpaRepository<Parents, Integer>{
     @Override
     List<Parents> findAll();
 
-    @Query("select c from Parents c where c.name = :xxx")
-    Parents byName(@Param("xxx") String name);
+    @Query("select c from Parents c where c.id = :xxx")
+    Parents byId(@Param("xxx") Integer id);
 
 
 }

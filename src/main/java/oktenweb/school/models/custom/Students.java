@@ -25,6 +25,16 @@ public class Students {
     private String adress;
     private String gender;
     private String birthday;
+//    transient private String loginname;
+
+
+//    public String getLoginname() {
+//        return user.getUsername();
+//    }
+
+//    public void setLoginname() {
+//        this.loginname = user.getUsername();
+//    }
 
     public String getGender() {
         return gender;
@@ -59,11 +69,11 @@ public class Students {
     private Parents parents;
 
     @JsonIgnore
-    @OneToMany( fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL,
-            mappedBy = "students"
+    @ManyToOne( fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL
+
     )
-    private List<Classes> classes = new ArrayList<>();
+    private Classes classes ;
 
     @JsonIgnore
     @ManyToOne( fetch = FetchType.LAZY,
@@ -80,11 +90,11 @@ public class Students {
         this.classteachers = classteachers;
     }
 
-    public List<Classes> getClasses() {
+    public Classes getClasses() {
         return classes;
     }
 
-    public void setClasses(List<Classes> classes) {
+    public void setClasses(Classes classes) {
         this.classes = classes;
     }
 

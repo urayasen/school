@@ -10,8 +10,10 @@ import java.util.List;
 
 public interface ClassteachersDAO extends JpaRepository<Classteachers, Integer>{
     @Override
-    List<Classteachers> findAll();
+    List<Classteachers>   findAll();
 
-    @Query("select c from Classteachers c where c.name = :xxx")
-    Classteachers byName(@Param("xxx") String name);
+
+
+    @Query("select c from Classteachers c where c.id = :xxx")
+    Classteachers byId(@Param("xxx") Integer id);
 }

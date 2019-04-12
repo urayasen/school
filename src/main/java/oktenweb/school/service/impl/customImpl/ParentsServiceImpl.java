@@ -25,7 +25,7 @@ public class ParentsServiceImpl implements ParentsService{
     }
 
     @Override
-    public Parents byName(String name) {
-        return parentsDAO.byName(name);
+    public Parents byId(Integer id) {
+        return parentsDAO.byId(id);
     }
 }

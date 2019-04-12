@@ -9,4 +9,9 @@ public interface DeputyService {
     void save(Deputy deputy);
 
     List<Deputy> findAll();
+
+    Deputy byId(Integer id);
+
+
+
 }

@@ -51,8 +51,8 @@ public class Security extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/home","/saveUser","/saveNewUser", "/chat", "/regaddelements/all", "/regaddelements/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/saveElements").permitAll()
+                .antMatchers("/home","/saveUser", "/SelectElements",  "/saveNewUser", "/chat", "/regaddelements/all", "/regaddelements/**").permitAll()
+                .antMatchers(HttpMethod.POST,   "/saveElements").permitAll()
                 .antMatchers("/admin/**").access("hasRole('TEACHER')")
                 .antMatchers("/admin/**").access("hasRole('ADMIN')")
 //                .antMatchers("/saveStudents").access("hasRole('ADMIN')")
