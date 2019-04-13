@@ -703,8 +703,8 @@ public class RegistrationController {
             System.out.println(authentication.getName());
             User user = userService.findByUsername(authentication.getName());
 //            Deputy deputy = deputyService.findByUsername(authentication.getName());
-        model.addAttribute("name", user.getClassteachers().getName());
-        model.addAttribute("phone", user.getClassteachers().getPhone());
+//        model.addAttribute("name", user.getClassteachers().getName());
+//        model.addAttribute("phone", user.getClassteachers().getPhone());
         return "functional/account";
     }
 

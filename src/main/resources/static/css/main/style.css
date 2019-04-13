@@ -13230,7 +13230,7 @@ input[type="button"].btn-block {
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
   margin-right: 1rem;
-  font-size: 1.25rem;
+  fonts-size: 1.25rem;
   line-height: inherit;
   white-space: nowrap;
 }
@@ -21158,13 +21158,13 @@ code {
   border-right: 0;
   border-left: 0;
   border-bottom: 0;
-  font: normal normal normal 24px/1 "Material Design Icons";
+  fonts: normal normal normal 24px/1 "Material Design Icons";
   content: "\F35D";
   width: auto;
   height: auto;
   vertical-align: middle;
   line-height: .625rem;
-  font-size: 1.25rem;
+  fonts-size: 1.25rem;
   margin-left: 0;
 }
 */

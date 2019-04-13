@@ -21,7 +21,10 @@ public class PageController {
     }
 
 
-
+@GetMapping("/index")
+public String index(){
+    return "main/index";
+}
 
 
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" xmlns:th="http://www.thymeleaf.org">
 
 
 <!-- Mirrored from www.urbanui.com/boardsterui/template/demo/horizontal-default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 27 Mar 2019 11:44:10 GMT -->
@@ -9,16 +9,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Розклад занять</title>
   <!-- plugins:css -->
-<!--  <link rel="stylesheet" href="../../vendors/iconfonts/mdi/font/css/materialdesignicons.min.css">-->
+<!--  <link rel="stylesheet" th:href="@{../../vendors/iconfonts/mdi/fonts/css/materialdesignicons.min.css}">-->
 <!--  <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">-->
 <!--  <link rel="stylesheet" href="../../vendors/css/vendor.bundle.addons.css">-->
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="../../css/horizontal-layout/style.css">
+  <link rel="stylesheet" th:href="@{../../css/main/style.css}">
   <!-- endinject -->
-  <link rel="shortcut icon" href="../../images/icons/main.ico" />
+  <link rel="shortcut icon" th:href="@{../../images/icons/main.ico}" />
 </head>
 
 <body>
@@ -28,74 +28,18 @@
       <nav class="navbar top-navbar col-lg-12 col-12 p-0">
         <div class="container">
           <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center ">           
-            <a class="navbar-brand brand-logo" href="index.html">                  
-            <img src="../../images/icons/main.png" alt="profile"/>
+            <a class="navbar-brand brand-logo" th:href="@{index.html}">
+            <img th:src="@{../../images/icons/main.png}" alt="profile"/>
 </a>
           
           </div>
           <div class="navbar-menu-wrapper d-flex align-items-stretch justify-content-center justify-content-lg-center">
             
             <ul class="navbar-nav navbar-nav-right">
-<!--
-              <li class="nav-item dropdown">
-                <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
-                  <i class="mdi mdi-bell-outline mx-0"></i>
-                  <span class="count"></span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-                  <a class="dropdown-item">
-                    <p class="mb-0 font-weight-normal float-left">You have 4 new notifications
-                    </p>
-                    <span class="badge badge-pill badge-warning float-right">View all</span>
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <div class="preview-icon bg-success">
-                        <i class="mdi mdi-information mx-0"></i>
-                      </div>
-                    </div>
-                    <div class="preview-item-content">
-                      <h6 class="preview-subject font-weight-medium">Application Error</h6>
-                      <p class="font-weight-light small-text mb-0">
-                        Just now
-                      </p>
-                    </div>
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <div class="preview-icon bg-warning">
-                        <i class="mdi mdi-settings mx-0"></i>
-                      </div>
-                    </div>
-                    <div class="preview-item-content">
-                      <h6 class="preview-subject font-weight-medium">Settings</h6>
-                      <p class="font-weight-light small-text mb-0">
-                        Private message
-                      </p>
-                    </div>
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <div class="preview-icon bg-info">
-                        <i class="mdi mdi-account-box mx-0"></i>
-                      </div>
-                    </div>
-                    <div class="preview-item-content">
-                      <h6 class="preview-subject font-weight-medium">New user registration</h6>
-                      <p class="font-weight-light small-text mb-0">
-                        2 days ago
-                      </p>
-                    </div>
-                  </a>
-                </div>
-              </li>
--->
+
               <li class="nav-item nav-profile dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                  <img src="../../images/faces/face5.jpg" alt="profile"/>
+                  <img th:src="@{../../images/faces/face5.jpg}" alt="profile"/>
                   <span class="nav-profile-name">Evan Morales</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
@@ -121,20 +65,20 @@
         <div class="container">
           <ul class="nav page-navigation">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">
-             <img src="../../images/icons/schedule.png" alt="profile"/>
+              <a class="nav-link" th:href="@{/schedule}">
+             <img th:src="@{../../images/icons/schedule.png}" alt="profile"/>
                 <span class="menu-title">Розклад занять</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                       <img src="../../images/icons/dz.png" alt="profile"/>
+              <a class="nav-link" th:href="@{/homework}">
+                       <img th:src="@{../../images/icons/dz.png}" alt="profile"/>
                              <span class="menu-title">Домашня робота</span>
               </a>
             </li>
             <li class="nav-item mega-menu">
-              <a href="#" class="nav-link">
-              <img src="../../images/icons/classjornal.png" alt="profile"/>
+              <a th:href="@{/marks}" class="nav-link">
+              <img th:src="@{../../images/icons/classjornal.png}" alt="profile"/>
             <span class="menu-title">Класний журнал</span>
 <!--                <i class="menu-arrow"></i>-->
               </a>
@@ -142,24 +86,24 @@
             </li>
            
             <li class="nav-item">
-              <a href="#" class="nav-link">
-             <img src="../../images/icons/edit(24).png" alt="profile"/>
+              <a th:href="@{#}" class="nav-link">
+             <img th:src="@{../../images/icons/edit(24).png}" alt="profile"/>
                 <span class="menu-title">Додавання елементів</span>
 <!--                <i class="menu-arrow"></i></a>-->
                </a>
                 <div class="submenu">
                 <ul class="submenu-item">
-                  <li class="nav-item"><a class="nav-link" href="#">Предмети(вибір)</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">Предмети(додавання)</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">Класи</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">Налаштування</a></li>
+                  <li class="nav-item"><a class="nav-link" th:href="@{/registrationFunctional}">Предмети(вибір)</a></li>
+                  <li class="nav-item"><a class="nav-link" th:href="@{/registrationSubjects}">Предмети(додавання)</a></li>
+                  <li class="nav-item"><a class="nav-link" th:href="@{/registrationClasses}">Класи</a></li>
+                  <li class="nav-item"><a class="nav-link" th:href="@{/regAddElements/all}">Налаштування</a></li>
                 </ul>
               </div>
              
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                             <img src="../../images/icons/regg.png" alt="profile"/>
+              <a th:href="@{/saveNewUser}" class="nav-link">
+                             <img th:src="@{../../images/icons/regg.png}" alt="profile"/>
                              <span class="menu-title">Реєстрація користувачів</span></a>
               
                          
@@ -175,8 +119,8 @@
         <div class="content-wrapper">
           <div class="row">
             <div class="col-lg-3 col-md-6 grid-margin stretch-card">
-             
-          
+         <!--start-->
+
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
@@ -197,21 +141,21 @@
   <!-- container-scroller -->
 
   <!-- plugins:js -->
-  <script src="../../vendors/js/vendor.bundle.base.js"></script>
-  <script src="../../vendors/js/vendor.bundle.addons.js"></script>
+  <!--<script th:src="../../vendors/js/vendor.bundle.base.js"></script>-->
+  <!--<script src="../../vendors/js/vendor.bundle.addons.js"></script>-->
   <!-- endinject -->
   <!-- Plugin js for this page-->
   <!-- End plugin js for this page-->
   <!-- inject:js -->
-  <script src="../../js/off-canvas.js"></script>
-  <script src="../../js/hoverable-collapse.js"></script>
-  <script src="../../js/template.js"></script>
-  <script src="../../js/settings.js"></script>
-  <script src="../../js/todolist.js"></script>
+  <!--<script src="../../js/off-canvas.js"></script>-->
+  <!--<script src="../../js/hoverable-collapse.js"></script>-->
+  <!--<script src="../../js/template.js"></script>-->
+  <!--<script src="../../js/settings.js"></script>-->
+  <!--<script src="../../js/todolist.js"></script>-->
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="../../js/dashboard.js"></script>
-  <script src="../../js/todolist.js"></script>
+  <!--<script src="../../js/dashboard.js"></script>-->
+  <!--<script src="../../js/todolist.js"></script>-->
   <!-- End custom js for this page-->
 </body>
 
