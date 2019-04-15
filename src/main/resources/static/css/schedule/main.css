@@ -255,12 +255,12 @@ header, nav, section, article, aside, footer {
 /*    text-shadow:#698459 1px 1px 1px;*/
 /*    text-transform:uppercase;*/
 /*    border:1px solid #698459;*/
-/*    font-family:'LatoWebMedium';*/
+/*    fonts-family:'LatoWebMedium';*/
 /*    letter-spacing:1px;*/
 /*    border-radius:5px;*/
 /*    line-height:normal;*/
 /*    text-align:center;*/
-/*    font-size:15px;*/
+/*    fonts-size:15px;*/
 /*    cursor:pointer;*/
 /*    padding:0 10px;*/
 /*    height:35px;*/
@@ -1812,8 +1812,8 @@ button.btn {
     border-radius:5px;
     line-height:normal;
     text-align:center;
-    font-weight:600;
-    font-size:16px;
+    fonts-weight:600;
+    fonts-size:16px;
     width:230px;
     margin: 0 5px;
     height:35px;
@@ -3161,7 +3161,7 @@ button.btn {
     a.button8 {
       display: inline-block;
       color: white;
-      font-weight: 700;
+      fonts-weight: 700;
       text-decoration: none;
       user-select: none;
       padding: .5em 2em;
@@ -3326,7 +3326,7 @@ button.btn {
 	a.button8 {
   display: inline-block;
   color: white;
-  font-weight: 700;
+  fonts-weight: 700;
   text-decoration: none;
   user-select: none;
   padding: .5em 2em;
