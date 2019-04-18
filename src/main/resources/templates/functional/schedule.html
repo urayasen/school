@@ -494,7 +494,7 @@
     });
     function addEvListner() {
         // setTimeout( function() {
-            $('.elementsOne').change( (e) => {
+            $('.elementsOne').mouseleave( (e) => {
 
                 let id = e.target.value;
                 let url_page = "/changeSubjects/" + id;
@@ -518,7 +518,7 @@
 
 <script>
     $(document).ready(function () {
-                $('.elementsOne').change( (e) => {
+                $('.elementsOne').mouseleave( (e) => {
 
                     let id = e.target.value;
                     let url_page = "/changeSubjects/" + id;
