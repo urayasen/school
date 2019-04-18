@@ -2,10 +2,11 @@ package oktenweb.school.service.customService;
 
 import oktenweb.school.models.custom.Students;
 import oktenweb.school.models.functional.Classes;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 
-public interface StudentsService {
+public interface StudentsService  {
     void save(Students students);
 
     List<Students> findAll();

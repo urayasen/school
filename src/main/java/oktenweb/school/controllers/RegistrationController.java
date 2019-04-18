@@ -13,10 +13,12 @@ import oktenweb.school.service.functionalService.ClassesService;
 import oktenweb.school.service.functionalService.SubjectsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.*;
 
@@ -186,7 +188,7 @@ public class RegistrationController {
         }
         classesService.save(classes);
 
-        return "redirect:registrationFunction/registrationClasses";
+        return "redirect:/registrationClasses";
     }
 
 
@@ -694,20 +696,55 @@ public class RegistrationController {
         return teachers;
     }
 
-    @GetMapping("/account")
-    @ResponseBody
-    public Object currentUserName(Authentication authentication, Model model) {
+    @RequestMapping(value = "/account", method = RequestMethod.GET)
+    public String account(Authentication authentication,Model model, Integer id, User user, Students students){
+        String name = authentication.getName();
+        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+        authorities.forEach(System.out::println);
+        System.out.println(authorities.stream().anyMatch(authority ->  authority.getAuthority().equals("ROLE_STUDENT")));
+
+        if (authorities.stream().anyMatch(authority -> authority.getAuthority().equals("ROLE_CLASSTEACHER") )){
+            Classteachers classteachers1 = classteachersService.byId(id);
+
+        }else if(authorities.stream().anyMatch(authority ->  authority.getAuthority().equals("ROLE_STUDENT"))){
+//            Students students1 = studentsService.byId(id);
+            User user1 = userService.findByUsername(name);
+            Students students1 = user1.getStudents();
+            String name1 = students1.getName();
+            String surname = students1.getSurname();
+            String gender = students1.getGender();
+            String adress = students1.getAdress();
+            String email = students1.getEmail();
+            String phone = students1.getPhone();
+            String birthday = students1.getBirthday();
+            String classes = students1.getClasses().getName();
+            String parents = students1.getParents().getName();
+            String parents_surname = students1.getParents().getSurname();
+//            System.out.println(students);
+            ///// Тут потрібно вивести деталі про студента, який зараз залогінений (в консолі цього студента знаходить);
+//            model.addAttribute("user1", user1);
+//            model.addAttribute("students1", students1);
+            model.addAttribute("name1", name1);
+            model.addAttribute("surname", surname);
+            model.addAttribute("gender", gender);
+            model.addAttribute("adress", adress);
+            model.addAttribute("email", email);
+            model.addAttribute("phone", phone);
+            model.addAttribute("birthday", birthday);
+            model.addAttribute("classes", classes);
+            model.addAttribute("parents", parents);
+            model.addAttribute("parents_surname", parents_surname);
 
 
-            System.out.println(authentication);
-            System.out.println(authentication.getName());
-            User user = userService.findByUsername(authentication.getName());
-//            Deputy deputy = deputyService.findByUsername(authentication.getName());
-//        model.addAttribute("name", user.getClassteachers().getName());
-//        model.addAttribute("phone", user.getClassteachers().getPhone());
-        return "functional/account";
+        }else if (authorities.stream().anyMatch(authority ->  authority.getAuthority().equals("ROLE_TEACHER"))) {
+            Teachers teachers = teachersService.byId(id);
+        }else if (authorities.stream().anyMatch(authority ->  authority.getAuthority().equals("ROLE_PARENT"))){
+            Parents parents = parentsService.byId(id);
+        }else if (authorities.stream().anyMatch(authority ->  authority.getAuthority().equals("ROLE_DEPUTI"))){
+            Deputy deputy = deputyService.byId(id);
+        }
+        return "main/index";
     }
-
 
 
 
@@ -728,4 +765,5 @@ public class RegistrationController {
 //        }
 //    }
 
-}
+        }
+
