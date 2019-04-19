@@ -5,7 +5,7 @@ public enum Role {
     ROLE_ADMIN,
     ROLE_TEACHER,
     ROLE_PARENT,
-    ROLE_CLASSTHEACHER,
+    ROLE_CLASSTEACHER,
     ROLE_DEPUTI    //ЗАУЧ
 
 }

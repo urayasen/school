@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uk" xmlns:th="http://www.thymeleaf.org">
+<html lang="uk" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 
 <!-- Mirrored from www.urbanui.com/boardsterui/template/demo/horizontal-default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 27 Mar 2019 11:44:10 GMT -->
@@ -128,24 +128,94 @@
                         <!--start-->
                     </div>
                 </div>
+
+
                 <form th:action="@{/account}" method="GET">
-                    <!--                <label > [[${user1}]]</label>-->
-                    <!--                <label > [[${students1}]]</label>-->
-                    <label> Ім'я: [[${name1}]]</label>
-                    <br>
-                    <label> Прізвище: [[${surname}]]</label>
-                    <br>
-                    <label> Стать: [[${gender}]]</label>
-                    <br>
-                    <label> Адреса: [[${adress}]]</label>
-                    <br>
-                    <label> Емейл: [[${email}]]</label>
-                    <br>
-                    <label> Дата народження: [[${birthday}]]</label>
-                    <br>
-                    <label> Клас: [[${classes}]]</label>
-                    <br>
-                    <label> Батько: [[${parents}]] [[${parents_surname}]]</label>
+                    <div sec:authorize="hasRole('ROLE_STUDENT')">
+                        <label> Ім'я: [[${students1.name}]]</label>
+                        <br>
+                        <label> Прізвище: [[${students1.surname}]]</label>
+                        <br>
+                        <label> Стать: [[${students1.gender}]] ]</label>
+                        <br>
+                        <label> Адреса: [[${students1.adress}]]</label>
+                        <br>
+                        <label> Телефон: [[${students1.phone}]]</label>
+                        <br>
+                        <label> Емейл: [[${students1.email}]</label>
+                        <br>
+                        <label> Дата народження: [[${students1.birthday}]]</label>
+                        <br>
+                        <label> Клас: [[${classes}]]</label>
+                        <br>
+                        <label> Батько: [[${parents_name}]] [[${parents_surname}]]</label>
+                    </div>
+                    <div sec:authorize="hasRole('ROLE_TEACHER')">
+                        <label> Ім'я: [[${teachers1.name}]]</label>
+                        <br>
+                        <label> Прізвище: [[${teachers1.surname}]]</label>
+                        <br>
+                        <label> Стать: [[${teachers1.gender}]]</label>
+                        <br>
+                        <label> Адреса: [[${teachers1.adress}]]</label>
+                        <br>
+                        <label> Емейл: [[${teachers1.email}]]</label>
+                        <br>
+                        <label> Дата народження: [[${teachers1.birthday}]]</label>
+                        <br>
+                        <label> Предмет: [[${subjects}]]</label>
+                        <br>
+                    </div>
+                    <div sec:authorize="hasRole('ROLE_CLASSTEACHER')">
+                        <label> Ім'я: [[${classteachers1.name}]]</label>
+                        <br>
+                        <label> Прізвище: [[${classteachers1.surname}]]</label>
+                        <br>
+                        <label> Стать: [[${classteachers1.gender}]]</label>
+                        <br>
+                        <label> Адреса: [[${classteachers1.adress}]]</label>
+                        <br>
+                        <label> Емейл: [[${classteachers1.email}]]</label>
+                        <br>
+                        <label> Дата народження: [[${classteachers1.birthday}]]</label>
+                        <br>
+                        <label> Керівник [[${classes}]] класу</label>
+                        <br>
+                        <label> Предмет: [[${subjects}]]</label>
+                        <br>
+                    </div>
+                    <div sec:authorize="hasRole('ROLE_PARENT')">
+                        <label> Ім'я: [[${parents1.name}]]</label>
+                        <br>
+                        <label> Прізвище: [[${parents1.surname}]]</label>
+                        <br>
+                        <label> Стать: [[${parents1.gender}]]</label>
+                        <br>
+                        <label> Адреса: [[${parents1.adress}]]</label>
+                        <br>
+                        <label> Емейл: [[${parents1.email}]]</label>
+                        <br>
+                        <label> Дата народження: [[${parents1.birthday}]]</label>
+                        <br>
+                        <label> Дитина: [[${students1}]]</label>
+                        <br>
+                    </div>
+                    <div sec:authorize="hasRole('ROLE_DEPUTI')">
+                        <label> Ім'я: [[${deputy1.name}]]</label>
+                        <br>
+                        <label> Прізвище: [[${deputy1.surname}]]</label>
+                        <br>
+                        <label> Стать: [[${deputy1.gender}]]</label>
+                        <br>
+                        <label> Адреса: [[${deputy1.adress}]]</label>
+                        <br>
+                        <label> Емейл: [[${deputy1.email}]]</label>
+                        <br>
+                        <label> Дата народження: [[${deputy1.birthday}]]</label>
+                        <br>
+                        <label> Предмет: [[${subjects}]]</label>
+                        <br>
+                    </div>
                     <br>
                 </form>
                 <!-- content-wrapper ends -->
