@@ -130,19 +130,22 @@
                 </div>
 
 
-                <form th:action="@{/account}" method="GET">
+                <form th:action="@{/account}" method="GET"  >
                     <div sec:authorize="hasRole('ROLE_STUDENT')">
+                        <div>
+                            <img th:src="@{'/ava/'+ ${students1.avatar}}" alt="">
+                        </div>
                         <label> Ім'я: [[${students1.name}]]</label>
                         <br>
                         <label> Прізвище: [[${students1.surname}]]</label>
                         <br>
-                        <label> Стать: [[${students1.gender}]] ]</label>
+                        <label> Стать: [[${students1.gender}]] </label>
                         <br>
                         <label> Адреса: [[${students1.adress}]]</label>
                         <br>
                         <label> Телефон: [[${students1.phone}]]</label>
                         <br>
-                        <label> Емейл: [[${students1.email}]</label>
+                        <label> Емейл: [[${students1.email}]]</label>
                         <br>
                         <label> Дата народження: [[${students1.birthday}]]</label>
                         <br>

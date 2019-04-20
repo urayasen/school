@@ -18,8 +18,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 @Controller
@@ -132,11 +135,20 @@ public class RegistrationController {
         return "redirect:/";
     }
 
-    @GetMapping("/saveStudents")
-    public String registrationStudents(Students students, int id) {
+    @PostMapping("/saveStudents")
+    public String registrationStudents(Students students, int id,@RequestParam MultipartFile image) throws IOException {
         System.out.println("saveStudents ---------   " + id);
         User user = userService.byId(id);
+
         students.setUser(user);
+        String path = System.getProperty("user.home")
+                + File.separator
+                + "images"
+                + File.separator
+                + image.getOriginalFilename();
+
+        image.transferTo(new File(path));
+        students.setAvatar(image.getOriginalFilename());
         studentsService.save(students);
         return "redirect:/";
     }
@@ -702,7 +714,8 @@ public class RegistrationController {
                           Teachers teachers,
                           Classteachers classteachers,
                           Parents parents,
-                          Deputy deputy) {
+                          Deputy deputy
+                          )  {
         String name = authentication.getName();
         String name1 = authentication.getName();
         String name2 = authentication.getName();
@@ -728,6 +741,7 @@ public class RegistrationController {
             String classes = students1.getClasses().getName();
             String parents_name = students1.getParents().getName();
             String parents_surname = students1.getParents().getSurname();
+
 
             model.addAttribute("students1", students1);
             model.addAttribute("classes", classes);
@@ -760,21 +774,7 @@ public class RegistrationController {
     }
 
 
-//    @GetMapping(value = "/account")
-//    @ResponseBody
-//    public Object currentUserName(Authentication authentication) {
-//
-//        if (authentication != null) {
-//            System.out.println(authentication);
-//            System.out.println(authentication.getName());
-//            User user = userService.findByUsername(authentication.getName());
-////            Deputy deputy = deputyService.findByUsername(authentication.getName());
-//            user.getClassteachers();
-//            return null;
-//        } else {
-//            return "";
-//        }
-//    }
+
 
 }
 

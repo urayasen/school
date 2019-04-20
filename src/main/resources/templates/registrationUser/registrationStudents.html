@@ -15,7 +15,7 @@
 <body>
 
 
-<form th:action="@{/saveStudents}" method="Get">
+<form th:action="@{/saveStudents}" method="Post" enctype="multipart/form-data">
     <div class="container">
 
         <div class="row">
@@ -34,7 +34,9 @@
 
                         <div class="row ">
 
+
                             <div class="col-lg-6">
+
                                 <h4 style="text-align: center; color: white;">Ім'я</h4>
                                 <input type="hidden" name="id" th:value="${user1.id}">
                                 <input type="text" name="name" class="form-control" placeholder="Введіть ім'я.." required oninvalid="this.setCustomValidity('Напишіть імя')"
@@ -83,6 +85,7 @@
                                 <div class="klass">
                                     <input type="radio" name="gender" value="female" required oninvalid="this.setCustomValidity('Напишіть імя')"
                                            oninput="this.setCustomValidity('')"/><label>Дівчина</label>
+
                                     <input type="radio" name="gender" value="male" required oninvalid="this.setCustomValidity('Напишіть імя')"
                                            oninput="this.setCustomValidity('')"/><label>Хлопець</label>
                                 </div>
@@ -114,6 +117,7 @@
                             </div>
 
                         </div>
+                        <input type="file" name="image">
                         <br>
 
                         <button type="submit" class="btn btn-block  btn-warning">Зберегти</button>

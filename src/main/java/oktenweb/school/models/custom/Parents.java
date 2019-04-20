@@ -21,6 +21,7 @@ public class Parents {
     private String adress;
     private String gender;
     private String birthday;
+    private String avatar;
     transient private String loginname;
 
 

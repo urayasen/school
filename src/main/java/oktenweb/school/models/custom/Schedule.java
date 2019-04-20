@@ -1,9 +1,8 @@
 package oktenweb.school.models.custom;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import oktenweb.school.models.Days;
+
+import javax.persistence.*;
 
 @Entity
 public class Schedule {
@@ -14,15 +13,14 @@ public class Schedule {
     private int id;
     private String subject_name;
     private int class_teacher;
-    private String day_week;
+
     private int class_name;
 
 
-    public Schedule(String subject_name, int class_teacher, String day_week, int class_name) {
+    public Schedule(String subject_name, int class_teacher,  int class_name) {
         this.subject_name = subject_name;
         this.class_teacher = class_teacher;
-        this.day_week = day_week;
-        this.class_name = class_name;
+              this.class_name = class_name;
     }
 
     public int getId() {
@@ -49,13 +47,6 @@ public class Schedule {
         this.class_teacher = class_teacher;
     }
 
-    public String getDay_week() {
-        return day_week;
-    }
-
-    public void setDay_week(String day_week) {
-        this.day_week = day_week;
-    }
 
     public int getClass_name() {
         return class_name;
@@ -65,16 +56,25 @@ public class Schedule {
         this.class_name = class_name;
     }
 
+    @Enumerated(EnumType.STRING)
+    private Days days;
 
+    public Days getDays() {
+        return days;
+    }
+
+    public void setDays(Days days) {
+        this.days = days;
+    }
 
     @Override
     public String toString() {
-        return "ScheduleDAO{" +
+        return "Schedule{" +
                 "id=" + id +
                 ", subject_name='" + subject_name + '\'' +
                 ", class_teacher=" + class_teacher +
-                ", day_week='" + day_week + '\'' +
                 ", class_name=" + class_name +
+                ", days=" + days +
                 '}';
     }
 }

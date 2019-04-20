@@ -25,8 +25,16 @@ public class Students {
     private String adress;
     private String gender;
     private String birthday;
+    private String avatar;
     transient private String loginname;
 
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
 
     public String getLoginname() {
         return user.getUsername();
@@ -192,6 +200,7 @@ public class Students {
                 ", adress='" + adress + '\'' +
                 ", gender='" + gender + '\'' +
                 ", birthday='" + birthday + '\'' +
+                ", avatar='" + avatar + '\'' +
                 ", loginname='" + loginname + '\'' +
                 '}';
     }
