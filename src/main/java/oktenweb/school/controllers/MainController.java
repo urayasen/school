@@ -16,7 +16,7 @@ public class MainController {
     @PostMapping("/successURL")
     public String successURL() {
         System.out.println("You succes login");
-        return "main/hhh";
+        return "redirect:/account";
     }
 
 }
