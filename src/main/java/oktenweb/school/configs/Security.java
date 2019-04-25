@@ -79,22 +79,23 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .permitAll();
     }
 
-//     private InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder> inMemoryConfigurer() {
-//             return new InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder>();
-//         }
 
-//         @Autowired
-//         public void configureGlobal(AuthenticationManagerBuilder auth,
-//                                     AuthenticationProvider provider) throws Exception {
-//             inMemoryConfigurer()
-//                     .withUser("admin")
-//                     .password("{noop}admin")
-//                     .authorities("ADMIN")
-//                     .and()
-//                     .configure(auth);
-//             auth.authenticationProvider(provider);
-//
-//         }
+     private InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder> inMemoryConfigurer() {
+             return new InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder>();
+         }
+
+         @Autowired
+         public void configureGlobal(AuthenticationManagerBuilder auth,
+                                     AuthenticationProvider provider) throws Exception {
+             inMemoryConfigurer()
+                     .withUser("admin")
+                     .password("{noop}admin")
+                     .authorities("ADMIN")
+                     .and()
+                     .configure(auth);
+             auth.authenticationProvider(provider);
+
+         }
 
     @Override
     public void configure(WebSecurity web) throws Exception {

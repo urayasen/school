@@ -42,6 +42,7 @@
                                 <img th:src="@{../../images/faces/face5.jpg}" alt="profile"/>
                                 <span class="nav-profile-name">Evan Morales</span>
                             </a>
+                            <a th:href="@{/logout}" class="btn btn-info ">Logout</a>
                             <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                                  aria-labelledby="profileDropdown">
                                 <a class="dropdown-item">
@@ -53,6 +54,7 @@
                                     <i class="mdi mdi-logout text-primary"></i>
                                     Logout
                                 </a>
+
                             </div>
                         </li>
                     </ul>
@@ -130,10 +132,10 @@
                 </div>
 
 
-                <form th:action="@{/account}" method="GET"  >
+                <form th:action="@{/account}" method="GET" enctype="multipart/form-data">
                     <div sec:authorize="hasRole('ROLE_STUDENT')">
                         <div>
-                            <img th:src="@{'/ava/'+ ${students1.avatar}}" alt="">
+                            <img th:src="@{'/ava/'+ ${avatar1}}" alt="">
                         </div>
                         <label> Ім'я: [[${students1.name}]]</label>
                         <br>
@@ -153,7 +155,11 @@
                         <br>
                         <label> Батько: [[${parents_name}]] [[${parents_surname}]]</label>
                     </div>
+
                     <div sec:authorize="hasRole('ROLE_TEACHER')">
+                        <div>
+                            <img th:src="@{'/ava/'+ ${avatar1}}" alt="">
+                        </div>
                         <label> Ім'я: [[${teachers1.name}]]</label>
                         <br>
                         <label> Прізвище: [[${teachers1.surname}]]</label>
@@ -170,6 +176,9 @@
                         <br>
                     </div>
                     <div sec:authorize="hasRole('ROLE_CLASSTEACHER')">
+                        <div>
+                            <img th:src="@{'/ava/'+ ${avatar1}}" alt="">
+                        </div>
                         <label> Ім'я: [[${classteachers1.name}]]</label>
                         <br>
                         <label> Прізвище: [[${classteachers1.surname}]]</label>
@@ -188,6 +197,9 @@
                         <br>
                     </div>
                     <div sec:authorize="hasRole('ROLE_PARENT')">
+                        <div>
+                            <img th:src="@{'/ava/'+ ${avatar1}}" alt="">
+                        </div>
                         <label> Ім'я: [[${parents1.name}]]</label>
                         <br>
                         <label> Прізвище: [[${parents1.surname}]]</label>
@@ -204,6 +216,9 @@
                         <br>
                     </div>
                     <div sec:authorize="hasRole('ROLE_DEPUTI')">
+                        <div>
+                        <img th:src="@{'/ava/'+ ${avatar1}}" alt="">
+                        </div>
                         <label> Ім'я: [[${deputy1.name}]]</label>
                         <br>
                         <label> Прізвище: [[${deputy1.surname}]]</label>
@@ -218,8 +233,36 @@
                         <br>
                         <label> Предмет: [[${subjects}]]</label>
                         <br>
+
                     </div>
                     <br>
+                </form>
+                <form th:action="@{/savePhoto}" method="POST" enctype="multipart/form-data"  >
+                    <div sec:authorize="hasRole('ROLE_STUDENT')">
+                        <input type="file" name="image">
+                        <br>
+                        <button type="submit" class="btn btn-block  btn-warning">Зберегти</button>
+                    </div>
+                    <div sec:authorize="hasRole('ROLE_CLASSTEACHERS')">
+                        <input type="file" name="image">
+                        <br>
+                        <button type="submit" class="btn btn-block  btn-warning">Зберегти</button>
+                    </div>
+                    <div sec:authorize="hasRole('ROLE_TEACHER')">
+                        <input type="file" name="image">
+                        <br>
+                        <button type="submit" class="btn btn-block  btn-warning">Зберегти</button>
+                    </div>
+                    <div sec:authorize="hasRole('ROLE_PARENT')">
+                        <input type="file" name="image">
+                        <br>
+                        <button type="submit" class="btn btn-block  btn-warning">Зберегти</button>
+                    </div>
+                    <div sec:authorize="hasRole('ROLE_DEPUTI')">
+                        <input type="file" name="image">
+                        <br>
+                        <button type="submit" class="btn btn-block  btn-warning">Зберегти</button>
+                    </div>
                 </form>
                 <!-- content-wrapper ends -->
                 <!-- partial:partials/_footer.html -->
