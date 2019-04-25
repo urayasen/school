@@ -108,10 +108,25 @@
                         <!--start-->
 
 
-<h1>MY_ACCOUNT</h1>
+                        <form th:action="@{/account}" method="GET">
+                            <!--                <label > [[${user1}]]</label>-->
+                            <!--                <label > [[${students1}]]</label>-->
+                            <label> Ім'я: [[${name1}]]</label>
+                            <br>
+                            <label> Прізвище: [[${surname}]]</label>
+                            <br>
+                            <label> Стать: [[${gender}]]</label>
+                            <br>
+                            <label> Адреса: [[${adress}]]</label>
+                            <br>
+                            <label> Емейл: [[${email}]]</label>
+                            <br>
+                            <label> Дата народження [[${birthday}]]</label>
+                            <br>
+                            <label> Клас: [[${classes}]]</label>
+                            <br>
+                        </form>
 
-<p>[[${name}]]</p>
-<p>[[${phone}]]</p>
 
                     </div>
 

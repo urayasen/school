@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class MainController {
 //123
-    @GetMapping("/")
+    @GetMapping("/login")
     public String index() {
         return "main/login";
     }

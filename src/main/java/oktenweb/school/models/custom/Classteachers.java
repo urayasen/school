@@ -23,11 +23,17 @@ public class Classteachers {
     private String adress;
     private String gender;
     private String birthday;
+    private String avatar;
     transient private String loginname;
 
 
+    public String getAvatar() {
+        return avatar;
+    }
 
-
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
 
     public String getLoginname() {
         return user.getUsername();

@@ -1,7 +1,9 @@
 package oktenweb.school.controllers;
 
+import oktenweb.school.models.Days;
 import oktenweb.school.models.Role;
 import oktenweb.school.models.functional.Classes;
+import oktenweb.school.models.functional.Schedule;
 import oktenweb.school.models.functional.Subjects;
 import oktenweb.school.models.User;
 import oktenweb.school.models.custom.*;
@@ -10,6 +12,7 @@ import oktenweb.school.service.UserService;
 import oktenweb.school.service.customService.*;
 import oktenweb.school.service.functionalService.ClassJournalService;
 import oktenweb.school.service.functionalService.ClassesService;
+import oktenweb.school.service.functionalService.ScheduleService;
 import oktenweb.school.service.functionalService.SubjectsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -18,8 +21,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 @Controller
@@ -54,6 +59,9 @@ public class RegistrationController {
 
     @Autowired
     ClassJournalService classJournalService;
+
+    @Autowired
+    ScheduleService scheduleService;
 
 
     @PostMapping("/saveUser")
@@ -102,7 +110,7 @@ public class RegistrationController {
         User user = userService.byId(id);
         deputy.setUser(user);
         deputyService.save(deputy);
-        return "redirect:/";
+        return "redirect:/login";
     }
 
     @GetMapping("/saveTeachers")
@@ -111,7 +119,7 @@ public class RegistrationController {
         User user = userService.byId(id);
         teachers.setUser(user);
         teachersService.save(teachers);
-        return "redirect:/";
+        return "redirect:/login";
     }
 
     @GetMapping("/saveParents")
@@ -120,7 +128,7 @@ public class RegistrationController {
         User user = userService.byId(id);
         parents.setUser(user);
         parentsService.save(parents);
-        return "redirect:/";
+        return "redirect:/login";
     }
 
     @GetMapping("/saveClassteachers")
@@ -129,16 +137,25 @@ public class RegistrationController {
         User user = userService.byId(id);
         classteachers.setUser(user);
         classteachersService.save(classteachers);
-        return "redirect:/";
+        return "redirect:/login";
     }
 
-    @GetMapping("/saveStudents")
-    public String registrationStudents(Students students, int id) {
+    @PostMapping("/saveStudents")
+    public String registrationStudents(Students students, int id, @RequestParam MultipartFile image) throws IOException {
         System.out.println("saveStudents ---------   " + id);
         User user = userService.byId(id);
+
         students.setUser(user);
+        String path = System.getProperty("user.home")
+                + File.separator
+                + "images"
+                + File.separator
+                + image.getOriginalFilename();
+
+        image.transferTo(new File(path));
+        students.setAvatar(image.getOriginalFilename());
         studentsService.save(students);
-        return "redirect:/";
+        return "redirect:/login";
     }
 
     @GetMapping("/registrationFunctional")
@@ -663,6 +680,11 @@ public class RegistrationController {
     public String saveSchedule(@RequestParam("classes") int classes_id,
                                Model model) {
 
+
+        Days monday = Days.MONDAY;
+
+        model.addAttribute("monday", monday);
+
         List<Classes> classes = classesService.findAll();
         model.addAttribute("classes", classes);
 
@@ -675,8 +697,32 @@ public class RegistrationController {
         model.addAttribute("subjects", subjectsList);
 
 
+
         return "functional/schedule";
     }
+
+//    @PostMapping("/saveMonday")
+//    public String saveMonday(Model model, Schedule schedule, Integer id) {
+////        Map<String, Days> mapRoles = new HashMap<>();
+////        mapRoles.put("Понеділок", Days.MONDAY);
+////        mapRoles.put("Вівторок", Days.TUESDAY);
+////        mapRoles.put("Середа", Days.WEDNESDAY);
+////        mapRoles.put("Четвер", Days.THURSDAY);
+////        mapRoles.put("П'ятниця", Days.FRIDAY);
+//
+//        if (schedule.getDays() == Days.MONDAY){
+//
+//            List<Subjects> subjects = subjectsService.findAll();
+//
+//            System.out.println(subjects);
+//
+//            Teachers teachers = teachersService.byId(id);
+//
+//            System.out.println(teachers);
+//
+//            scheduleService.save(schedule);        }
+//        return "/functional/schedule";
+//    }
 
     @GetMapping("/changeSubjects/{id}")
     public @ResponseBody
@@ -702,7 +748,8 @@ public class RegistrationController {
                           Teachers teachers,
                           Classteachers classteachers,
                           Parents parents,
-                          Deputy deputy) {
+                          Deputy deputy
+    ) {
         String name = authentication.getName();
         String name1 = authentication.getName();
         String name2 = authentication.getName();
@@ -728,11 +775,13 @@ public class RegistrationController {
             String classes = students1.getClasses().getName();
             String parents_name = students1.getParents().getName();
             String parents_surname = students1.getParents().getSurname();
+            String avatar1 = students1.getAvatar();
 
             model.addAttribute("students1", students1);
             model.addAttribute("classes", classes);
             model.addAttribute("parents_name", parents_name);
             model.addAttribute("parents_surname", parents_surname);
+            model.addAttribute("avatar1", avatar1);
 
         } else if (authorities.stream().anyMatch(authority -> authority.getAuthority().equals("ROLE_TEACHER"))) {
             User byUsername = userService.findByUsername(name1);
@@ -752,29 +801,93 @@ public class RegistrationController {
             User byUsername = userService.findByUsername(name4);
             Deputy deputy1 = byUsername.getDeputy();
             List<Subjects> subjects = deputy1.getSubjects();
+            String avatar1 = deputy1.getAvatar();
 
             model.addAttribute("deputy1", deputy1);
             model.addAttribute("subjects", subjects);
+            model.addAttribute("avatar1", avatar1);
         }
         return "main/index";
     }
 
 
-//    @GetMapping(value = "/account")
-//    @ResponseBody
-//    public Object currentUserName(Authentication authentication) {
-//
-//        if (authentication != null) {
-//            System.out.println(authentication);
-//            System.out.println(authentication.getName());
-//            User user = userService.findByUsername(authentication.getName());
-////            Deputy deputy = deputyService.findByUsername(authentication.getName());
-//            user.getClassteachers();
-//            return null;
-//        } else {
-//            return "";
-//        }
-//    }
+    @RequestMapping(value = "/savePhoto", method = RequestMethod.POST)
+    public String account(Authentication authentication, @RequestParam MultipartFile image) throws IOException {
+        String save = authentication.getName();
+        String save2 = authentication.getName();
+        String save3 = authentication.getName();
+        String save4 = authentication.getName();
+        String save5 = authentication.getName();
+        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+        authorities.forEach(System.out::println);
+        if (authorities.stream().anyMatch(authority -> authority.getAuthority().equals("ROLE_STUDENT"))) {
+            User byUsername = userService.findByUsername(save);
+            Students students1 = byUsername.getStudents();
+            String path = System.getProperty("user.home")
+                    + File.separator
+                    + "images"
+                    + File.separator
+                    + image.getOriginalFilename();
 
+            image.transferTo(new File(path));
+            students1.setAvatar(image.getOriginalFilename());
+            studentsService.save(students1);
+
+        } else if (authorities.stream().anyMatch(authority -> authority.getAuthority().equals("ROLE_CLASSTEACHERS"))) {
+            User byUsername = userService.findByUsername(save2);
+            Classteachers classteachers1 = byUsername.getClassteachers();
+            String path = System.getProperty("user.home")
+                    + File.separator
+                    + "images"
+                    + File.separator
+                    + image.getOriginalFilename();
+
+            image.transferTo(new File(path));
+            classteachers1.setAvatar(image.getOriginalFilename());
+            classteachersService.save(classteachers1);
+        } else if (authorities.stream().anyMatch(authority -> authority.getAuthority().equals("ROLE_TEACHER"))) {
+            User byUsername = userService.findByUsername(save3);
+            Teachers teachers1 = byUsername.getTeachers();
+            String path = System.getProperty("user.home")
+                    + File.separator
+                    + "images"
+                    + File.separator
+                    + image.getOriginalFilename();
+
+            image.transferTo(new File(path));
+            teachers1.setAvatar(image.getOriginalFilename());
+            teachersService.save(teachers1);
+        } else if (authorities.stream().anyMatch(authority -> authority.getAuthority().equals("ROLE_PARENT"))) {
+            User byUsername = userService.findByUsername(save4);
+            Parents parents1 = byUsername.getParents();
+            String path = System.getProperty("user.home")
+                    + File.separator
+                    + "images"
+                    + File.separator
+                    + image.getOriginalFilename();
+
+            image.transferTo(new File(path));
+            parents1.setAvatar(image.getOriginalFilename());
+            parentsService.save(parents1);
+        } else if (authorities.stream().anyMatch(authority -> authority.getAuthority().equals("ROLE_DEPUTI"))) {
+            User byUsername = userService.findByUsername(save5);
+            Deputy deputy1 = byUsername.getDeputy();
+            String path = System.getProperty("user.home")
+                    + File.separator
+                    + "images"
+                    + File.separator
+                    + image.getOriginalFilename();
+
+            image.transferTo(new File(path));
+            deputy1.setAvatar(image.getOriginalFilename());
+            deputyService.save(deputy1);
+        }
+        return "redirect:/account";
+    }
+
+
+    public void setScheduleService(ScheduleService scheduleService) {
+        this.scheduleService = scheduleService;
+    }
 }
 

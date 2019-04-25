@@ -22,6 +22,7 @@ public class Teachers {
     private String adress;
     private String gender;
     private String birthday;
+    private String avatar;
     transient private String loginname;
 
     public String getLoginname() {
@@ -151,6 +152,14 @@ public class Teachers {
         this.adress = adress;
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
     @Override
     public String toString() {
         return "Teachers{" +
@@ -162,6 +171,7 @@ public class Teachers {
                 ", adress='" + adress + '\'' +
                 ", gender='" + gender + '\'' +
                 ", birthday='" + birthday + '\'' +
+                ", avatar='" + avatar + '\'' +
                 ", loginname='" + loginname + '\'' +
                 '}';
     }
