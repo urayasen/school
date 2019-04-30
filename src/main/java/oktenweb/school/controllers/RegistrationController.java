@@ -575,7 +575,7 @@ public class RegistrationController {
         return "111";
     }
 
-
+////111111
     @GetMapping("/SelectElements")
     public String selectSubjects(Model model) {
         List<Classes> classes = classesService.findAll();
